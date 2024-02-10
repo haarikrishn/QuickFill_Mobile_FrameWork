@@ -1,0 +1,45 @@
+{
+  "properties": {
+    "environment": "local",
+    "reportName": "Qualitrix Automation Report"
+  },
+  "server": {
+    "host": "localhost",
+    "port": 1234
+  },
+  "cloud_server": {
+    "userName": "krushna.jenwdwwdwdwaqualitrix",
+    "accessKey": "ZyDVxJ8RZPug8JkwdwdwdmTnWaMLcLf1LPTMxkWzwX6nIWWPbgfrQyjT",
+    "host": "@mobile-hub.lambdadwwtest.com/wd/hub"
+  },
+  "cloudCapabilities": {
+    "build": "krushna",
+    "name": "usa",
+    "platformName": "android",
+    "deviceName": "Galaxy .*",
+    "platformVersion": "13",
+    "app": "lt://APP10160281841703072392455169",
+    "video": "true",
+    "isRealMobile": "true",
+    "w3c": "true",
+    "region": "AP"
+  },
+  "capabilities": {
+    "android": {
+      "appPackage": "com.usa",
+      "appActivity": "com.uk",
+      "platformName": "Android",
+      "newCommandTimeout": 600,
+      "launchTimeout": 90000
+    }
+
+  },
+  "devices":[
+    {
+      "name":"P3227H000615",
+      "version":"13.0.0",
+      "platform":"Android"
+    }
+
+  ]
+}

@@ -1,0 +1,166 @@
+2024-02-09 10:39:33:111 [Appium] Welcome to Appium v1.22.3
+2024-02-09 10:39:33:112 [Appium] Non-default server args:
+2024-02-09 10:39:33:113 [Appium]   address: 127.0.0.1
+2024-02-09 10:39:33:113 [Appium]   port: 57326
+2024-02-09 10:39:33:113 [Appium]   bootstrapPort: 57324
+2024-02-09 10:39:33:113 [Appium]   logFile: C:\Users\FD329\OneDrive\Desktop\PWP_MobileAutomationFramework\reports\Report_2024-02-09 16-09-26\99a101d5\logs\appium_log_1707475166976.txt
+2024-02-09 10:39:33:114 [Appium]   chromedriverPort: 57325
+2024-02-09 10:39:33:114 [Appium] Deprecated server args:
+2024-02-09 10:39:33:115 [Appium]   --chromedriver-port => --default-capabilities
+2024-02-09 10:39:33:115 [Appium] Default capabilities, which will be added to each request unless overridden by desired capabilities:
+2024-02-09 10:39:33:115 [Appium]   chromedriverPort: 57325
+2024-02-09 10:39:33:146 [Appium] Appium REST http interface listener started on 127.0.0.1:57326
+2024-02-09 10:39:33:469 [HTTP] --> GET /wd/hub/status
+2024-02-09 10:39:33:470 [HTTP] {}
+2024-02-09 10:39:33:472 [GENERIC] Calling AppiumDriver.getStatus() with args: []
+2024-02-09 10:39:33:473 [GENERIC] Responding to client with driver.getStatus() result: {"build":{"version":"1.22.3"}}
+2024-02-09 10:39:33:480 [HTTP] <-- GET /wd/hub/status 200 8 ms - 68
+2024-02-09 10:39:33:480 [HTTP] 
+2024-02-09 10:39:33:486 [HTTP] --> GET /wd/hub/status
+2024-02-09 10:39:33:486 [HTTP] {}
+2024-02-09 10:39:33:487 [GENERIC] Calling AppiumDriver.getStatus() with args: []
+2024-02-09 10:39:33:487 [GENERIC] Responding to client with driver.getStatus() result: {"build":{"version":"1.22.3"}}
+2024-02-09 10:39:33:489 [HTTP] <-- GET /wd/hub/status 200 2 ms - 68
+2024-02-09 10:39:33:489 [HTTP] 
+2024-02-09 10:39:33:518 [HTTP] --> POST /wd/hub/session
+2024-02-09 10:39:33:518 [HTTP] {"desiredCapabilities":{"appActivity":"com.dmartlabs.pwp.view.foundation.SplashActivity","appPackage":"com.dmartlabs.pwp","newCommandTimeout":600,"platformVersion":"12.0.0","automationName":"uiautomator2","platformName":"Android","udid":"99a101d5","deviceName":"99a101d5","launchTimeout":90000,"systemPort":57342},"capabilities":{"firstMatch":[{"appium:appActivity":"com.dmartlabs.pwp.view.foundation.SplashActivity","appium:appPackage":"com.dmartlabs.pwp","appium:automationName":"uiautomator2","appium:deviceName":"99a101d5","appium:launchTimeout":90000,"appium:newCommandTimeout":600,"platformName":"android","appium:platformVersion":"12.0.0","appium:systemPort":57342,"appium:udid":"99a101d5"}]}}
+2024-02-09 10:39:33:519 [W3C] Calling AppiumDriver.createSession() with args: [{"appActivity":"com.dmartlabs.pwp.view.foundation.SplashActivity","appPackage":"com.dmartlabs.pwp","newCommandTimeout":600,"platformVersion":"12.0.0","automationName":"uiautomator2","platformName":"Android","udid":"99a101d5","deviceName":"99a101d5","launchTimeout":90000,"systemPort":57342},null,{"firstMatch":[{"appium:appActivity":"com.dmartlabs.pwp.view.foundation.SplashActivity","appium:appPackage":"com.dmartlabs.pwp","appium:automationName":"uiautomator2","appium:deviceName":"99a101d5","appium:launchTimeout":90000,"appium:newCommandTimeout":600,"platformName":"android","appium:platformVersion":"12.0.0","appium:systemPort":57342,"appium:udid":"99a101d5"}]}]
+2024-02-09 10:39:33:519 [BaseDriver] Event 'newSessionRequested' logged at 1707475173519 (16:09:33 GMT+0530 (India Standard Time))
+2024-02-09 10:39:33:522 [BaseDriver] The following capabilities are not standard capabilities and should have an extension prefix:
+2024-02-09 10:39:33:522 [BaseDriver]   chromedriverPort
+2024-02-09 10:39:33:823 [Appium] Appium v1.22.3 creating new AndroidUiautomator2Driver (v1.70.1) session
+2024-02-09 10:39:33:826 [BaseDriver] W3C capabilities and MJSONWP desired capabilities were provided
+2024-02-09 10:39:33:826 [BaseDriver] Creating session with W3C capabilities: {
+2024-02-09 10:39:33:826 [BaseDriver]   "alwaysMatch": {
+2024-02-09 10:39:33:826 [BaseDriver]     "platformName": "android",
+2024-02-09 10:39:33:826 [BaseDriver]     "appium:chromedriverPort": 57325,
+2024-02-09 10:39:33:826 [BaseDriver]     "appium:appActivity": "com.dmartlabs.pwp.view.foundation.SplashActivity",
+2024-02-09 10:39:33:826 [BaseDriver]     "appium:appPackage": "com.dmartlabs.pwp",
+2024-02-09 10:39:33:827 [BaseDriver]     "appium:automationName": "uiautomator2",
+2024-02-09 10:39:33:827 [BaseDriver]     "appium:deviceName": "99a101d5",
+2024-02-09 10:39:33:827 [BaseDriver]     "appium:launchTimeout": 90000,
+2024-02-09 10:39:33:827 [BaseDriver]     "appium:newCommandTimeout": 600,
+2024-02-09 10:39:33:827 [BaseDriver]     "appium:platformVersion": "12.0.0",
+2024-02-09 10:39:33:827 [BaseDriver]     "appium:systemPort": 57342,
+2024-02-09 10:39:33:827 [BaseDriver]     "appium:udid": "99a101d5"
+2024-02-09 10:39:33:827 [BaseDriver]   },
+2024-02-09 10:39:33:827 [BaseDriver]   "firstMatch": [
+2024-02-09 10:39:33:827 [BaseDriver]     {}
+2024-02-09 10:39:33:827 [BaseDriver]   ]
+2024-02-09 10:39:33:828 [BaseDriver] }
+2024-02-09 10:39:33:834 [BaseDriver] Session created with session id: b6a7b279-39c5-485d-b6c7-b97dd058f8f0
+2024-02-09 10:39:33:836 [UiAutomator2] Starting 'com.dmartlabs.pwp' directly on the device
+2024-02-09 10:39:33:846 [ADB] Found 1 'build-tools' folders under 'C:\Users\FD329\AppData\Local\Android\Sdk' (newest first):
+2024-02-09 10:39:33:846 [ADB]     C:/Users/FD329/AppData/Local/Android/Sdk/build-tools/34.0.0
+2024-02-09 10:39:33:847 [ADB] Using 'adb.exe' from 'C:\Users\FD329\AppData\Local\Android\Sdk\platform-tools\adb.exe'
+2024-02-09 10:39:33:847 [ADB] Running 'C:\Users\FD329\AppData\Local\Android\Sdk\platform-tools\adb.exe -P 5037 start-server'
+2024-02-09 10:39:34:174 [AndroidDriver] Retrieving device list
+2024-02-09 10:39:34:175 [ADB] Trying to find a connected android device
+2024-02-09 10:39:34:175 [ADB] Getting connected devices
+2024-02-09 10:39:34:549 [ADB] Connected devices: [{"udid":"99a101d5","state":"device"}]
+2024-02-09 10:39:34:549 [AndroidDriver] Using device: 99a101d5
+2024-02-09 10:39:34:552 [ADB] Using 'adb.exe' from 'C:\Users\FD329\AppData\Local\Android\Sdk\platform-tools\adb.exe'
+2024-02-09 10:39:34:552 [ADB] Running 'C:\Users\FD329\AppData\Local\Android\Sdk\platform-tools\adb.exe -P 5037 start-server'
+2024-02-09 10:39:34:889 [ADB] Setting device id to 99a101d5
+2024-02-09 10:39:34:890 [ADB] Running 'C:\Users\FD329\AppData\Local\Android\Sdk\platform-tools\adb.exe -P 5037 -s 99a101d5 shell getprop ro.build.version.sdk'
+2024-02-09 10:39:35:359 [ADB] Current device property 'ro.build.version.sdk': 31
+2024-02-09 10:39:35:359 [ADB] Getting device platform version
+2024-02-09 10:39:35:360 [ADB] Running 'C:\Users\FD329\AppData\Local\Android\Sdk\platform-tools\adb.exe -P 5037 -s 99a101d5 shell getprop ro.build.version.release'
+2024-02-09 10:39:35:778 [ADB] Current device property 'ro.build.version.release': 12
+2024-02-09 10:39:35:779 [ADB] Device API level: 31
+2024-02-09 10:39:35:779 [UiAutomator2] Relaxing hidden api policy
+2024-02-09 10:39:35:779 [ADB] Running 'C:\Users\FD329\AppData\Local\Android\Sdk\platform-tools\adb.exe -P 5037 -s 99a101d5 shell 'settings put global hidden_api_policy_pre_p_apps 1;settings put global hidden_api_policy_p_apps 1;settings put global hidden_api_policy 1''
+2024-02-09 10:39:38:173 [AndroidDriver] No app sent in, not parsing package/activity
+2024-02-09 10:39:38:173 [ADB] Running 'C:\Users\FD329\AppData\Local\Android\Sdk\platform-tools\adb.exe -P 5037 -s 99a101d5 wait-for-device'
+2024-02-09 10:39:38:575 [HTTP] <-- POST /wd/hub/session - - ms - -
+2024-02-09 10:39:38:575 [HTTP] 
+2024-02-09 10:39:38:583 uncaughtException: EPIPE: broken pipe, write
+Error: EPIPE: broken pipe, write
+    at Socket._write (node:internal/net:61:25)
+    at writeOrBuffer (node:internal/streams/writable:447:12)
+    at _write (node:internal/streams/writable:389:10)
+    at Socket.Writable.write (node:internal/streams/writable:393:10)
+    at Console.log (C:\Users\FD329\AppData\Roaming\npm\node_modules\appium\node_modules\winston\lib\winston\transports\console.js:79:23)
+    at Console._write (C:\Users\FD329\AppData\Roaming\npm\node_modules\appium\node_modules\winston-transport\index.js:103:17)
+    at doWrite (C:\Users\FD329\AppData\Roaming\npm\node_modules\appium\node_modules\winston-transport\node_modules\readable-stream\lib\_stream_writable.js:428:64)
+    at writeOrBuffer (C:\Users\FD329\AppData\Roaming\npm\node_modules\appium\node_modules\winston-transport\node_modules\readable-stream\lib\_stream_writable.js:417:5)
+    at Console.Writable.write (C:\Users\FD329\AppData\Roaming\npm\node_modules\appium\node_modules\winston-transport\node_modules\readable-stream\lib\_stream_writable.js:334:11)
+    at DerivedLogger.ondata (C:\Users\FD329\AppData\Roaming\npm\node_modules\appium\node_modules\readable-stream\lib\_stream_readable.js:681:20)
+    at DerivedLogger.emit (node:events:526:35)
+    at addChunk (C:\Users\FD329\AppData\Roaming\npm\node_modules\appium\node_modules\readable-stream\lib\_stream_readable.js:298:12)
+    at readableAddChunk (C:\Users\FD329\AppData\Roaming\npm\node_modules\appium\node_modules\readable-stream\lib\_stream_readable.js:280:11)
+    at DerivedLogger.Readable.push (C:\Users\FD329\AppData\Roaming\npm\node_modules\appium\node_modules\readable-stream\lib\_stream_readable.js:241:10)
+    at DerivedLogger.Transform.push (C:\Users\FD329\AppData\Roaming\npm\node_modules\appium\node_modules\readable-stream\lib\_stream_transform.js:139:32)
+    at DerivedLogger._transform (C:\Users\FD329\AppData\Roaming\npm\node_modules\appium\node_modules\winston\lib\winston\logger.js:305:12)
+2024-02-09 10:39:38:586 uncaughtException: EPIPE: broken pipe, write
+Error: EPIPE: broken pipe, write
+    at Socket._write (node:internal/net:61:25)
+    at writeOrBuffer (node:internal/streams/writable:447:12)
+    at _write (node:internal/streams/writable:389:10)
+    at Socket.Writable.write (node:internal/streams/writable:393:10)
+    at Console.log (C:\Users\FD329\AppData\Roaming\npm\node_modules\appium\node_modules\winston\lib\winston\transports\console.js:51:25)
+    at Console._write (C:\Users\FD329\AppData\Roaming\npm\node_modules\appium\node_modules\winston-transport\index.js:103:17)
+    at doWrite (C:\Users\FD329\AppData\Roaming\npm\node_modules\appium\node_modules\winston-transport\node_modules\readable-stream\lib\_stream_writable.js:428:64)
+    at writeOrBuffer (C:\Users\FD329\AppData\Roaming\npm\node_modules\appium\node_modules\winston-transport\node_modules\readable-stream\lib\_stream_writable.js:417:5)
+    at Console.Writable.write (C:\Users\FD329\AppData\Roaming\npm\node_modules\appium\node_modules\winston-transport\node_modules\readable-stream\lib\_stream_writable.js:334:11)
+    at DerivedLogger.ondata (C:\Users\FD329\AppData\Roaming\npm\node_modules\appium\node_modules\readable-stream\lib\_stream_readable.js:681:20)
+    at DerivedLogger.emit (node:events:526:35)
+    at addChunk (C:\Users\FD329\AppData\Roaming\npm\node_modules\appium\node_modules\readable-stream\lib\_stream_readable.js:298:12)
+    at readableAddChunk (C:\Users\FD329\AppData\Roaming\npm\node_modules\appium\node_modules\readable-stream\lib\_stream_readable.js:280:11)
+    at DerivedLogger.Readable.push (C:\Users\FD329\AppData\Roaming\npm\node_modules\appium\node_modules\readable-stream\lib\_stream_readable.js:241:10)
+    at DerivedLogger.Transform.push (C:\Users\FD329\AppData\Roaming\npm\node_modules\appium\node_modules\readable-stream\lib\_stream_transform.js:139:32)
+    at DerivedLogger._transform (C:\Users\FD329\AppData\Roaming\npm\node_modules\appium\node_modules\winston\lib\winston\logger.js:305:12)
+2024-02-09 10:39:38:589 uncaughtException: EPIPE: broken pipe, write
+Error: EPIPE: broken pipe, write
+    at Socket._write (node:internal/net:61:25)
+    at writeOrBuffer (node:internal/streams/writable:447:12)
+    at _write (node:internal/streams/writable:389:10)
+    at Socket.Writable.write (node:internal/streams/writable:393:10)
+    at Console.log (C:\Users\FD329\AppData\Roaming\npm\node_modules\appium\node_modules\winston\lib\winston\transports\console.js:51:25)
+    at Console._write (C:\Users\FD329\AppData\Roaming\npm\node_modules\appium\node_modules\winston-transport\index.js:103:17)
+    at doWrite (C:\Users\FD329\AppData\Roaming\npm\node_modules\appium\node_modules\winston-transport\node_modules\readable-stream\lib\_stream_writable.js:428:64)
+    at writeOrBuffer (C:\Users\FD329\AppData\Roaming\npm\node_modules\appium\node_modules\winston-transport\node_modules\readable-stream\lib\_stream_writable.js:417:5)
+    at Console.Writable.write (C:\Users\FD329\AppData\Roaming\npm\node_modules\appium\node_modules\winston-transport\node_modules\readable-stream\lib\_stream_writable.js:334:11)
+    at DerivedLogger.ondata (C:\Users\FD329\AppData\Roaming\npm\node_modules\appium\node_modules\readable-stream\lib\_stream_readable.js:681:20)
+    at DerivedLogger.emit (node:events:526:35)
+    at addChunk (C:\Users\FD329\AppData\Roaming\npm\node_modules\appium\node_modules\readable-stream\lib\_stream_readable.js:298:12)
+    at readableAddChunk (C:\Users\FD329\AppData\Roaming\npm\node_modules\appium\node_modules\readable-stream\lib\_stream_readable.js:280:11)
+    at DerivedLogger.Readable.push (C:\Users\FD329\AppData\Roaming\npm\node_modules\appium\node_modules\readable-stream\lib\_stream_readable.js:241:10)
+    at DerivedLogger.Transform.push (C:\Users\FD329\AppData\Roaming\npm\node_modules\appium\node_modules\readable-stream\lib\_stream_transform.js:139:32)
+    at DerivedLogger._transform (C:\Users\FD329\AppData\Roaming\npm\node_modules\appium\node_modules\winston\lib\winston\logger.js:305:12)
+2024-02-09 10:39:38:591 uncaughtException: EPIPE: broken pipe, write
+Error: EPIPE: broken pipe, write
+    at Socket._write (node:internal/net:61:25)
+    at writeOrBuffer (node:internal/streams/writable:447:12)
+    at _write (node:internal/streams/writable:389:10)
+    at Socket.Writable.write (node:internal/streams/writable:393:10)
+    at Console.log (C:\Users\FD329\AppData\Roaming\npm\node_modules\appium\node_modules\winston\lib\winston\transports\console.js:51:25)
+    at Console._write (C:\Users\FD329\AppData\Roaming\npm\node_modules\appium\node_modules\winston-transport\index.js:103:17)
+    at doWrite (C:\Users\FD329\AppData\Roaming\npm\node_modules\appium\node_modules\winston-transport\node_modules\readable-stream\lib\_stream_writable.js:428:64)
+    at writeOrBuffer (C:\Users\FD329\AppData\Roaming\npm\node_modules\appium\node_modules\winston-transport\node_modules\readable-stream\lib\_stream_writable.js:417:5)
+    at Console.Writable.write (C:\Users\FD329\AppData\Roaming\npm\node_modules\appium\node_modules\winston-transport\node_modules\readable-stream\lib\_stream_writable.js:334:11)
+    at DerivedLogger.ondata (C:\Users\FD329\AppData\Roaming\npm\node_modules\appium\node_modules\readable-stream\lib\_stream_readable.js:681:20)
+    at DerivedLogger.emit (node:events:526:35)
+    at addChunk (C:\Users\FD329\AppData\Roaming\npm\node_modules\appium\node_modules\readable-stream\lib\_stream_readable.js:298:12)
+    at readableAddChunk (C:\Users\FD329\AppData\Roaming\npm\node_modules\appium\node_modules\readable-stream\lib\_stream_readable.js:280:11)
+    at DerivedLogger.Readable.push (C:\Users\FD329\AppData\Roaming\npm\node_modules\appium\node_modules\readable-stream\lib\_stream_readable.js:241:10)
+    at DerivedLogger.Transform.push (C:\Users\FD329\AppData\Roaming\npm\node_modules\appium\node_modules\readable-stream\lib\_stream_transform.js:139:32)
+    at DerivedLogger._transform (C:\Users\FD329\AppData\Roaming\npm\node_modules\appium\node_modules\winston\lib\winston\logger.js:305:12)
+2024-02-09 10:39:38:592 uncaughtException: EPIPE: broken pipe, write
+Error: EPIPE: broken pipe, write
+    at Socket._write (node:internal/net:61:25)
+    at writeOrBuffer (node:internal/streams/writable:447:12)
+    at _write (node:internal/streams/writable:389:10)
+    at Socket.Writable.write (node:internal/streams/writable:393:10)
+    at Console.log (C:\Users\FD329\AppData\Roaming\npm\node_modules\appium\node_modules\winston\lib\winston\transports\console.js:51:25)
+    at Console._write (C:\Users\FD329\AppData\Roaming\npm\node_modules\appium\node_modules\winston-transport\index.js:103:17)
+    at doWrite (C:\Users\FD329\AppData\Roaming\npm\node_modules\appium\node_modules\winston-transport\node_modules\readable-stream\lib\_stream_writable.js:428:64)
+    at writeOrBuffer (C:\Users\FD329\AppData\Roaming\npm\node_modules\appium\node_modules\winston-transport\node_modules\readable-stream\lib\_stream_writable.js:417:5)
+    at Console.Writable.write (C:\Users\FD329\AppData\Roaming\npm\node_modules\appium\node_modules\winston-transport\node_modules\readable-stream\lib\_stream_writable.js:334:11)
+    at DerivedLogger.ondata (C:\Users\FD329\AppData\Roaming\npm\node_modules\appium\node_modules\readable-stream\lib\_stream_readable.js:681:20)
+    at DerivedLogger.emit (node:events:526:35)
+    at addChunk (C:\Users\FD329\AppData\Roaming\npm\node_modules\appium\node_modules\readable-stream\lib\_stream_readable.js:298:12)
+    at readableAddChunk (C:\Users\FD329\AppData\Roaming\npm\node_modules\appium\node_modules\readable-stream\lib\_stream_readable.js:280:11)
+    at DerivedLogger.Readable.push (C:\Users\FD329\AppData\Roaming\npm\node_modules\appium\node_modules\readable-stream\lib\_stream_readable.js:241:10)
+    at DerivedLogger.Transform.push (C:\Users\FD329\AppData\Roaming\npm\node_modules\appium\node_modules\readable-stream\lib\_stream_transform.js:139:32)
+    at DerivedLogger._transform (C:\Users\FD329\AppData\Roaming\npm\node_modules\appium\node_modules\winston\lib\winston\logger.js:305:12)

@@ -1,0 +1,250 @@
+2024-02-08 11:49:29:384 [Appium] Welcome to Appium v1.22.3
+2024-02-08 11:49:29:385 [Appium] Non-default server args:
+2024-02-08 11:49:29:385 [Appium]   address: 127.0.0.1
+2024-02-08 11:49:29:385 [Appium]   port: 58690
+2024-02-08 11:49:29:386 [Appium]   bootstrapPort: 58688
+2024-02-08 11:49:29:386 [Appium]   logFile: C:\Users\FD329\OneDrive\Desktop\PWP_MobileAutomationFramework\reports\Report_2024-02-08 17-19-23\99a101d5\logs\appium_log_1707392963757.txt
+2024-02-08 11:49:29:386 [Appium]   chromedriverPort: 58689
+2024-02-08 11:49:29:387 [Appium] Deprecated server args:
+2024-02-08 11:49:29:387 [Appium]   --chromedriver-port => --default-capabilities
+2024-02-08 11:49:29:388 [Appium] Default capabilities, which will be added to each request unless overridden by desired capabilities:
+2024-02-08 11:49:29:388 [Appium]   chromedriverPort: 58689
+2024-02-08 11:49:29:427 [Appium] Appium REST http interface listener started on 127.0.0.1:58690
+2024-02-08 11:49:30:242 [HTTP] --> GET /wd/hub/status
+2024-02-08 11:49:30:243 [HTTP] {}
+2024-02-08 11:49:30:245 [GENERIC] Calling AppiumDriver.getStatus() with args: []
+2024-02-08 11:49:30:246 [GENERIC] Responding to client with driver.getStatus() result: {"build":{"version":"1.22.3"}}
+2024-02-08 11:49:30:253 [HTTP] <-- GET /wd/hub/status 200 8 ms - 68
+2024-02-08 11:49:30:253 [HTTP] 
+2024-02-08 11:49:30:258 [HTTP] --> GET /wd/hub/status
+2024-02-08 11:49:30:258 [HTTP] {}
+2024-02-08 11:49:30:259 [GENERIC] Calling AppiumDriver.getStatus() with args: []
+2024-02-08 11:49:30:259 [GENERIC] Responding to client with driver.getStatus() result: {"build":{"version":"1.22.3"}}
+2024-02-08 11:49:30:260 [HTTP] <-- GET /wd/hub/status 200 2 ms - 68
+2024-02-08 11:49:30:261 [HTTP] 
+2024-02-08 11:49:31:119 [HTTP] --> POST /wd/hub/session
+2024-02-08 11:49:31:119 [HTTP] {"desiredCapabilities":{"appActivity":"com.dmartlabs.pwp.view.foundation.SplashActivity","appPackage":"com.dmartlabs.pwp","newCommandTimeout":600,"platformVersion":"12.0.0","automationName":"uiautomator2","platformName":"Android","udid":"99a101d5","deviceName":"99a101d5","launchTimeout":90000,"systemPort":58710},"capabilities":{"firstMatch":[{"appium:appActivity":"com.dmartlabs.pwp.view.foundation.SplashActivity","appium:appPackage":"com.dmartlabs.pwp","appium:automationName":"uiautomator2","appium:deviceName":"99a101d5","appium:launchTimeout":90000,"appium:newCommandTimeout":600,"platformName":"android","appium:platformVersion":"12.0.0","appium:systemPort":58710,"appium:udid":"99a101d5"}]}}
+2024-02-08 11:49:31:120 [W3C] Calling AppiumDriver.createSession() with args: [{"appActivity":"com.dmartlabs.pwp.view.foundation.SplashActivity","appPackage":"com.dmartlabs.pwp","newCommandTimeout":600,"platformVersion":"12.0.0","automationName":"uiautomator2","platformName":"Android","udid":"99a101d5","deviceName":"99a101d5","launchTimeout":90000,"systemPort":58710},null,{"firstMatch":[{"appium:appActivity":"com.dmartlabs.pwp.view.foundation.SplashActivity","appium:appPackage":"com.dmartlabs.pwp","appium:automationName":"uiautomator2","appium:deviceName":"99a101d5","appium:launchTimeout":90000,"appium:newCommandTimeout":600,"platformName":"android","appium:platformVersion":"12.0.0","appium:systemPort":58710,"appium:udid":"99a101d5"}]}]
+2024-02-08 11:49:31:120 [BaseDriver] Event 'newSessionRequested' logged at 1707392971120 (17:19:31 GMT+0530 (India Standard Time))
+2024-02-08 11:49:31:123 [BaseDriver] The following capabilities are not standard capabilities and should have an extension prefix:
+2024-02-08 11:49:31:123 [BaseDriver]   chromedriverPort
+2024-02-08 11:49:31:396 [Appium] Appium v1.22.3 creating new AndroidUiautomator2Driver (v1.70.1) session
+2024-02-08 11:49:31:398 [BaseDriver] W3C capabilities and MJSONWP desired capabilities were provided
+2024-02-08 11:49:31:398 [BaseDriver] Creating session with W3C capabilities: {
+2024-02-08 11:49:31:398 [BaseDriver]   "alwaysMatch": {
+2024-02-08 11:49:31:398 [BaseDriver]     "platformName": "android",
+2024-02-08 11:49:31:398 [BaseDriver]     "appium:chromedriverPort": 58689,
+2024-02-08 11:49:31:398 [BaseDriver]     "appium:appActivity": "com.dmartlabs.pwp.view.foundation.SplashActivity",
+2024-02-08 11:49:31:398 [BaseDriver]     "appium:appPackage": "com.dmartlabs.pwp",
+2024-02-08 11:49:31:399 [BaseDriver]     "appium:automationName": "uiautomator2",
+2024-02-08 11:49:31:399 [BaseDriver]     "appium:deviceName": "99a101d5",
+2024-02-08 11:49:31:399 [BaseDriver]     "appium:launchTimeout": 90000,
+2024-02-08 11:49:31:399 [BaseDriver]     "appium:newCommandTimeout": 600,
+2024-02-08 11:49:31:399 [BaseDriver]     "appium:platformVersion": "12.0.0",
+2024-02-08 11:49:31:399 [BaseDriver]     "appium:systemPort": 58710,
+2024-02-08 11:49:31:399 [BaseDriver]     "appium:udid": "99a101d5"
+2024-02-08 11:49:31:399 [BaseDriver]   },
+2024-02-08 11:49:31:399 [BaseDriver]   "firstMatch": [
+2024-02-08 11:49:31:399 [BaseDriver]     {}
+2024-02-08 11:49:31:399 [BaseDriver]   ]
+2024-02-08 11:49:31:399 [BaseDriver] }
+2024-02-08 11:49:31:406 [BaseDriver] Session created with session id: 9c0799a3-fd34-4a0e-b74c-95f6122045a8
+2024-02-08 11:49:31:407 [UiAutomator2] Starting 'com.dmartlabs.pwp' directly on the device
+2024-02-08 11:49:31:414 [ADB] Found 1 'build-tools' folders under 'C:\Users\FD329\AppData\Local\Android\Sdk' (newest first):
+2024-02-08 11:49:31:414 [ADB]     C:/Users/FD329/AppData/Local/Android/Sdk/build-tools/34.0.0
+2024-02-08 11:49:31:415 [ADB] Using 'adb.exe' from 'C:\Users\FD329\AppData\Local\Android\Sdk\platform-tools\adb.exe'
+2024-02-08 11:49:31:415 [ADB] Running 'C:\Users\FD329\AppData\Local\Android\Sdk\platform-tools\adb.exe -P 5037 start-server'
+2024-02-08 11:49:31:762 [AndroidDriver] Retrieving device list
+2024-02-08 11:49:31:762 [ADB] Trying to find a connected android device
+2024-02-08 11:49:31:763 [ADB] Getting connected devices
+2024-02-08 11:49:32:094 [ADB] Connected devices: [{"udid":"99a101d5","state":"device"}]
+2024-02-08 11:49:32:095 [AndroidDriver] Using device: 99a101d5
+2024-02-08 11:49:32:097 [ADB] Using 'adb.exe' from 'C:\Users\FD329\AppData\Local\Android\Sdk\platform-tools\adb.exe'
+2024-02-08 11:49:32:097 [ADB] Running 'C:\Users\FD329\AppData\Local\Android\Sdk\platform-tools\adb.exe -P 5037 start-server'
+2024-02-08 11:49:32:421 [ADB] Setting device id to 99a101d5
+2024-02-08 11:49:32:422 [ADB] Running 'C:\Users\FD329\AppData\Local\Android\Sdk\platform-tools\adb.exe -P 5037 -s 99a101d5 shell getprop ro.build.version.sdk'
+2024-02-08 11:49:32:922 [ADB] Current device property 'ro.build.version.sdk': 31
+2024-02-08 11:49:32:922 [ADB] Getting device platform version
+2024-02-08 11:49:32:923 [ADB] Running 'C:\Users\FD329\AppData\Local\Android\Sdk\platform-tools\adb.exe -P 5037 -s 99a101d5 shell getprop ro.build.version.release'
+2024-02-08 11:49:33:326 [ADB] Current device property 'ro.build.version.release': 12
+2024-02-08 11:49:33:326 [ADB] Device API level: 31
+2024-02-08 11:49:33:326 [UiAutomator2] Relaxing hidden api policy
+2024-02-08 11:49:33:326 [ADB] Running 'C:\Users\FD329\AppData\Local\Android\Sdk\platform-tools\adb.exe -P 5037 -s 99a101d5 shell 'settings put global hidden_api_policy_pre_p_apps 1;settings put global hidden_api_policy_p_apps 1;settings put global hidden_api_policy 1''
+2024-02-08 11:49:33:863 [AndroidDriver] No app sent in, not parsing package/activity
+2024-02-08 11:49:33:863 [ADB] Running 'C:\Users\FD329\AppData\Local\Android\Sdk\platform-tools\adb.exe -P 5037 -s 99a101d5 wait-for-device'
+2024-02-08 11:49:35:165 [ADB] Running 'C:\Users\FD329\AppData\Local\Android\Sdk\platform-tools\adb.exe -P 5037 -s 99a101d5 shell echo ping'
+2024-02-08 11:49:35:553 [AndroidDriver] Pushing settings apk to device...
+2024-02-08 11:49:35:554 [ADB] Getting install status for io.appium.settings
+2024-02-08 11:49:35:554 [ADB] Running 'C:\Users\FD329\AppData\Local\Android\Sdk\platform-tools\adb.exe -P 5037 -s 99a101d5 shell dumpsys package io.appium.settings'
+2024-02-08 11:49:36:253 [ADB] 'io.appium.settings' is installed
+2024-02-08 11:49:36:253 [ADB] Getting package info for 'io.appium.settings'
+2024-02-08 11:49:36:253 [ADB] Running 'C:\Users\FD329\AppData\Local\Android\Sdk\platform-tools\adb.exe -P 5037 -s 99a101d5 shell dumpsys package io.appium.settings'
+2024-02-08 11:49:36:721 [ADB] The version name of the installed 'io.appium.settings' is greater or equal to the application version name ('3.4.0' >= '3.4.0')
+2024-02-08 11:49:36:722 [ADB] There is no need to install/upgrade 'C:\Users\FD329\AppData\Roaming\npm\node_modules\appium\node_modules\io.appium.settings\apks\settings_apk-debug.apk'
+2024-02-08 11:49:36:722 [ADB] Getting IDs of all 'io.appium.settings' processes
+2024-02-08 11:49:36:722 [ADB] Running 'C:\Users\FD329\AppData\Local\Android\Sdk\platform-tools\adb.exe -P 5037 -s 99a101d5 shell 'pgrep --help; echo $?''
+2024-02-08 11:49:37:133 [ADB] Running 'C:\Users\FD329\AppData\Local\Android\Sdk\platform-tools\adb.exe -P 5037 -s 99a101d5 shell pgrep -f \(\[\[:blank:\]\]\|\^\)io\.appium\.settings\(\[\[:blank:\]\]\|\$\)'
+2024-02-08 11:49:37:608 [AndroidDriver] io.appium.settings is already running. There is no need to reset its permissions.
+2024-02-08 11:49:37:609 [ADB] Running 'C:\Users\FD329\AppData\Local\Android\Sdk\platform-tools\adb.exe -P 5037 -s 99a101d5 shell appops set io.appium.settings android:mock_location allow'
+2024-02-08 11:49:38:047 [Logcat] Starting logs capture with command: C:\\Users\\FD329\\AppData\\Local\\Android\\Sdk\\platform-tools\\adb.exe -P 5037 -s 99a101d5 logcat -v threadtime
+2024-02-08 11:49:39:279 [UiAutomator2] Forwarding UiAutomator2 Server port 6790 to local port 58710
+2024-02-08 11:49:39:291 [ADB] Forwarding system: 58710 to device: 6790
+2024-02-08 11:49:39:292 [ADB] Running 'C:\Users\FD329\AppData\Local\Android\Sdk\platform-tools\adb.exe -P 5037 -s 99a101d5 forward tcp:58710 tcp:6790'
+2024-02-08 11:49:39:598 [ADB] Getting install status for io.appium.uiautomator2.server
+2024-02-08 11:49:39:598 [ADB] Running 'C:\Users\FD329\AppData\Local\Android\Sdk\platform-tools\adb.exe -P 5037 -s 99a101d5 shell dumpsys package io.appium.uiautomator2.server'
+2024-02-08 11:49:40:028 [ADB] 'io.appium.uiautomator2.server' is installed
+2024-02-08 11:49:40:028 [ADB] Getting package info for 'io.appium.uiautomator2.server'
+2024-02-08 11:49:40:028 [ADB] Running 'C:\Users\FD329\AppData\Local\Android\Sdk\platform-tools\adb.exe -P 5037 -s 99a101d5 shell dumpsys package io.appium.uiautomator2.server'
+2024-02-08 11:49:40:760 [ADB] The version name of the installed 'io.appium.uiautomator2.server' is greater or equal to the application version name ('4.27.0' >= '4.27.0')
+2024-02-08 11:49:40:760 [UiAutomator2] io.appium.uiautomator2.server installation state: sameVersionInstalled
+2024-02-08 11:49:40:761 [ADB] Checking app cert for C:\Users\FD329\AppData\Roaming\npm\node_modules\appium\node_modules\appium-uiautomator2-server\apks\appium-uiautomator2-server-v4.27.0.apk
+2024-02-08 11:49:40:790 [ADB] Using 'apksigner.jar' from 'C:\Users\FD329\AppData\Local\Android\Sdk\build-tools\34.0.0\lib\apksigner.jar'
+2024-02-08 11:49:40:791 [ADB] Starting apksigner: 'C:\\Program Files\\Java\\jdk1.8.0_291\\bin\\java.exe' -Xmx1024M -Xss1m -jar C:\\Users\\FD329\\AppData\\Local\\Android\\Sdk\\build-tools\\34.0.0\\lib\\apksigner.jar verify --print-certs C:\\Users\\FD329\\AppData\\Roaming\\npm\\node_modules\\appium\\node_modules\\appium-uiautomator2-server\\apks\\appium-uiautomator2-server-v4.27.0.apk
+2024-02-08 11:49:41:850 [ADB] apksigner stdout: Signer #1 certificate DN: EMAILADDRESS=android@android.com, CN=Android, OU=Android, O=Android, L=Mountain View, ST=California, C=US
+2024-02-08 11:49:41:851 [ADB] Signer #1 certificate SHA-256 digest: a40da80a59d170caa950cf15c18c454d47a39b26989d8b640ecd745ba71bf5dc
+2024-02-08 11:49:41:851 [ADB] Signer #1 certificate SHA-1 digest: 61ed377e85d386a8dfee6b864bd85b0bfaa5af81
+2024-02-08 11:49:41:851 [ADB] Signer #1 certificate MD5 digest: e89b158e4bcf988ebd09eb83f5378e87
+2024-02-08 11:49:41:851 [ADB] 
+2024-02-08 11:49:41:851 [ADB] sha256 hash did match for 'appium-uiautomator2-server-v4.27.0.apk'
+2024-02-08 11:49:41:852 [ADB] 'C:\Users\FD329\AppData\Roaming\npm\node_modules\appium\node_modules\appium-uiautomator2-server\apks\appium-uiautomator2-server-v4.27.0.apk' is signed with the default certificate
+2024-02-08 11:49:41:852 [ADB] Getting install status for io.appium.uiautomator2.server.test
+2024-02-08 11:49:41:852 [ADB] Running 'C:\Users\FD329\AppData\Local\Android\Sdk\platform-tools\adb.exe -P 5037 -s 99a101d5 shell dumpsys package io.appium.uiautomator2.server.test'
+2024-02-08 11:49:42:300 [ADB] 'io.appium.uiautomator2.server.test' is installed
+2024-02-08 11:49:42:301 [ADB] Checking app cert for C:\Users\FD329\AppData\Roaming\npm\node_modules\appium\node_modules\appium-uiautomator2-server\apks\appium-uiautomator2-server-debug-androidTest.apk
+2024-02-08 11:49:42:306 [ADB] Starting apksigner: 'C:\\Program Files\\Java\\jdk1.8.0_291\\bin\\java.exe' -Xmx1024M -Xss1m -jar C:\\Users\\FD329\\AppData\\Local\\Android\\Sdk\\build-tools\\34.0.0\\lib\\apksigner.jar verify --print-certs C:\\Users\\FD329\\AppData\\Roaming\\npm\\node_modules\\appium\\node_modules\\appium-uiautomator2-server\\apks\\appium-uiautomator2-server-debug-androidTest.apk
+2024-02-08 11:49:42:905 [ADB] apksigner stdout: Signer #1 certificate DN: EMAILADDRESS=android@android.com, CN=Android, OU=Android, O=Android, L=Mountain View, ST=California, C=US
+2024-02-08 11:49:42:905 [ADB] Signer #1 certificate SHA-256 digest: a40da80a59d170caa950cf15c18c454d47a39b26989d8b640ecd745ba71bf5dc
+2024-02-08 11:49:42:905 [ADB] Signer #1 certificate SHA-1 digest: 61ed377e85d386a8dfee6b864bd85b0bfaa5af81
+2024-02-08 11:49:42:905 [ADB] Signer #1 certificate MD5 digest: e89b158e4bcf988ebd09eb83f5378e87
+2024-02-08 11:49:42:905 [ADB] 
+2024-02-08 11:49:42:906 [ADB] sha256 hash did match for 'appium-uiautomator2-server-debug-androidTest.apk'
+2024-02-08 11:49:42:906 [ADB] 'C:\Users\FD329\AppData\Roaming\npm\node_modules\appium\node_modules\appium-uiautomator2-server\apks\appium-uiautomator2-server-debug-androidTest.apk' is signed with the default certificate
+2024-02-08 11:49:42:906 [UiAutomator2] Server packages are not going to be (re)installed
+2024-02-08 11:49:42:909 [UiAutomator2] Waiting up to 30000ms for services to be available
+2024-02-08 11:49:42:910 [ADB] Running 'C:\Users\FD329\AppData\Local\Android\Sdk\platform-tools\adb.exe -P 5037 -s 99a101d5 shell pm list instrumentation'
+2024-02-08 11:49:43:338 [UiAutomator2] Instrumentation target 'io.appium.uiautomator2.server.test/androidx.test.runner.AndroidJUnitRunner' is available
+2024-02-08 11:49:43:340 [ADB] Adding packages ["io.appium.settings","io.appium.uiautomator2.server","io.appium.uiautomator2.server.test"] to Doze whitelist
+2024-02-08 11:49:43:340 [ADB] Got the following command chunks to execute: [["dumpsys","deviceidle","whitelist","+io.appium.settings",";","dumpsys","deviceidle","whitelist","+io.appium.uiautomator2.server",";","dumpsys","deviceidle","whitelist","+io.appium.uiautomator2.server.test",";"]]
+2024-02-08 11:49:43:341 [ADB] Running 'C:\Users\FD329\AppData\Local\Android\Sdk\platform-tools\adb.exe -P 5037 -s 99a101d5 shell dumpsys deviceidle whitelist +io.appium.settings ; dumpsys deviceidle whitelist +io.appium.uiautomator2.server ; dumpsys deviceidle whitelist +io.appium.uiautomator2.server.test ;'
+2024-02-08 11:49:43:861 [UiAutomator2] No app capability. Assuming it is already on the device
+2024-02-08 11:49:43:861 [ADB] Getting install status for com.dmartlabs.pwp
+2024-02-08 11:49:43:861 [ADB] Running 'C:\Users\FD329\AppData\Local\Android\Sdk\platform-tools\adb.exe -P 5037 -s 99a101d5 shell dumpsys package com.dmartlabs.pwp'
+2024-02-08 11:49:46:123 [ADB] 'com.dmartlabs.pwp' is installed
+2024-02-08 11:49:46:124 [ADB] Running 'C:\Users\FD329\AppData\Local\Android\Sdk\platform-tools\adb.exe -P 5037 -s 99a101d5 shell am force-stop com.dmartlabs.pwp'
+2024-02-08 11:49:46:687 [ADB] Running 'C:\Users\FD329\AppData\Local\Android\Sdk\platform-tools\adb.exe -P 5037 -s 99a101d5 shell pm clear com.dmartlabs.pwp'
+2024-02-08 11:49:47:205 [AndroidDriver] Performed fast reset on the installed 'com.dmartlabs.pwp' application (stop and clear)
+2024-02-08 11:49:47:206 [UiAutomator2] Performing shallow cleanup of automation leftovers
+2024-02-08 11:49:47:740 [UiAutomator2] No obsolete sessions have been detected (timeout of 500ms exceeded)
+2024-02-08 11:49:47:740 [ADB] Running 'C:\Users\FD329\AppData\Local\Android\Sdk\platform-tools\adb.exe -P 5037 -s 99a101d5 shell am force-stop io.appium.uiautomator2.server.test'
+2024-02-08 11:49:48:154 [UiAutomator2] Starting UIAutomator2 server 4.27.0
+2024-02-08 11:49:48:154 [UiAutomator2] Using UIAutomator2 server from 'C:\Users\FD329\AppData\Roaming\npm\node_modules\appium\node_modules\appium-uiautomator2-server\apks\appium-uiautomator2-server-v4.27.0.apk' and test from 'C:\Users\FD329\AppData\Roaming\npm\node_modules\appium\node_modules\appium-uiautomator2-server\apks\appium-uiautomator2-server-debug-androidTest.apk'
+2024-02-08 11:49:48:155 [UiAutomator2] Waiting up to 30000ms for UiAutomator2 to be online...
+2024-02-08 11:49:48:155 [ADB] Creating ADB subprocess with args: ["-P",5037,"-s","99a101d5","shell","am","instrument","-w","-e","disableAnalytics",true,"io.appium.uiautomator2.server.test/androidx.test.runner.AndroidJUnitRunner"]
+2024-02-08 11:49:48:347 [WD Proxy] Matched '/status' to command name 'getStatus'
+2024-02-08 11:49:48:348 [WD Proxy] Proxying [GET /status] to [GET http://127.0.0.1:58710/wd/hub/status] with no body
+2024-02-08 11:49:49:912 [WD Proxy] socket hang up
+2024-02-08 11:49:50:481 [Instrumentation] io.appium.uiautomator2.server.test.AppiumUiAutomator2Server:
+2024-02-08 11:49:50:924 [WD Proxy] Matched '/status' to command name 'getStatus'
+2024-02-08 11:49:50:925 [WD Proxy] Proxying [GET /status] to [GET http://127.0.0.1:58710/wd/hub/status] with no body
+2024-02-08 11:49:50:952 [WD Proxy] socket hang up
+2024-02-08 11:49:51:957 [WD Proxy] Matched '/status' to command name 'getStatus'
+2024-02-08 11:49:51:958 [WD Proxy] Proxying [GET /status] to [GET http://127.0.0.1:58710/wd/hub/status] with no body
+2024-02-08 11:49:52:070 [WD Proxy] Got response with status 200: {"sessionId":"None","value":{"message":"UiAutomator2 Server is ready to accept commands","ready":true}}
+2024-02-08 11:49:52:071 [UiAutomator2] The initialization of the instrumentation process took 3917ms
+2024-02-08 11:49:52:072 [WD Proxy] Matched '/session' to command name 'createSession'
+2024-02-08 11:49:52:073 [WD Proxy] Proxying [POST /session] to [POST http://127.0.0.1:58710/wd/hub/session] with body: {"capabilities":{"firstMatch":[{"platform":"LINUX","webStorageEnabled":false,"takesScreenshot":true,"javascriptEnabled":true,"databaseEnabled":false,"networkConnectionEnabled":true,"locationContextEnabled":false,"warnings":{},"desired":{"platformName":"android","chromedriverPort":58689,"appActivity":"com.dmartlabs.pwp.view.foundation.SplashActivity","appPackage":"com.dmartlabs.pwp","automationName":"uiautomator2","deviceName":"99a101d5","launchTimeout":90000,"newCommandTimeout":600,"platformVersion":"12.0.0","systemPort":58710,"udid":"99a101d5"},"platformName":"android","chromedriverPort":58689,"appActivity":"com.dmartlabs.pwp.view.foundation.SplashActivity","appPackage":"com.dmartlabs.pwp","automationName":"uiautomator2","deviceName":"99a101d5","launchTimeout":90000,"newCommandTimeout":600,"platformVersion":"12.0.0","systemPort":58710,"udid":"99a101d5","deviceUDID":"99a101d5"}],"alwaysMatch":{}}}
+2024-02-08 11:49:52:113 [WD Proxy] Got response with status 200: {"sessionId":"c28d3621-5c33-4c2c-99f2-dc8c19c2fe78","value":{"capabilities":{"firstMatch":[{"platform":"LINUX","webStorageEnabled":false,"takesScreenshot":true,"javascriptEnabled":true,"databaseEnabled":false,"networkConnectionEnabled":true,"locationContextEnabled":false,"warnings":{},"desired":{"platformName":"android","chromedriverPort":58689,"appActivity":"com.dmartlabs.pwp.view.foundation.SplashActivity","appPackage":"com.dmartlabs.pwp","automationName":"uiautomator2","deviceName":"99a101d5","launchTimeout":90000,"newCommandTimeout":600,"platformVersion":"12.0.0","systemPort":58710,"udid":"99a101d5"},"platformName":"android","chromedriverPort":58689,"appActivity":"com.dmartlabs.pwp.view.foundation.SplashActivity","appPackage":"com.dmartlabs.pwp","automationName":"uiautomator2","deviceName":"99a101d5","launchTimeout":90000,"newCommandTimeout":600,"platformVersion":"12.0.0","systemPort":58710,"udid":"99a101d5","deviceUDID":"99a101d5"}],"alwaysMatch":{}},"sessionId":"c28d3621-5c33-4c2c-99f2-dc8c19c2fe78"}}
+2024-02-08 11:49:52:114 [WD Proxy] Determined the downstream protocol as 'W3C'
+2024-02-08 11:49:52:129 [WD Proxy] Proxying [GET /appium/device/info] to [GET http://127.0.0.1:58710/wd/hub/session/c28d3621-5c33-4c2c-99f2-dc8c19c2fe78/appium/device/info] with no body
+2024-02-08 11:49:52:207 [WD Proxy] Got response with status 200: {"sessionId":"c28d3621-5c33-4c2c-99f2-dc8c19c2fe78","value":{"androidId":"136a8ab9d7a05b85","apiVersion":"31","bluetooth":{"state":"OFF"},"brand":"OnePlus","carrierName":"airtel","displayDensity":450,"locale":"en_IN","manufacturer":"OnePlus","model":"GM1901","networks":[{"capabilities":{"SSID":null,"linkDownBandwidthKbps":25628,"linkUpstreamBandwidthKbps":10342,"networkCapabilities":"NET_CAPABILITY_IMS,NET_CAPABILITY_NOT_METERED,NET_CAPABILITY_TRUSTED,NET_CAPABILITY_NOT_VPN,NET_CAPABILITY_VALIDATED,NET_CAPABILITY_FOREGROUND,NET_CAPABILITY_NOT_CONGESTED,NET_CAPABILITY_NOT_SUSPENDED","signalStrength":-2147483648,"transportTypes":"TRANSPORT_CELLULAR"},"detailedState":"CONNECTED","extraInfo":"ims","isAvailable":true,"isConnected":true,"isFailover":false,"isRoaming":true,"state":"CONNECTED","subtype":13,"subtypeName":"LTE","type":0,"typeName":"MOBILE"},{"capabilities":{"SSID":null,"linkDownBandwidthKbps":58555,"linkUpstreamBandwidthKbps":15000,"networkCapabilities":"NET_CAPABILITY_IMS,NET_CAPABILITY_NOT_METERED...
+2024-02-08 11:49:52:211 [ADB] Running 'C:\Users\FD329\AppData\Local\Android\Sdk\platform-tools\adb.exe -P 5037 -s 99a101d5 shell dumpsys window'
+2024-02-08 11:49:52:701 [AndroidDriver] Screen already unlocked, doing nothing
+2024-02-08 11:49:52:702 [UiAutomator2] Starting 'com.dmartlabs.pwp/com.dmartlabs.pwp.view.foundation.SplashActivity and waiting for 'com.dmartlabs.pwp/com.dmartlabs.pwp.view.foundation.SplashActivity'
+2024-02-08 11:49:52:703 [ADB] Running 'C:\Users\FD329\AppData\Local\Android\Sdk\platform-tools\adb.exe -P 5037 -s 99a101d5 shell am start -W -n com.dmartlabs.pwp/com.dmartlabs.pwp.view.foundation.SplashActivity -S -a android.intent.action.MAIN -c android.intent.category.LAUNCHER -f 0x10200000'
+2024-02-08 11:49:54:304 [WD Proxy] Proxying [GET /appium/device/pixel_ratio] to [GET http://127.0.0.1:58710/wd/hub/session/c28d3621-5c33-4c2c-99f2-dc8c19c2fe78/appium/device/pixel_ratio] with no body
+2024-02-08 11:49:54:312 [WD Proxy] Got response with status 200: {"sessionId":"c28d3621-5c33-4c2c-99f2-dc8c19c2fe78","value":2.8125}
+2024-02-08 11:49:54:313 [WD Proxy] Matched '/appium/device/system_bars' to command name 'getSystemBars'
+2024-02-08 11:49:54:313 [WD Proxy] Proxying [GET /appium/device/system_bars] to [GET http://127.0.0.1:58710/wd/hub/session/c28d3621-5c33-4c2c-99f2-dc8c19c2fe78/appium/device/system_bars] with no body
+2024-02-08 11:49:54:320 [WD Proxy] Got response with status 200: {"sessionId":"c28d3621-5c33-4c2c-99f2-dc8c19c2fe78","value":{"statusBar":80}}
+2024-02-08 11:49:54:321 [WD Proxy] Matched '/window/current/size' to command name 'getWindowSize'
+2024-02-08 11:49:54:321 [WD Proxy] Proxying [GET /window/current/size] to [GET http://127.0.0.1:58710/wd/hub/session/c28d3621-5c33-4c2c-99f2-dc8c19c2fe78/window/current/size] with no body
+2024-02-08 11:49:54:329 [WD Proxy] Got response with status 200: {"sessionId":"c28d3621-5c33-4c2c-99f2-dc8c19c2fe78","value":{"height":2215,"width":1080}}
+2024-02-08 11:49:54:330 [Appium] New AndroidUiautomator2Driver session created successfully, session 9c0799a3-fd34-4a0e-b74c-95f6122045a8 added to master session list
+2024-02-08 11:49:54:330 [BaseDriver] Event 'newSessionStarted' logged at 1707392994330 (17:19:54 GMT+0530 (India Standard Time))
+2024-02-08 11:49:54:330 [W3C (9c0799a3)] Cached the protocol value 'W3C' for the new session 9c0799a3-fd34-4a0e-b74c-95f6122045a8
+2024-02-08 11:49:54:331 [W3C (9c0799a3)] Responding to client with driver.createSession() result: {"capabilities":{"platform":"LINUX","webStorageEnabled":false,"takesScreenshot":true,"javascriptEnabled":true,"databaseEnabled":false,"networkConnectionEnabled":true,"locationContextEnabled":false,"warnings":{},"desired":{"platformName":"android","chromedriverPort":58689,"appActivity":"com.dmartlabs.pwp.view.foundation.SplashActivity","appPackage":"com.dmartlabs.pwp","automationName":"uiautomator2","deviceName":"99a101d5","launchTimeout":90000,"newCommandTimeout":600,"platformVersion":"12.0.0","systemPort":58710,"udid":"99a101d5"},"platformName":"android","chromedriverPort":58689,"appActivity":"com.dmartlabs.pwp.view.foundation.SplashActivity","appPackage":"com.dmartlabs.pwp","automationName":"uiautomator2","deviceName":"99a101d5","launchTimeout":90000,"newCommandTimeout":600,"platformVersion":"12","systemPort":58710,"udid":"99a101d5","deviceUDID":"99a101d5","deviceApiLevel":31,"deviceScreenSize":"1080x2340","deviceScreenDensity":450,"deviceModel":"GM1901","deviceManufacturer":"OnePlus","pixelRatio":2.8125...
+2024-02-08 11:49:54:332 [HTTP] <-- POST /wd/hub/session 200 23212 ms - 1165
+2024-02-08 11:49:54:332 [HTTP] 
+2024-02-08 11:57:41:508 [Instrumentation] .
+2024-02-08 11:57:41:515 uncaughtException: EPIPE: broken pipe, write
+Error: EPIPE: broken pipe, write
+    at Socket._write (node:internal/net:61:25)
+    at writeOrBuffer (node:internal/streams/writable:447:12)
+    at _write (node:internal/streams/writable:389:10)
+    at Socket.Writable.write (node:internal/streams/writable:393:10)
+    at Console.log (C:\Users\FD329\AppData\Roaming\npm\node_modules\appium\node_modules\winston\lib\winston\transports\console.js:79:23)
+    at Console._write (C:\Users\FD329\AppData\Roaming\npm\node_modules\appium\node_modules\winston-transport\index.js:103:17)
+    at doWrite (C:\Users\FD329\AppData\Roaming\npm\node_modules\appium\node_modules\winston-transport\node_modules\readable-stream\lib\_stream_writable.js:428:64)
+    at writeOrBuffer (C:\Users\FD329\AppData\Roaming\npm\node_modules\appium\node_modules\winston-transport\node_modules\readable-stream\lib\_stream_writable.js:417:5)
+    at Console.Writable.write (C:\Users\FD329\AppData\Roaming\npm\node_modules\appium\node_modules\winston-transport\node_modules\readable-stream\lib\_stream_writable.js:334:11)
+    at DerivedLogger.ondata (C:\Users\FD329\AppData\Roaming\npm\node_modules\appium\node_modules\readable-stream\lib\_stream_readable.js:681:20)
+    at DerivedLogger.emit (node:events:526:35)
+    at addChunk (C:\Users\FD329\AppData\Roaming\npm\node_modules\appium\node_modules\readable-stream\lib\_stream_readable.js:298:12)
+    at readableAddChunk (C:\Users\FD329\AppData\Roaming\npm\node_modules\appium\node_modules\readable-stream\lib\_stream_readable.js:280:11)
+    at DerivedLogger.Readable.push (C:\Users\FD329\AppData\Roaming\npm\node_modules\appium\node_modules\readable-stream\lib\_stream_readable.js:241:10)
+    at DerivedLogger.Transform.push (C:\Users\FD329\AppData\Roaming\npm\node_modules\appium\node_modules\readable-stream\lib\_stream_transform.js:139:32)
+    at DerivedLogger._transform (C:\Users\FD329\AppData\Roaming\npm\node_modules\appium\node_modules\winston\lib\winston\logger.js:305:12)
+2024-02-08 11:57:41:517 uncaughtException: EPIPE: broken pipe, write
+Error: EPIPE: broken pipe, write
+    at Socket._write (node:internal/net:61:25)
+    at writeOrBuffer (node:internal/streams/writable:447:12)
+    at _write (node:internal/streams/writable:389:10)
+    at Socket.Writable.write (node:internal/streams/writable:393:10)
+    at Console.log (C:\Users\FD329\AppData\Roaming\npm\node_modules\appium\node_modules\winston\lib\winston\transports\console.js:51:25)
+    at Console._write (C:\Users\FD329\AppData\Roaming\npm\node_modules\appium\node_modules\winston-transport\index.js:103:17)
+    at doWrite (C:\Users\FD329\AppData\Roaming\npm\node_modules\appium\node_modules\winston-transport\node_modules\readable-stream\lib\_stream_writable.js:428:64)
+    at writeOrBuffer (C:\Users\FD329\AppData\Roaming\npm\node_modules\appium\node_modules\winston-transport\node_modules\readable-stream\lib\_stream_writable.js:417:5)
+    at Console.Writable.write (C:\Users\FD329\AppData\Roaming\npm\node_modules\appium\node_modules\winston-transport\node_modules\readable-stream\lib\_stream_writable.js:334:11)
+    at DerivedLogger.ondata (C:\Users\FD329\AppData\Roaming\npm\node_modules\appium\node_modules\readable-stream\lib\_stream_readable.js:681:20)
+    at DerivedLogger.emit (node:events:526:35)
+    at addChunk (C:\Users\FD329\AppData\Roaming\npm\node_modules\appium\node_modules\readable-stream\lib\_stream_readable.js:298:12)
+    at readableAddChunk (C:\Users\FD329\AppData\Roaming\npm\node_modules\appium\node_modules\readable-stream\lib\_stream_readable.js:280:11)
+    at DerivedLogger.Readable.push (C:\Users\FD329\AppData\Roaming\npm\node_modules\appium\node_modules\readable-stream\lib\_stream_readable.js:241:10)
+    at DerivedLogger.Transform.push (C:\Users\FD329\AppData\Roaming\npm\node_modules\appium\node_modules\readable-stream\lib\_stream_transform.js:139:32)
+    at DerivedLogger._transform (C:\Users\FD329\AppData\Roaming\npm\node_modules\appium\node_modules\winston\lib\winston\logger.js:305:12)
+2024-02-08 11:57:41:518 uncaughtException: EPIPE: broken pipe, write
+Error: EPIPE: broken pipe, write
+    at Socket._write (node:internal/net:61:25)
+    at writeOrBuffer (node:internal/streams/writable:447:12)
+    at _write (node:internal/streams/writable:389:10)
+    at Socket.Writable.write (node:internal/streams/writable:393:10)
+    at Console.log (C:\Users\FD329\AppData\Roaming\npm\node_modules\appium\node_modules\winston\lib\winston\transports\console.js:51:25)
+    at Console._write (C:\Users\FD329\AppData\Roaming\npm\node_modules\appium\node_modules\winston-transport\index.js:103:17)
+    at doWrite (C:\Users\FD329\AppData\Roaming\npm\node_modules\appium\node_modules\winston-transport\node_modules\readable-stream\lib\_stream_writable.js:428:64)
+    at writeOrBuffer (C:\Users\FD329\AppData\Roaming\npm\node_modules\appium\node_modules\winston-transport\node_modules\readable-stream\lib\_stream_writable.js:417:5)
+    at Console.Writable.write (C:\Users\FD329\AppData\Roaming\npm\node_modules\appium\node_modules\winston-transport\node_modules\readable-stream\lib\_stream_writable.js:334:11)
+    at DerivedLogger.ondata (C:\Users\FD329\AppData\Roaming\npm\node_modules\appium\node_modules\readable-stream\lib\_stream_readable.js:681:20)
+    at DerivedLogger.emit (node:events:526:35)
+    at addChunk (C:\Users\FD329\AppData\Roaming\npm\node_modules\appium\node_modules\readable-stream\lib\_stream_readable.js:298:12)
+    at readableAddChunk (C:\Users\FD329\AppData\Roaming\npm\node_modules\appium\node_modules\readable-stream\lib\_stream_readable.js:280:11)
+    at DerivedLogger.Readable.push (C:\Users\FD329\AppData\Roaming\npm\node_modules\appium\node_modules\readable-stream\lib\_stream_readable.js:241:10)
+    at DerivedLogger.Transform.push (C:\Users\FD329\AppData\Roaming\npm\node_modules\appium\node_modules\readable-stream\lib\_stream_transform.js:139:32)
+    at DerivedLogger._transform (C:\Users\FD329\AppData\Roaming\npm\node_modules\appium\node_modules\winston\lib\winston\logger.js:305:12)
+2024-02-08 11:57:41:520 uncaughtException: EPIPE: broken pipe, write
+Error: EPIPE: broken pipe, write
+    at Socket._write (node:internal/net:61:25)
+    at writeOrBuffer (node:internal/streams/writable:447:12)
+    at _write (node:internal/streams/writable:389:10)
+    at Socket.Writable.write (node:internal/streams/writable:393:10)
+    at Console.log (C:\Users\FD329\AppData\Roaming\npm\node_modules\appium\node_modules\winston\lib\winston\transports\console.js:51:25)
+    at Console._write (C:\Users\FD329\AppData\Roaming\npm\node_modules\appium\node_modules\winston-transport\index.js:103:17)
+    at doWrite (C:\Users\FD329\AppData\Roaming\npm\node_modules\appium\node_modules\winston-transport\node_modules\readable-stream\lib\_stream_writable.js:428:64)
+    at writeOrBuffer (C:\Users\FD329\AppData\Roaming\npm\node_modules\appium\node_modules\winston-transport\node_modules\readable-stream\lib\_stream_writable.js:417:5)
+    at Console.Writable.write (C:\Users\FD329\AppData\Roaming\npm\node_modules\appium\node_modules\winston-transport\node_modules\readable-stream\lib\_stream_writable.js:334:11)
+    at DerivedLogger.ondata (C:\Users\FD329\AppData\Roaming\npm\node_modules\appium\node_modules\readable-stream\lib\_stream_readable.js:681:20)
+    at DerivedLogger.emit (node:events:526:35)
+    at addChunk (C:\Users\FD329\AppData\Roaming\npm\node_modules\appium\node_modules\readable-stream\lib\_stream_readable.js:298:12)
+    at readableAddChunk (C:\Users\FD329\AppData\Roaming\npm\node_modules\appium\node_modules\readable-stream\lib\_stream_readable.js:280:11)
+    at DerivedLogger.Readable.push (C:\Users\FD329\AppData\Roaming\npm\node_modules\appium\node_modules\readable-stream\lib\_stream_readable.js:241:10)
+    at DerivedLogger.Transform.push (C:\Users\FD329\AppData\Roaming\npm\node_modules\appium\node_modules\readable-stream\lib\_stream_transform.js:139:32)
+    at DerivedLogger._transform (C:\Users\FD329\AppData\Roaming\npm\node_modules\appium\node_modules\winston\lib\winston\logger.js:305:12)

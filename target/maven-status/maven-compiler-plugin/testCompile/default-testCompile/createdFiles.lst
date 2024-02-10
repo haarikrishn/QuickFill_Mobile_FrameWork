@@ -1,0 +1,4 @@
+com\qt\stepdefinitions\Regression.class
+com\qt\stepdefinitions\Hooks.class
+com\qt\stepdefinitions\LiveCheck.class
+com\qt\stepdefinitions\SmokeTest.class

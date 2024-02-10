@@ -1,0 +1,98 @@
+[
+  {
+    "appPackage": "com.lycamobile.at",
+    "appActivity": "com.lycamobile.MainActivity",
+    "mobileNumber": "68864328378",
+    "otp": "1234"
+  },
+  {
+    "appPackage": "com.lycamobile.au",
+    "appActivity": "com.lycamobile.MainActivity",
+    "mobileNumber": "470426115",
+    "otp": "1234"
+  },
+  {
+    "appPackage": "com.lycamobile.be",
+    "appActivity": "com.lycamobile.MainActivity",
+    "mobileNumber": "465145319",
+    "otp": "1234"
+  },
+  {
+    "appPackage": "com.lycamobile.dk",
+    "appActivity": "com.lycamobile.MainActivity",
+    "mobileNumber": "71387302",
+    "otp": "1234"
+  },
+  {
+    "appPackage": "com.lycadigital.lmnextgen_france",
+    "appActivity": "com.lycamobile.MainActivity",
+    "mobileNumber": "751005037",
+    "otp": "1234"
+  },
+  {
+    "appPackage": "com.lycadigital.lmnextgen_germany",
+    "appActivity": "com.lycamobile.MainActivity",
+    "mobileNumber": "15218037751",
+    "otp": "1234"
+  },
+  {
+    "appPackage": "com.lycamobile.ie",
+    "appActivity": "com.lycamobile.MainActivity",
+    "mobileNumber": "899614152",
+    "otp": "1234"
+  },
+  {
+    "appPackage": "com.lycamobile.it",
+    "appActivity": "com.lycamobile.MainActivity",
+    "mobileNumber": "3512806707",
+    "otp": "1234"
+  },
+  {
+    "appPackage": "com.lycamobile.nl",
+    "appActivity": "com.lycamobile.MainActivity",
+    "mobileNumber": "685802172",
+    "otp": "1234"
+  },
+  {
+    "appPackage": "com.lycamobile.no",
+    "appActivity": "com.lycamobile.MainActivity",
+    "mobileNumber": "46718829",
+    "otp": "1234"
+  },
+  {
+    "appPackage": "com.lycamobile.pl",
+    "appActivity": "com.lycamobile.MainActivity",
+    "mobileNumber": "579114780",
+    "otp": "1234"
+  },
+  {
+    "appPackage": "com.lycamobile.sw",
+    "appActivity": "com.lycamobile.MainActivity",
+    "mobileNumber": "779809372",
+    "otp": "1234"
+  },
+  {
+    "appPackage": "com.lycamobile.se",
+    "appActivity": "com.lycamobile.MainActivity",
+    "mobileNumber": "764352283",
+    "otp": "1234"
+  },
+  {
+    "appPackage": "com.lycadigital.lyca_mobile_uk",
+    "appActivity": "com.lycamobile.MainActivity",
+    "mobileNumber": "7466042534",
+    "otp": "1234"
+  },
+  {
+    "appPackage": "com.lycadigital.lycamobileusa",
+    "appActivity": "com.lycamobile.MainActivity",
+    "mobileNumber": "9733933328",
+    "otp": "1234"
+  },
+  {
+    "appPackage": "com.lycamobile.pt",
+    "appActivity": "com.lycamobile.MainActivity",
+    "mobileNumber": "920532300",
+    "otp": "1234"
+  }
+]

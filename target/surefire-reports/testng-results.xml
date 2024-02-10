@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testng-results skipped="0" failed="0" ignored="0" total="0" passed="0">
+  <reporter-output>
+  </reporter-output>
+  <suite name="Suite" duration-ms="1451" started-at="2024-01-17T20:50:27 IST" finished-at="2024-01-17T20:50:28 IST">
+    <groups>
+      <group name="cucumber scenarios">
+        <method signature="TestRunner.scenario(io.cucumber.testng.PickleWrapper, io.cucumber.testng.FeatureWrapper)[pri:0, instance:com.qt.bdd.Runner.TestRunner@2dde1bff]" name="scenario" class="com.qt.bdd.Runner.TestRunner"/>
+      </group> <!-- cucumber scenarios -->
+    </groups>
+    <test name="Test" duration-ms="1451" started-at="2024-01-17T20:50:27 IST" finished-at="2024-01-17T20:50:28 IST">
+      <class name="com.qt.bdd.Runner.TestRunner">
+        <test-method status="PASS" signature="setUpClass()[pri:0, instance:com.qt.bdd.Runner.TestRunner@2dde1bff]" name="setUpClass" is-config="true" duration-ms="963" started-at="2024-01-17T20:50:27 IST" finished-at="2024-01-17T20:50:28 IST">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- setUpClass -->
+        <test-method status="PASS" signature="tearDownClass()[pri:0, instance:com.qt.bdd.Runner.TestRunner@2dde1bff]" name="tearDownClass" is-config="true" duration-ms="436" started-at="2024-01-17T20:50:28 IST" finished-at="2024-01-17T20:50:28 IST">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- tearDownClass -->
+      </class> <!-- com.qt.bdd.Runner.TestRunner -->
+    </test> <!-- Test -->
+  </suite> <!-- Suite -->
+</testng-results>

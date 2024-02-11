@@ -9,10 +9,11 @@ import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 public class picker1TwoHUspage {
-
 
     public picker1TwoHUspage() {
 
@@ -114,6 +115,8 @@ public class picker1TwoHUspage {
 //android.widget.TextView[@resource-id='com.dmartlabs.pwp:id/txt_lip_product_name' and @text='Colgate Maxfresh Blue Gel Tp(300g)']/parent::android.view.ViewGroup[@resource-id='com.dmartlabs.pwp:id/cl_lip_parent']/descendant::android.widget.TextView[@resource-id='com.dmartlabs.pwp:id/txt_lip_boxes_value']
             MobileElement CaselotQuantity = (MobileElement) QXClient.get().driver().findElement(By.xpath("//android.widget.TextView[@resource-id='com.dmartlabs.pwp:id/txt_lip_product_name' and @text='" + itemTextFirstHu + "']/parent::android.view.ViewGroup[@resource-id='com.dmartlabs.pwp:id/cl_lip_parent']/descendant::android.widget.TextView[@resource-id='com.dmartlabs.pwp:id/txt_lip_boxes_value']"));
 
+
+            int caseLotNum = Integer.parseInt(CaselotQuantity.getText().trim());
             QXClient.get().gestures().isElementPresent(ItemName);
             QXClient.get().report().info("Item name is present"+"====>"+ItemName.getText());
             Thread.sleep(100);
@@ -146,7 +149,7 @@ public class picker1TwoHUspage {
             QXClient.get().gestures().waitAndClickElementisVisible(CompletePick);
             QXClient.get().report().info("after verifying,complete picking");
             Thread.sleep(200);
-            for (int j = 0; j < 2; j++) {
+            for (int j = 0; j < caseLotNum; j++) {
                 QXClient.get().gestures().waitAndClickElementisVisible(plus);
                 QXClient.get().report().info("adding case slot quantity");
             }
@@ -161,8 +164,8 @@ public class picker1TwoHUspage {
     @FindBy(xpath = "//android.widget.TextView[@resource-id='com.dmartlabs.pwp:id/txt_pl_view_hu']")
     private  MobileElement ClickOnViewHU;
 
-//    @FindBy(id="com.dmartlabs.pwp:id/btn_vhu_close_hu")
-//    private  MobileElement closeHU;
+    @FindBy(id="com.dmartlabs.pwp:id/btn_vhu_close_hu")
+    private  MobileElement closeHU;
     //    @FindBy(id="com.dmartlabs.pwp:id/btn_vhu_close_hu")
 //    private  MobileElement closeHU;
     @FindBy(xpath = "//android.widget.Button[@resource-id='android:id/button1']")
@@ -176,8 +179,7 @@ public class picker1TwoHUspage {
     @FindBy(id = "com.dmartlabs.pwp:id/btn_hm_continue_picking")
     private WebElement ContinuePicking;
 
-//    @FindBy(xpath = "//android.widget.Button[@resource-id='com.dmartlabs.pwp:id/btn_vhu_close_hu']")
-//    private  MobileElement CloseHU;
+
 
     @FindBy(xpath = "//android.widget.TextView[@resource-id='com.dmartlabs.pwp:id/txt_vhu_title']")
     private  MobileElement HUTitle;
@@ -217,44 +219,41 @@ public class picker1TwoHUspage {
         QXClient.get().report().info(NumberOfItems.getText()+" "+"no.of items present");
         System.out.println(NumberOfItems.getText()+" "+"no.of items present");
     }
-//    @FindBy(xpath = "//android.widget.Button[@resource-id='com.dmartlabs.pwp:id/btn_vhu_close_hu']")
-//    private  MobileElement closeHUxpath;
+
     //==================================================================================================
-//    @FindBy(xpath = "//android.widget.Button[@text='CLOSE HU']")
-//    private  MobileElement closeHUText;
+
 
     @FindBy(xpath = "//android.widget.TextView[@text='Print HU label']")
     private  MobileElement printHulabelText;
-//    @FindBy(xpath = "//android.widget.TextView[@text='A4']")
+    //    @FindBy(xpath = "//android.widget.TextView[@text='A4']")
 //    private  MobileElement dockText;
-//===============================================================================
-@FindBy(xpath = "//android.widget.Button[@text='CLOSE HU']")
-private  MobileElement closeHUText;
+//==================================================================================
+    @FindBy(xpath = "//android.widget.Button[@text='CLOSE HU']")
+    private  MobileElement closeHUText;
     @FindBy(xpath = "//android.widget.Button[@resource-id='com.dmartlabs.pwp:id/btn_vhu_close_hu']")
-    private  MobileElement CloseHUXpath;
-    @FindBy(id="com.dmartlabs.pwp:id/btn_vhu_close_hu")
-    private  MobileElement closeHUId;
+    private  MobileElement closeHUxpath;
 
+    @FindBy(xpath = "//android.widget.Button[@resource-id='com.dmartlabs.pwp:id/btn_vhu_close_hu']")
+    private  MobileElement CloseHU;
     //=================================================================================================
 
     public  void ClickOnCloseHU() throws InterruptedException {
         Thread.sleep(100);
-        QXClient.get().gestures().waitAndClickElementisVisible(CloseHUXpath);
+        QXClient.get().gestures().waitAndClickElementisVisible(closeHUText);
         QXClient.get().report().info("After all items picking clicking on close Hu");
         //closeHUText.click();
         Thread.sleep(500);
         QXClient.get().gestures().waitAndClickElementisVisible(CloseHuYes);
         QXClient.get().report().info("successfully clicked on close hu yes");
         Thread.sleep(500);
-
         try {
             QXClient.get().gestures().isElementPresent(printHulabelText);
             QXClient.get().gestures().waitAndClickElementisVisible(withoutPrinter);
         }
-        catch ( Exception e)
+        catch (Exception e)
         {
             System.out.println("inside catch");
-            QXClient.get().gestures().waitAndClickElementisVisible(closeHUId);
+            QXClient.get().gestures().waitAndClickElementisVisible(closeHUxpath);
             QXClient.get().report().info("After all items picking clicking on close Hu");
             //closeHUText.click();
             Thread.sleep(500);
@@ -264,11 +263,11 @@ private  MobileElement closeHUText;
         }
         QXClient.get().report().info("print HU label is displayed");
         Thread.sleep(100);
-       // QXClient.get().gestures().isElementPresent(DockType);
-//        QXClient.get().report().info(DockType.getText()+" "+"Dock Type");
-//        System.out.println((DockType.getText()+" "+"Dock Type"));
+        //   QXClient.get().gestures().isElementPresent(DockType);
+        // QXClient.get().report().info(DockType.getText()+" "+"Dock Type");
+        //System.out.println((DockType.getText()+" "+"Dock Type"));
 
-       // QXClient.get().gestures().waitAndClickElementisVisible(withoutPrinter);
+
         QXClient.get().report().info("successfully clicked on without printer");
         Thread.sleep(200);
 
@@ -337,6 +336,7 @@ private  MobileElement closeHUText;
 //android.widget.TextView[@resource-id='com.dmartlabs.pwp:id/txt_lip_product_name' and @text='Colgate Maxfresh Blue Gel Tp(300g)']/parent::android.view.ViewGroup[@resource-id='com.dmartlabs.pwp:id/cl_lip_parent']/descendant::android.widget.TextView[@resource-id='com.dmartlabs.pwp:id/txt_lip_boxes_value']
             MobileElement CaselotQuantity1 = (MobileElement) QXClient.get().driver().findElement(By.xpath("//android.widget.TextView[@resource-id='com.dmartlabs.pwp:id/txt_lip_product_name' and @text='" + uniqueItems1 + "']/parent::android.view.ViewGroup[@resource-id='com.dmartlabs.pwp:id/cl_lip_parent']/descendant::android.widget.TextView[@resource-id='com.dmartlabs.pwp:id/txt_lip_boxes_value']"));
 
+            int caseLotNum = Integer.parseInt(CaselotQuantity1.getText().trim());
             QXClient.get().gestures().isElementPresent(ItemName1);
             QXClient.get().report().info("Item name is present"+"====>"+ItemName1.getText());
             Thread.sleep(100);
@@ -369,7 +369,7 @@ private  MobileElement closeHUText;
             QXClient.get().gestures().waitAndClickElementisVisible(CompletePick);
             QXClient.get().report().info("after verifying,complete picking");
             Thread.sleep(200);
-            for (int j = 0; j < 2; j++) {
+            for (int j = 0; j < caseLotNum; j++) {
                 QXClient.get().gestures().waitAndClickElementisVisible(plus);
                 QXClient.get().report().info("adding case slot quantity");
             }
@@ -384,6 +384,246 @@ private  MobileElement closeHUText;
         QXClient.get().gestures().isElementPresent(pickListTitle);
         QXClient.get().report().info("PickList Tilte is displayed");
     }
+    //==============================================================================================
+//box type
+    // =======
+    @FindBy(id="com.dmartlabs.pwp:id/btn_vhu_close_hu")
+    private  MobileElement palletFull;
+    @FindBy(xpath = "//android.widget.Button[@text='YES']")
+    private  MobileElement palletfullYes;
+    @FindBy(id = "com.dmartlabs.pwp:id/txt_hm_title")
+    private  MobileElement moveToDispatchTitle;
+
+    @FindBy(id="com.dmartlabs.pwp:id/txt_hm_dock_name")
+    private  MobileElement dockName;
+    @FindBy(id = "com.dmartlabs.pwp:id/btn_hm_continue_picking")
+    private  MobileElement continuePickBox;
+
+    @FindBy(id="com.dmartlabs.pwp:id/txt_pl_view_hu")
+    private  MobileElement ViewPallet;
+
+
+    public  void clicknViewPallet()
+    {
+        QXClient.get().gestures().waitAndClickElementisVisible(ViewPallet);
+    }
+
+    public  void clickOnContinuePicking() throws InterruptedException {
+        QXClient.get().gestures().isElementPresent(palletFull);
+        QXClient.get().report().info("palletFull page is displayed");
+
+        QXClient.get().gestures().waitAndClickElementisVisible(palletFull);
+        Thread.sleep(100);
+        QXClient.get().gestures().waitAndClickElementisVisible(palletfullYes);
+        Thread.sleep(100);
+        try {
+            QXClient.get().gestures().isElementPresent(moveToDispatchTitle);
+            QXClient.get().report().info(dockName.getText());
+        }
+        catch (Exception e)
+        {
+            System.out.println("inside catch");
+            QXClient.get().gestures().waitAndClickElementisVisible(palletFull);
+            Thread.sleep(100);
+            QXClient.get().gestures().waitAndClickElementisVisible(palletfullYes);
+            Thread.sleep(100);
+            QXClient.get().gestures().isElementPresent(moveToDispatchTitle);
+            QXClient.get().report().info(dockName.getText());
+        }
+        System.out.println(dockName.getText()+"=========>"+dockName);
+        QXClient.get().gestures().waitAndClickElementisVisible(continuePickBox);
+    }
+
+    //====================================================================================================================================================
+    //incorrect sequence box type
+
+    Set<String> setListBox=new HashSet<>();
+    public  void addElementsToSetBoxType()
+    {
+        for(int i=0;i<ListOfItemsFirstHU.size();i++)
+        {
+            setListBox.add(ListOfItemsFirstHU.get(i).getText());
+            System.out.println(ListOfItemsFirstHU.get(i).getText()+ i);
+        }
+    }
+
+    @FindBy(xpath = "//android.widget.TextView[@resource-id='com.dmartlabs.pwp:id/txt_fpsed_dialog_title']")
+    private  MobileElement IncorrectBinMsg;
+
+    @FindBy(xpath = "//android.widget.Button[@resource-id='com.dmartlabs.pwp:id/btn_fpsed_yes']")
+    private  MobileElement IncorrectBinYes;
+
+
+    public  void ClickItemOneByoneInBoxInvalidSequence() throws InterruptedException {
+        for(String    itemSetText:setListBox)
+        {
+            // QXClient.get().gestures().t
+            //     QXClient.get().driver().findElement(By.xpath("//android.widget.TextView[@text='Grace Deep Impact Shower Gel 250m']"));
+            MobileElement ItemName = (MobileElement) QXClient.get().driver().findElement(By.xpath("//android.widget.TextView[@text='"+itemSetText+"']"));
+            ////android.widget.TextView[@resource-id='com.dmartlabs.pwp:id/txt_lip_product_name' and @text='Grace Citrus Passi Shower Gel 250ml']/following-sibling::android.widget.TextView[@resource-id='com.dmartlabs.pwp:id/txt_lip_bin_no']
+            MobileElement BinNo = (MobileElement) QXClient.get().driver().findElement(By.xpath("//android.widget.TextView[@resource-id='com.dmartlabs.pwp:id/txt_lip_product_name' and @text='"+itemSetText+"']/following-sibling::android.widget.TextView[@resource-id='com.dmartlabs.pwp:id/txt_lip_bin_no']"));
+////android.widget.TextView[@resource-id='com.dmartlabs.pwp:id/txt_lip_product_name' and @text='Colgate Maxfresh Blue Gel Tp(300g)']/parent::android.view.ViewGroup[@resource-id='com.dmartlabs.pwp:id/cl_lip_parent']/descendant::android.widget.TextView[@resource-id='com.dmartlabs.pwp:id/txt_lip_hu_type_value']
+            MobileElement Hutype = (MobileElement) QXClient.get().driver().findElement(By.xpath("//android.widget.TextView[@resource-id='com.dmartlabs.pwp:id/txt_lip_product_name' and @text='"+itemSetText+"']/parent::android.view.ViewGroup[@resource-id='com.dmartlabs.pwp:id/cl_lip_parent']/descendant::android.widget.TextView[@resource-id='com.dmartlabs.pwp:id/txt_lip_hu_type_value']"));
+//android.widget.TextView[@resource-id='com.dmartlabs.pwp:id/txt_lip_product_name' and @text='Colgate Maxfresh Blue Gel Tp(300g)']/parent::android.view.ViewGroup[@resource-id='com.dmartlabs.pwp:id/cl_lip_parent']/descendant::android.widget.TextView[@resource-id='com.dmartlabs.pwp:id/txt_lip_boxes_value']
+            MobileElement CaselotQuantity = (MobileElement) QXClient.get().driver().findElement(By.xpath("//android.widget.TextView[@resource-id='com.dmartlabs.pwp:id/txt_lip_product_name' and @text='" + itemSetText + "']/parent::android.view.ViewGroup[@resource-id='com.dmartlabs.pwp:id/cl_lip_parent']/descendant::android.widget.TextView[@resource-id='com.dmartlabs.pwp:id/txt_lip_boxes_value']"));
+
+
+            int caseLotNum = Integer.parseInt(CaselotQuantity.getText().trim());
+            QXClient.get().gestures().isElementPresent(ItemName);
+            QXClient.get().report().info("Item name is present"+"====>"+ItemName.getText());
+            Thread.sleep(100);
+            QXClient.get().gestures().isElementPresent(BinNo);
+            QXClient.get().report().info("BinNo is present"+"====>"+BinNo.getText());
+            Thread.sleep(100);
+            QXClient.get().gestures().isElementPresent(Hutype);
+            QXClient.get().report().info("Hutype is present"+"====>"+Hutype.getText());
+            Thread.sleep(100);
+            QXClient.get().gestures().isElementPresent(CaselotQuantity);
+            QXClient.get().report().info("CaselotQuantity is present"+"====>"+CaselotQuantity.getText());
+            Thread.sleep(100);
+            //   System.out.println(ItemName.getText()+"===============>"+"name of item");
+            System.out.println("itemName"+"======>"+itemSetText+"binNumber"+"======>"+BinNo.getText()+"HU type"+"======>"+Hutype.getText()+"caseLotQuantity"+"======>"+CaselotQuantity.getText());
+            QXClient.get().report().info("itemName"+"======>"+itemSetText+"binNumber"+"======>"+BinNo.getText()+"HU type"+"======>"+Hutype.getText()+"caseLotQuantity"+"======>"+CaselotQuantity.getText());
+
+            QXClient.get().gestures().waitAndClickElementisVisible(ItemName);
+
+
+            QXClient.get().report().info("Clicking on item Name"+"===========>"+itemSetText);
+            System.out.println("item successfully picked"+"==================>"+itemSetText);
+            Thread.sleep(200);
+            //     Thread.sleep(200);
+            try {
+                QXClient.get().gestures().clickOnElement(Verified);
+            }
+            catch (Exception e)
+            {
+                System.out.println("inside catch");
+                QXClient.get().gestures().isElementPresent(IncorrectBinMsg);
+                QXClient.get().report().info(IncorrectBinMsg.getText());
+                System.out.println(IncorrectBinMsg.getText());
+                QXClient.get().gestures().waitAndClickElementisVisible(IncorrectBinYes);
+                QXClient.get().gestures().waitAndClickElementisVisible(Verified);
+            }
+            QXClient.get().report().info("after click on item verifying");
+            Thread.sleep(200);
+            //android.widget.TextView[@resource-id='com.dmartlabs.pwp:id/txt_vpip_item_desc' and @text='Colgate Maxfresh Blue Gel Tp(300g)']/following-sibling::android.widget.TextView[@resource-id='com.dmartlabs.pwp:id/txt_vpip_ean_value']
+            WebElement EanNumer = QXClient.get().driver().findElement(By.xpath("//android.widget.TextView[@resource-id='com.dmartlabs.pwp:id/txt_vpip_item_desc' and @text='"+itemSetText+"']/following-sibling::android.widget.TextView[@resource-id='com.dmartlabs.pwp:id/txt_vpip_ean_value']"));
+            System.out.println(itemSetText+" "+"============>EanNumer"+EanNumer.getText());
+            Thread.sleep(200);
+            QXClient.get().gestures().isElementPresent(EanNumer);
+            QXClient.get().report().info("Ean number valid"+"=======>"+EanNumer.getText());
+            QXClient.get().gestures().waitAndClickElementisVisible(CompletePick);
+            QXClient.get().report().info("after verifying,complete picking");
+            Thread.sleep(200);
+            for (int j = 0; j < caseLotNum; j++) {
+                QXClient.get().gestures().waitAndClickElementisVisible(plus);
+                QXClient.get().report().info("adding case slot quantity");
+            }
+            Thread.sleep(200);
+            QXClient.get().gestures().waitAndClickElementisVisible(confirm);
+            QXClient.get().report().info("Finally click on confirm");
+            Thread.sleep(1000);
+        }
+    }
+
+    Set<String>setListBox1=new HashSet<>();
+
+    public  void addElementsToBoxSet1() throws InterruptedException {
+        Thread.sleep(200);
+        int k=4;
+        for(int i=0;i<ListOfItemsSecondHU.size();i++) {
+            setListBox1.add(ListOfItemsSecondHU.get(i).getText());
+        }
+
+        for(String   unique:setListBox1)
+        {
+            if(!setListBox.contains(unique))
+            {
+                uniqueItems.add(unique) ;
+                System.out.println(unique);
+            }
+
+        }
+        QXClient.get().report().info("Adddign all items to ArrayList");
+        System.out.println(ListOfItemsSecondHU.size()+"============item size");
+    }
+
+    public  void ClickItemOneByoneInBoxInvalidSequence1() throws InterruptedException {
+
+        for(String    uniqueItems1:uniqueItems)
+        {
+            //     QXClient.get().driver().findElement(By.xpath("//android.widget.TextView[@text='Grace Deep Impact Shower Gel 250m']"));
+            MobileElement ItemName1 = (MobileElement) QXClient.get().driver().findElement(By.xpath("//android.widget.TextView[@text='"+uniqueItems1+"']"));
+            ////android.widget.TextView[@resource-id='com.dmartlabs.pwp:id/txt_lip_product_name' and @text='Grace Citrus Passi Shower Gel 250ml']/following-sibling::android.widget.TextView[@resource-id='com.dmartlabs.pwp:id/txt_lip_bin_no']
+            MobileElement BinNo1 = (MobileElement) QXClient.get().driver().findElement(By.xpath("//android.widget.TextView[@resource-id='com.dmartlabs.pwp:id/txt_lip_product_name' and @text='"+uniqueItems1+"']/following-sibling::android.widget.TextView[@resource-id='com.dmartlabs.pwp:id/txt_lip_bin_no']"));
+////android.widget.TextView[@resource-id='com.dmartlabs.pwp:id/txt_lip_product_name' and @text='Colgate Maxfresh Blue Gel Tp(300g)']/parent::android.view.ViewGroup[@resource-id='com.dmartlabs.pwp:id/cl_lip_parent']/descendant::android.widget.TextView[@resource-id='com.dmartlabs.pwp:id/txt_lip_hu_type_value']
+            MobileElement Hutype1 = (MobileElement) QXClient.get().driver().findElement(By.xpath("//android.widget.TextView[@resource-id='com.dmartlabs.pwp:id/txt_lip_product_name' and @text='"+uniqueItems1+"']/parent::android.view.ViewGroup[@resource-id='com.dmartlabs.pwp:id/cl_lip_parent']/descendant::android.widget.TextView[@resource-id='com.dmartlabs.pwp:id/txt_lip_hu_type_value']"));
+//android.widget.TextView[@resource-id='com.dmartlabs.pwp:id/txt_lip_product_name' and @text='Colgate Maxfresh Blue Gel Tp(300g)']/parent::android.view.ViewGroup[@resource-id='com.dmartlabs.pwp:id/cl_lip_parent']/descendant::android.widget.TextView[@resource-id='com.dmartlabs.pwp:id/txt_lip_boxes_value']
+            MobileElement CaselotQuantity1 = (MobileElement) QXClient.get().driver().findElement(By.xpath("//android.widget.TextView[@resource-id='com.dmartlabs.pwp:id/txt_lip_product_name' and @text='" + uniqueItems1 + "']/parent::android.view.ViewGroup[@resource-id='com.dmartlabs.pwp:id/cl_lip_parent']/descendant::android.widget.TextView[@resource-id='com.dmartlabs.pwp:id/txt_lip_boxes_value']"));
+
+
+            int caseLotNum = Integer.parseInt(CaselotQuantity1.getText().trim());
+            QXClient.get().gestures().isElementPresent(ItemName1);
+            QXClient.get().report().info("Item name is present"+"====>"+ItemName1.getText());
+            Thread.sleep(100);
+            QXClient.get().gestures().isElementPresent(BinNo1);
+            QXClient.get().report().info("BinNo is present"+"====>"+BinNo1.getText());
+            Thread.sleep(100);
+            QXClient.get().gestures().isElementPresent(Hutype1);
+            QXClient.get().report().info("Hutype is present"+"====>"+Hutype1.getText());
+            Thread.sleep(100);
+            QXClient.get().gestures().isElementPresent(CaselotQuantity1);
+            QXClient.get().report().info("CaselotQuantity is present"+"====>"+CaselotQuantity1.getText());
+            Thread.sleep(100);
+            //   System.out.println(ItemName.getText()+"===============>"+"name of item");
+            System.out.println("itemName"+"======>"+uniqueItems1+"binNumber"+"======>"+BinNo1.getText()+"HU type"+"======>"+Hutype1.getText()+"caseLotQuantity"+"======>"+CaselotQuantity1.getText());
+            QXClient.get().report().info("itemName"+"======>"+uniqueItems1+"binNumber"+"======>"+BinNo1.getText()+"HU type"+"======>"+Hutype1.getText()+"caseLotQuantity"+"======>"+CaselotQuantity1.getText());
+
+            QXClient.get().gestures().waitAndClickElementisVisible(ItemName1);
+
+
+            QXClient.get().report().info("Clicking on item Name"+"===========>"+uniqueItems1);
+            System.out.println("item successfully picked"+"==================>"+uniqueItems1);
+            Thread.sleep(100);
+            //   Thread.sleep(200);
+            try {
+                QXClient.get().gestures().clickOnElement(Verified);
+            }
+            catch (Exception e)
+            {
+                QXClient.get().gestures().isElementPresent(IncorrectBinMsg);
+                QXClient.get().report().info(IncorrectBinMsg.getText());
+                System.out.println(IncorrectBinMsg.getText());
+                QXClient.get().gestures().waitAndClickElementisVisible(IncorrectBinYes);
+                QXClient.get().gestures().waitAndClickElementisVisible(Verified);
+            }
+            QXClient.get().report().info("after click on item verifying");
+            Thread.sleep(200);
+
+            //    QXClient.get().gestures().waitAndClickElementisVisible(Verified);
+            QXClient.get().report().info("after click on item verifying");
+            Thread.sleep(200);
+            //android.widget.TextView[@resource-id='com.dmartlabs.pwp:id/txt_vpip_item_desc' and @text='Colgate Maxfresh Blue Gel Tp(300g)']/following-sibling::android.widget.TextView[@resource-id='com.dmartlabs.pwp:id/txt_vpip_ean_value']
+            WebElement EanNumer = QXClient.get().driver().findElement(By.xpath("//android.widget.TextView[@resource-id='com.dmartlabs.pwp:id/txt_vpip_item_desc' and @text='"+uniqueItems1+"']/following-sibling::android.widget.TextView[@resource-id='com.dmartlabs.pwp:id/txt_vpip_ean_value']"));
+            System.out.println(uniqueItems1+" "+"============>EanNumer"+EanNumer.getText());
+            Thread.sleep(200);
+            // QXClient.get().gestures().isElementPresent(EanNumer);
+            QXClient.get().report().info("Ean number valid"+"=======>"+EanNumer.getText());
+            QXClient.get().gestures().waitAndClickElementisVisible(CompletePick);
+            QXClient.get().report().info("after verifying,complete picking");
+            Thread.sleep(200);
+
+            for (int j = 0; j < caseLotNum; j++) {
+                QXClient.get().gestures().waitAndClickElementisVisible(plus);
+                QXClient.get().report().info("adding case slot quantity");
+            }
+            Thread.sleep(200);
+            QXClient.get().gestures().waitAndClickElementisVisible(confirm);
+            QXClient.get().report().info("Finally click on confirm");
+            Thread.sleep(1000);
+        }
+    }
+
 }
 //==========
 

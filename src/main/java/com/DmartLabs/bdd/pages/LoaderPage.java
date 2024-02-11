@@ -95,6 +95,31 @@ public class LoaderPage {
         return deliveryList;
     }
 
+    public List<String> getAllDeliveries1(){
+        for (MobileElement delivery:allDeliveries){
+            deliveryList.add(delivery.getText());
+        }
+
+        if (isScroll){
+            scrollCount++;
+            QXClient.get().gestures().scrollVertically1(1);
+            try {
+                Thread.sleep(500);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+
+            if (allDeliveries.get(0).getText().equals(deliveryList.get(deliveryList.size()-1))){
+                deliveryList.remove(deliveryList.get(deliveryList.size()-1));
+                getAllDeliveries1();
+            }
+            else
+                isScroll = false;
+        }
+        gestures.scrollVertically2(1);
+        return deliveryList;
+    }
+
     public void scrollToDeliveryCardAndClick(String expectedDeliveryNumber){
 
         for (MobileElement delivery:allDeliveries){
@@ -128,7 +153,7 @@ public class LoaderPage {
     }
 
     public void loadAllDeliveries(){
-        deliveryList = getAllDeliveries();
+        deliveryList = getAllDeliveries1();
         gestures = QXClient.get().gestures();
         DeliveryDetailsPage deliveryDetails = new DeliveryDetailsPage();
 
@@ -143,13 +168,25 @@ public class LoaderPage {
                 MobileElement delivery = getMobileElementFromDynamicXpath(specficDeliveryXpath, deliveryNumber);
                 //gestures.waitForVisbilityOfWebElement(delivery);
                 gestures.isElementPresent(delivery);
-//                clickOnDeliveryCard(deliveryNumber);
-//                deliveryDetails.isDeliverDetailsPageDisplayed(deliveryNumber);
-//                deliveryDetails.loadHUs();
-//                deliveryDetails.confirmLoadedItems();
-//                deliveryDetails.deliveryLoadingConfirmation();
-//                Thread.sleep(3000);
-//            allDeliveries.remove(delivery);
+                String dispatchType = verifyDispatchType(deliveryNumber);
+                clickOnDeliveryCard(deliveryNumber);
+                if (dispatchType.equals("PALLET DISPATCH")) {
+                    deliveryDetails.isDeliverDetailsPageDisplayed(deliveryNumber);
+                    deliveryDetails.loadHUs();
+                    deliveryDetails.confirmLoadedItems();
+                    deliveryDetails.deliveryLoadingConfirmation();
+                    searchDelivery(deliveryNumber);
+                    isNoResultFoundMsgDisplayed();
+                    allDeliveries.remove(delivery);
+                } else if (dispatchType.equals("BOX DISPATCH")) {
+                    deliveryDetails.isDeliverDetailsPageDisplayed(deliveryNumber);
+                    deliveryDetails.loadBoxes();
+                    deliveryDetails.verifyBoxesLoaded();
+                    deliveryDetails.verifyArticleLoaded();
+                    deliveryDetails.verifyBoxException();
+                    deliveryDetails.confirmBoxTypeDeliveryLoading();
+                    deliveryDetails.boxTypeDeliveryLoadingConfirmation();
+                }
             }
         } catch (StaleElementReferenceException sre){
             loadAllDeliveries();

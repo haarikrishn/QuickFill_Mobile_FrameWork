@@ -1,0 +1,229 @@
+2024-02-11 12:42:00:253 [Appium] Welcome to Appium v1.22.3
+2024-02-11 12:42:00:254 [Appium] Non-default server args:
+2024-02-11 12:42:00:254 [Appium]   address: 127.0.0.1
+2024-02-11 12:42:00:254 [Appium]   port: 52410
+2024-02-11 12:42:00:254 [Appium]   bootstrapPort: 52408
+2024-02-11 12:42:00:255 [Appium]   logFile: C:\Users\FD329\OneDrive\Desktop\PWP_MobileAutomationFramework\reports\Report_2024-02-11 18-11-57\99a101d5\logs\appium_log_1707655317426.txt
+2024-02-11 12:42:00:255 [Appium]   chromedriverPort: 52409
+2024-02-11 12:42:00:256 [Appium] Deprecated server args:
+2024-02-11 12:42:00:257 [Appium]   --chromedriver-port => --default-capabilities
+2024-02-11 12:42:00:257 [Appium] Default capabilities, which will be added to each request unless overridden by desired capabilities:
+2024-02-11 12:42:00:257 [Appium]   chromedriverPort: 52409
+2024-02-11 12:42:00:287 [Appium] Appium REST http interface listener started on 127.0.0.1:52410
+2024-02-11 12:42:00:301 [HTTP] --> GET /wd/hub/status
+2024-02-11 12:42:00:301 [HTTP] {}
+2024-02-11 12:42:00:302 [GENERIC] Calling AppiumDriver.getStatus() with args: []
+2024-02-11 12:42:00:303 [GENERIC] Responding to client with driver.getStatus() result: {"build":{"version":"1.22.3"}}
+2024-02-11 12:42:00:309 [HTTP] <-- GET /wd/hub/status 200 6 ms - 68
+2024-02-11 12:42:00:310 [HTTP] 
+2024-02-11 12:42:00:313 [HTTP] --> GET /wd/hub/status
+2024-02-11 12:42:00:313 [HTTP] {}
+2024-02-11 12:42:00:314 [GENERIC] Calling AppiumDriver.getStatus() with args: []
+2024-02-11 12:42:00:314 [GENERIC] Responding to client with driver.getStatus() result: {"build":{"version":"1.22.3"}}
+2024-02-11 12:42:00:315 [HTTP] <-- GET /wd/hub/status 200 1 ms - 68
+2024-02-11 12:42:00:315 [HTTP] 
+2024-02-11 12:42:00:352 [HTTP] --> POST /wd/hub/session
+2024-02-11 12:42:00:353 [HTTP] {"desiredCapabilities":{"appActivity":"com.dmartlabs.pwp.view.foundation.SplashActivity","appPackage":"com.dmartlabs.pwp","newCommandTimeout":600,"platformVersion":"12.0.0","automationName":"uiautomator2","platformName":"Android","udid":"99a101d5","deviceName":"99a101d5","launchTimeout":90000,"systemPort":52417},"capabilities":{"firstMatch":[{"appium:appActivity":"com.dmartlabs.pwp.view.foundation.SplashActivity","appium:appPackage":"com.dmartlabs.pwp","appium:automationName":"uiautomator2","appium:deviceName":"99a101d5","appium:launchTimeout":90000,"appium:newCommandTimeout":600,"platformName":"android","appium:platformVersion":"12.0.0","appium:systemPort":52417,"appium:udid":"99a101d5"}]}}
+2024-02-11 12:42:00:353 [W3C] Calling AppiumDriver.createSession() with args: [{"appActivity":"com.dmartlabs.pwp.view.foundation.SplashActivity","appPackage":"com.dmartlabs.pwp","newCommandTimeout":600,"platformVersion":"12.0.0","automationName":"uiautomator2","platformName":"Android","udid":"99a101d5","deviceName":"99a101d5","launchTimeout":90000,"systemPort":52417},null,{"firstMatch":[{"appium:appActivity":"com.dmartlabs.pwp.view.foundation.SplashActivity","appium:appPackage":"com.dmartlabs.pwp","appium:automationName":"uiautomator2","appium:deviceName":"99a101d5","appium:launchTimeout":90000,"appium:newCommandTimeout":600,"platformName":"android","appium:platformVersion":"12.0.0","appium:systemPort":52417,"appium:udid":"99a101d5"}]}]
+2024-02-11 12:42:00:354 [BaseDriver] Event 'newSessionRequested' logged at 1707655320353 (18:12:00 GMT+0530 (India Standard Time))
+2024-02-11 12:42:00:357 [BaseDriver] The following capabilities are not standard capabilities and should have an extension prefix:
+2024-02-11 12:42:00:357 [BaseDriver]   chromedriverPort
+2024-02-11 12:42:00:675 [Appium] Appium v1.22.3 creating new AndroidUiautomator2Driver (v1.70.1) session
+2024-02-11 12:42:00:677 [BaseDriver] W3C capabilities and MJSONWP desired capabilities were provided
+2024-02-11 12:42:00:677 [BaseDriver] Creating session with W3C capabilities: {
+2024-02-11 12:42:00:677 [BaseDriver]   "alwaysMatch": {
+2024-02-11 12:42:00:677 [BaseDriver]     "platformName": "android",
+2024-02-11 12:42:00:677 [BaseDriver]     "appium:chromedriverPort": 52409,
+2024-02-11 12:42:00:677 [BaseDriver]     "appium:appActivity": "com.dmartlabs.pwp.view.foundation.SplashActivity",
+2024-02-11 12:42:00:677 [BaseDriver]     "appium:appPackage": "com.dmartlabs.pwp",
+2024-02-11 12:42:00:677 [BaseDriver]     "appium:automationName": "uiautomator2",
+2024-02-11 12:42:00:678 [BaseDriver]     "appium:deviceName": "99a101d5",
+2024-02-11 12:42:00:678 [BaseDriver]     "appium:launchTimeout": 90000,
+2024-02-11 12:42:00:678 [BaseDriver]     "appium:newCommandTimeout": 600,
+2024-02-11 12:42:00:678 [BaseDriver]     "appium:platformVersion": "12.0.0",
+2024-02-11 12:42:00:678 [BaseDriver]     "appium:systemPort": 52417,
+2024-02-11 12:42:00:678 [BaseDriver]     "appium:udid": "99a101d5"
+2024-02-11 12:42:00:678 [BaseDriver]   },
+2024-02-11 12:42:00:678 [BaseDriver]   "firstMatch": [
+2024-02-11 12:42:00:678 [BaseDriver]     {}
+2024-02-11 12:42:00:678 [BaseDriver]   ]
+2024-02-11 12:42:00:678 [BaseDriver] }
+2024-02-11 12:42:00:686 [BaseDriver] Session created with session id: 7357656d-6dcb-466c-805e-ab7942f34ace
+2024-02-11 12:42:00:686 [UiAutomator2] Starting 'com.dmartlabs.pwp' directly on the device
+2024-02-11 12:42:00:694 [ADB] Found 1 'build-tools' folders under 'C:\Users\FD329\AppData\Local\Android\Sdk' (newest first):
+2024-02-11 12:42:00:694 [ADB]     C:/Users/FD329/AppData/Local/Android/Sdk/build-tools/34.0.0
+2024-02-11 12:42:00:694 [ADB] Using 'adb.exe' from 'C:\Users\FD329\AppData\Local\Android\Sdk\platform-tools\adb.exe'
+2024-02-11 12:42:00:695 [ADB] Running 'C:\Users\FD329\AppData\Local\Android\Sdk\platform-tools\adb.exe -P 5037 start-server'
+2024-02-11 12:42:00:975 [AndroidDriver] Retrieving device list
+2024-02-11 12:42:00:975 [ADB] Trying to find a connected android device
+2024-02-11 12:42:00:976 [ADB] Getting connected devices
+2024-02-11 12:42:01:252 [ADB] No connected devices have been detected
+2024-02-11 12:42:01:253 [ADB] Could not find online devices
+2024-02-11 12:42:01:253 [ADB] Reconnecting adb (target offline)
+2024-02-11 12:42:01:253 [ADB] Running 'C:\Users\FD329\AppData\Local\Android\Sdk\platform-tools\adb.exe -P 5037 reconnect offline'
+2024-02-11 12:42:01:712 [ADB] Getting connected devices
+2024-02-11 12:42:01:943 [ADB] No connected devices have been detected
+2024-02-11 12:42:01:943 [ADB] Could not find online devices
+2024-02-11 12:42:01:943 [ADB] Reconnecting adb (target offline)
+2024-02-11 12:42:01:943 [ADB] Running 'C:\Users\FD329\AppData\Local\Android\Sdk\platform-tools\adb.exe -P 5037 reconnect offline'
+2024-02-11 12:42:02:428 [ADB] Getting connected devices
+2024-02-11 12:42:02:707 [ADB] No connected devices have been detected
+2024-02-11 12:42:02:708 [ADB] Could not find online devices
+2024-02-11 12:42:02:708 [ADB] Reconnecting adb (target offline)
+2024-02-11 12:42:02:708 [ADB] Running 'C:\Users\FD329\AppData\Local\Android\Sdk\platform-tools\adb.exe -P 5037 reconnect offline'
+2024-02-11 12:42:03:131 [ADB] Getting connected devices
+2024-02-11 12:42:03:388 [ADB] No connected devices have been detected
+2024-02-11 12:42:03:389 [ADB] Could not find online devices
+2024-02-11 12:42:03:389 [ADB] Reconnecting adb (target offline)
+2024-02-11 12:42:03:389 [ADB] Running 'C:\Users\FD329\AppData\Local\Android\Sdk\platform-tools\adb.exe -P 5037 reconnect offline'
+2024-02-11 12:42:03:842 [ADB] Getting connected devices
+2024-02-11 12:42:04:070 [ADB] No connected devices have been detected
+2024-02-11 12:42:04:070 [ADB] Could not find online devices
+2024-02-11 12:42:04:070 [ADB] Reconnecting adb (target offline)
+2024-02-11 12:42:04:070 [ADB] Running 'C:\Users\FD329\AppData\Local\Android\Sdk\platform-tools\adb.exe -P 5037 reconnect offline'
+2024-02-11 12:42:04:543 [ADB] Getting connected devices
+2024-02-11 12:42:04:741 [ADB] No connected devices have been detected
+2024-02-11 12:42:04:741 [ADB] Could not find online devices
+2024-02-11 12:42:04:741 [ADB] Reconnecting adb (target offline)
+2024-02-11 12:42:04:741 [ADB] Running 'C:\Users\FD329\AppData\Local\Android\Sdk\platform-tools\adb.exe -P 5037 reconnect offline'
+2024-02-11 12:42:05:233 [ADB] Getting connected devices
+2024-02-11 12:42:05:540 [ADB] No connected devices have been detected
+2024-02-11 12:42:05:541 [ADB] Could not find online devices
+2024-02-11 12:42:05:541 [ADB] Reconnecting adb (target offline)
+2024-02-11 12:42:05:541 [ADB] Running 'C:\Users\FD329\AppData\Local\Android\Sdk\platform-tools\adb.exe -P 5037 reconnect offline'
+2024-02-11 12:42:05:968 [ADB] Getting connected devices
+2024-02-11 12:42:06:255 [ADB] No connected devices have been detected
+2024-02-11 12:42:06:255 [ADB] Could not find online devices
+2024-02-11 12:42:06:256 [ADB] Reconnecting adb (target offline)
+2024-02-11 12:42:06:256 [ADB] Running 'C:\Users\FD329\AppData\Local\Android\Sdk\platform-tools\adb.exe -P 5037 reconnect offline'
+2024-02-11 12:42:06:683 [ADB] Getting connected devices
+2024-02-11 12:42:06:896 [ADB] No connected devices have been detected
+2024-02-11 12:42:06:896 [ADB] Could not find online devices
+2024-02-11 12:42:06:896 [ADB] Reconnecting adb (target offline)
+2024-02-11 12:42:06:897 [ADB] Running 'C:\Users\FD329\AppData\Local\Android\Sdk\platform-tools\adb.exe -P 5037 reconnect offline'
+2024-02-11 12:42:07:310 [ADB] Getting connected devices
+2024-02-11 12:42:07:542 [ADB] No connected devices have been detected
+2024-02-11 12:42:07:542 [ADB] Could not find online devices
+2024-02-11 12:42:07:542 [ADB] Reconnecting adb (target offline)
+2024-02-11 12:42:07:542 [ADB] Running 'C:\Users\FD329\AppData\Local\Android\Sdk\platform-tools\adb.exe -P 5037 reconnect offline'
+2024-02-11 12:42:08:022 [ADB] Getting connected devices
+2024-02-11 12:42:08:286 [ADB] No connected devices have been detected
+2024-02-11 12:42:08:286 [ADB] Could not find online devices
+2024-02-11 12:42:08:286 [ADB] Reconnecting adb (target offline)
+2024-02-11 12:42:08:286 [ADB] Running 'C:\Users\FD329\AppData\Local\Android\Sdk\platform-tools\adb.exe -P 5037 reconnect offline'
+2024-02-11 12:42:08:769 [ADB] Getting connected devices
+2024-02-11 12:42:08:989 [ADB] No connected devices have been detected
+2024-02-11 12:42:08:989 [ADB] Could not find online devices
+2024-02-11 12:42:08:989 [ADB] Reconnecting adb (target offline)
+2024-02-11 12:42:08:989 [ADB] Running 'C:\Users\FD329\AppData\Local\Android\Sdk\platform-tools\adb.exe -P 5037 reconnect offline'
+2024-02-11 12:42:09:394 [ADB] Getting connected devices
+2024-02-11 12:42:09:592 [ADB] No connected devices have been detected
+2024-02-11 12:42:09:592 [ADB] Could not find online devices
+2024-02-11 12:42:09:592 [ADB] Reconnecting adb (target offline)
+2024-02-11 12:42:09:593 [ADB] Running 'C:\Users\FD329\AppData\Local\Android\Sdk\platform-tools\adb.exe -P 5037 reconnect offline'
+2024-02-11 12:42:10:000 [ADB] Getting connected devices
+2024-02-11 12:42:10:217 [ADB] No connected devices have been detected
+2024-02-11 12:42:10:217 [ADB] Could not find online devices
+2024-02-11 12:42:10:217 [ADB] Reconnecting adb (target offline)
+2024-02-11 12:42:10:217 [ADB] Running 'C:\Users\FD329\AppData\Local\Android\Sdk\platform-tools\adb.exe -P 5037 reconnect offline'
+2024-02-11 12:42:10:705 [ADB] Getting connected devices
+2024-02-11 12:42:10:963 [ADB] No connected devices have been detected
+2024-02-11 12:42:10:963 [ADB] Could not find online devices
+2024-02-11 12:42:10:963 [ADB] Reconnecting adb (target offline)
+2024-02-11 12:42:10:963 [ADB] Running 'C:\Users\FD329\AppData\Local\Android\Sdk\platform-tools\adb.exe -P 5037 reconnect offline'
+2024-02-11 12:42:11:390 [ADB] Getting connected devices
+2024-02-11 12:42:11:615 [ADB] No connected devices have been detected
+2024-02-11 12:42:11:615 [ADB] Could not find online devices
+2024-02-11 12:42:11:615 [ADB] Reconnecting adb (target offline)
+2024-02-11 12:42:11:615 [ADB] Running 'C:\Users\FD329\AppData\Local\Android\Sdk\platform-tools\adb.exe -P 5037 reconnect offline'
+2024-02-11 12:42:12:045 [ADB] Getting connected devices
+2024-02-11 12:42:12:268 [ADB] No connected devices have been detected
+2024-02-11 12:42:12:268 [ADB] Could not find online devices
+2024-02-11 12:42:12:268 [ADB] Reconnecting adb (target offline)
+2024-02-11 12:42:12:268 [ADB] Running 'C:\Users\FD329\AppData\Local\Android\Sdk\platform-tools\adb.exe -P 5037 reconnect offline'
+2024-02-11 12:42:12:701 [ADB] Getting connected devices
+2024-02-11 12:42:12:930 [ADB] No connected devices have been detected
+2024-02-11 12:42:12:930 [ADB] Could not find online devices
+2024-02-11 12:42:12:930 [ADB] Reconnecting adb (target offline)
+2024-02-11 12:42:12:930 [ADB] Running 'C:\Users\FD329\AppData\Local\Android\Sdk\platform-tools\adb.exe -P 5037 reconnect offline'
+2024-02-11 12:42:13:359 [ADB] Getting connected devices
+2024-02-11 12:42:13:578 [ADB] No connected devices have been detected
+2024-02-11 12:42:13:578 [ADB] Could not find online devices
+2024-02-11 12:42:13:578 [ADB] Reconnecting adb (target offline)
+2024-02-11 12:42:13:578 [ADB] Running 'C:\Users\FD329\AppData\Local\Android\Sdk\platform-tools\adb.exe -P 5037 reconnect offline'
+2024-02-11 12:42:14:009 [ADB] Getting connected devices
+2024-02-11 12:42:14:213 [ADB] No connected devices have been detected
+2024-02-11 12:42:14:213 [ADB] Could not find online devices
+2024-02-11 12:42:14:213 [ADB] Reconnecting adb (target offline)
+2024-02-11 12:42:14:213 [ADB] Running 'C:\Users\FD329\AppData\Local\Android\Sdk\platform-tools\adb.exe -P 5037 reconnect offline'
+2024-02-11 12:42:14:629 [ADB] Getting connected devices
+2024-02-11 12:42:14:876 [ADB] No connected devices have been detected
+2024-02-11 12:42:14:877 [ADB] Could not find online devices
+2024-02-11 12:42:14:877 [ADB] Reconnecting adb (target offline)
+2024-02-11 12:42:14:877 [ADB] Running 'C:\Users\FD329\AppData\Local\Android\Sdk\platform-tools\adb.exe -P 5037 reconnect offline'
+2024-02-11 12:42:15:299 [ADB] Getting connected devices
+2024-02-11 12:42:15:586 [ADB] No connected devices have been detected
+2024-02-11 12:42:15:586 [ADB] Could not find online devices
+2024-02-11 12:42:15:586 [ADB] Reconnecting adb (target offline)
+2024-02-11 12:42:15:586 [ADB] Running 'C:\Users\FD329\AppData\Local\Android\Sdk\platform-tools\adb.exe -P 5037 reconnect offline'
+2024-02-11 12:42:16:057 [ADB] Getting connected devices
+2024-02-11 12:42:16:259 [ADB] No connected devices have been detected
+2024-02-11 12:42:16:259 [ADB] Could not find online devices
+2024-02-11 12:42:16:260 [ADB] Reconnecting adb (target offline)
+2024-02-11 12:42:16:260 [ADB] Running 'C:\Users\FD329\AppData\Local\Android\Sdk\platform-tools\adb.exe -P 5037 reconnect offline'
+2024-02-11 12:42:16:695 [ADB] Getting connected devices
+2024-02-11 12:42:16:940 [ADB] No connected devices have been detected
+2024-02-11 12:42:16:940 [ADB] Could not find online devices
+2024-02-11 12:42:16:941 [ADB] Reconnecting adb (target offline)
+2024-02-11 12:42:16:941 [ADB] Running 'C:\Users\FD329\AppData\Local\Android\Sdk\platform-tools\adb.exe -P 5037 reconnect offline'
+2024-02-11 12:42:17:422 [ADB] Getting connected devices
+2024-02-11 12:42:17:669 [ADB] No connected devices have been detected
+2024-02-11 12:42:17:669 [ADB] Could not find online devices
+2024-02-11 12:42:17:669 [ADB] Reconnecting adb (target offline)
+2024-02-11 12:42:17:670 [ADB] Running 'C:\Users\FD329\AppData\Local\Android\Sdk\platform-tools\adb.exe -P 5037 reconnect offline'
+2024-02-11 12:42:18:122 [ADB] Getting connected devices
+2024-02-11 12:42:18:398 [ADB] No connected devices have been detected
+2024-02-11 12:42:18:398 [ADB] Could not find online devices
+2024-02-11 12:42:18:398 [ADB] Reconnecting adb (target offline)
+2024-02-11 12:42:18:398 [ADB] Running 'C:\Users\FD329\AppData\Local\Android\Sdk\platform-tools\adb.exe -P 5037 reconnect offline'
+2024-02-11 12:42:18:869 [ADB] Getting connected devices
+2024-02-11 12:42:19:140 [ADB] No connected devices have been detected
+2024-02-11 12:42:19:140 [ADB] Could not find online devices
+2024-02-11 12:42:19:140 [ADB] Reconnecting adb (target offline)
+2024-02-11 12:42:19:140 [ADB] Running 'C:\Users\FD329\AppData\Local\Android\Sdk\platform-tools\adb.exe -P 5037 reconnect offline'
+2024-02-11 12:42:19:581 [ADB] Getting connected devices
+2024-02-11 12:42:19:805 [ADB] No connected devices have been detected
+2024-02-11 12:42:19:806 [ADB] Could not find online devices
+2024-02-11 12:42:19:806 [ADB] Reconnecting adb (target offline)
+2024-02-11 12:42:19:806 [ADB] Running 'C:\Users\FD329\AppData\Local\Android\Sdk\platform-tools\adb.exe -P 5037 reconnect offline'
+2024-02-11 12:42:20:200 [ADB] Getting connected devices
+2024-02-11 12:42:20:431 [ADB] No connected devices have been detected
+2024-02-11 12:42:20:431 [ADB] Could not find online devices
+2024-02-11 12:42:20:431 [ADB] Reconnecting adb (target offline)
+2024-02-11 12:42:20:431 [ADB] Running 'C:\Users\FD329\AppData\Local\Android\Sdk\platform-tools\adb.exe -P 5037 reconnect offline'
+2024-02-11 12:42:20:832 [ADB] Getting connected devices
+2024-02-11 12:42:21:059 [ADB] No connected devices have been detected
+2024-02-11 12:42:21:059 [ADB] Could not find online devices
+2024-02-11 12:42:21:060 [ADB] Reconnecting adb (target offline)
+2024-02-11 12:42:21:060 [ADB] Running 'C:\Users\FD329\AppData\Local\Android\Sdk\platform-tools\adb.exe -P 5037 reconnect offline'
+2024-02-11 12:42:21:473 [UiAutomator2] Deleting UiAutomator2 session
+2024-02-11 12:42:21:475 [BaseDriver] Event 'newSessionStarted' logged at 1707655341475 (18:12:21 GMT+0530 (India Standard Time))
+2024-02-11 12:42:21:510 [W3C] Encountered internal error running command: Error: Could not find a connected Android device in 20496ms.
+2024-02-11 12:42:21:511 [W3C]     at getDevices (C:\Users\FD329\AppData\Roaming\npm\node_modules\appium\node_modules\appium-adb\lib\tools\system-calls.js:266:13)
+2024-02-11 12:42:21:511 [W3C]     at getDevices (C:\Users\FD329\AppData\Roaming\npm\node_modules\appium\node_modules\appium-adb\lib\tools\system-calls.js:283:18)
+2024-02-11 12:42:21:511 [W3C]     at getDevices (C:\Users\FD329\AppData\Roaming\npm\node_modules\appium\node_modules\appium-adb\lib\tools\system-calls.js:283:12)
+2024-02-11 12:42:21:511 [W3C]     at getDevices (C:\Users\FD329\AppData\Roaming\npm\node_modules\appium\node_modules\appium-adb\lib\tools\system-calls.js:283:12)
+2024-02-11 12:42:21:511 [W3C]     at getDevices (C:\Users\FD329\AppData\Roaming\npm\node_modules\appium\node_modules\appium-adb\lib\tools\system-calls.js:283:12)
+2024-02-11 12:42:21:511 [W3C]     at getDevices (C:\Users\FD329\AppData\Roaming\npm\node_modules\appium\node_modules\appium-adb\lib\tools\system-calls.js:283:12)
+2024-02-11 12:42:21:511 [W3C]     at getDevices (C:\Users\FD329\AppData\Roaming\npm\node_modules\appium\node_modules\appium-adb\lib\tools\system-calls.js:283:12)
+2024-02-11 12:42:21:511 [W3C]     at getDevices (C:\Users\FD329\AppData\Roaming\npm\node_modules\appium\node_modules\appium-adb\lib\tools\system-calls.js:283:12)
+2024-02-11 12:42:21:511 [W3C]     at getDevices (C:\Users\FD329\AppData\Roaming\npm\node_modules\appium\node_modules\appium-adb\lib\tools\system-calls.js:283:12)
+2024-02-11 12:42:21:511 [W3C]     at getDevices (C:\Users\FD329\AppData\Roaming\npm\node_modules\appium\node_modules\appium-adb\lib\tools\system-calls.js:283:12)
+2024-02-11 12:42:21:511 [W3C]     at getDevices (C:\Users\FD329\AppData\Roaming\npm\node_modules\appium\node_modules\appium-adb\lib\tools\system-calls.js:283:12)
+2024-02-11 12:42:21:511 [W3C]     at getDevices (C:\Users\FD329\AppData\Roaming\npm\node_modules\appium\node_modules\appium-adb\lib\tools\system-calls.js:283:12)
+2024-02-11 12:42:21:511 [W3C]     at getDevices (C:\Users\FD329\AppData\Roaming\npm\node_modules\appium\node_modules\appium-adb\lib\tools\system-calls.js:283:12)
+2024-02-11 12:42:21:512 [W3C]     at getDevices (C:\Users\FD329\AppData\Roaming\npm\node_modules\appium\node_modules\appium-adb\lib\tools\system-calls.js:283:12)
+2024-02-11 12:42:21:512 [W3C]     at getDevices (C:\Users\FD329\AppData\Roaming\npm\node_modules\appium\node_modules\appium-adb\lib\tools\system-calls.js:283:12)
+2024-02-11 12:42:21:512 [W3C]     at getDevices (C:\Users\FD329\AppData\Roaming\npm\node_modules\appium\node_modules\appium-adb\lib\tools\system-calls.js:283:12)
+2024-02-11 12:42:21:531 [HTTP] <-- POST /wd/hub/session 500 21178 ms - 667
+2024-02-11 12:42:21:531 [HTTP] 

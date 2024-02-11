@@ -17,7 +17,6 @@ public class MultUsersWaitTopickStep {
     //multi user one
     @When("user verify the items one By One  and move to PickerSevenItemsfor Multiusers")
     public void userVerifyTheItemsOneByOneAndMoveToPickerSevenItemsforMultiusers() throws InterruptedException {
-
         genericLoginPage.ClickOnPickerAndValidate();
 
         try {
@@ -54,7 +53,7 @@ public class MultUsersWaitTopickStep {
         genericLoginPage.ClickOnPickerAndValidate();
 
         try {
-            TimeUnit.SECONDS.sleep(150);
+            TimeUnit.MINUTES.sleep(3);
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
@@ -77,4 +76,5 @@ public class MultUsersWaitTopickStep {
         picker1Page.ClickOnCloseHUInMultiUser();
 
     }
+
 }

@@ -134,7 +134,7 @@ Feature: Verify the functionality of Loader Module
     And Confirm Box type delivery loading
     Then Verify that Box type delivery loading operation is completed
 
-  @BOX
+#  @BOX
   Scenario: Give the exception for boxes and Load BOX type delivery into the truck
     And Verify that Loader is in Loader Page
     When Provide the delivery number of a Delivery for which Loading Operation is to be performed

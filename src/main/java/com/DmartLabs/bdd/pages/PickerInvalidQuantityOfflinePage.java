@@ -9,12 +9,14 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
+import org.testng.Assert;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
 public class PickerInvalidQuantityOfflinePage {
+
 
     public PickerInvalidQuantityOfflinePage() {
 
@@ -56,7 +58,7 @@ public class PickerInvalidQuantityOfflinePage {
     private MobileElement pickListDetailsOK;
 
     @FindBy(xpath = "//android.widget.TextView[@resource-id='com.dmartlabs.pwp:id/txt_pl_no_shrink_wrap']")
-    private  MobileElement DispatchType;
+    private MobileElement DispatchType;
 
 
     public void PickListDetails() {
@@ -69,11 +71,12 @@ public class PickerInvalidQuantityOfflinePage {
         System.out.println("delivery nUmber is" + "=============>" + PickerDeliveryNumber.getText());
         QXClient.get().gestures().clickOnElement(pickListDetailsOK);
         QXClient.get().gestures().isElementPresent(DispatchType);
-        System.out.println("Dispatch type is"+DispatchType.getText());
+        System.out.println("Dispatch type is" + DispatchType.getText());
     }
 
     //=================================================================================
     ArrayList<String> InvalidQuantityAL = new ArrayList<>();
+
     public void addElementsToinvalidQuantity() throws InterruptedException {
         Thread.sleep(500);
         for (int i = 0; i < ListOfItemsInvalidQuantity.size(); i++) {
@@ -82,6 +85,7 @@ public class PickerInvalidQuantityOfflinePage {
         }
         QXClient.get().report().info("Adddign all items to ArrayList");
     }
+
     @FindBy(xpath = "  //android.widget.RadioButton[@text='Damaged']")
     private MobileElement radioXpath;
 
@@ -95,9 +99,10 @@ public class PickerInvalidQuantityOfflinePage {
     private MobileElement submit;
     //android.widget.RadioGroup[@resource-id='com.dmartlabs.pwp:id/rg_iqd']
     @FindBy(xpath = "//android.widget.ImageView[@resource-id='com.dmartlabs.pwp:id/iv_lip_remote_sync']")
-    private  MobileElement sync;
+    private MobileElement sync;
     @FindBy(xpath = "//android.widget.ImageView[@resource-id='com.dmartlabs.pwp:id/iv_fch_wifi_off_signal']")
-    private  MobileElement wifiSignalOff;
+    private MobileElement wifiSignalOff;
+
     //=============================
     public void ClickItemOneByone(DataTable dataTable) throws InterruptedException {
 
@@ -126,6 +131,8 @@ public class PickerInvalidQuantityOfflinePage {
 //android.widget.TextView[@resource-id='com.dmartlabs.pwp:id/txt_lip_product_name' and @text='Colgate Maxfresh Blue Gel Tp(300g)']/parent::android.view.ViewGroup[@resource-id='com.dmartlabs.pwp:id/cl_lip_parent']/descendant::android.widget.TextView[@resource-id='com.dmartlabs.pwp:id/txt_lip_boxes_value']
             MobileElement CaselotQuantity = (MobileElement) QXClient.get().driver().findElement(By.xpath("//android.widget.TextView[@resource-id='com.dmartlabs.pwp:id/txt_lip_product_name' and @text='" + itemTextFirstHu + "']/parent::android.view.ViewGroup[@resource-id='com.dmartlabs.pwp:id/cl_lip_parent']/descendant::android.widget.TextView[@resource-id='com.dmartlabs.pwp:id/txt_lip_boxes_value']"));
 
+
+            int caseLotNum = Integer.parseInt(CaselotQuantity.getText().trim());
             QXClient.get().gestures().waitAndClickElementisVisible(ItemName);
             QXClient.get().report().info("Clicking on item Name" + "===========>" + itemTextFirstHu);
             System.out.println("item successfully picked" + "==================>" + itemTextFirstHu);
@@ -169,13 +176,11 @@ public class PickerInvalidQuantityOfflinePage {
                 QXClient.get().gestures().waitAndClickElementisVisible(radioButton);
                 Thread.sleep(1000);
                 QXClient.get().gestures().waitAndClickElementisVisible(submit);
-            }
-            else if (AllRadioList.get(i).equals(WrongArticleItem)) {
+            } else if (AllRadioList.get(i).equals(WrongArticleItem)) {
                 QXClient.get().gestures().waitAndClickElementisVisible(radioButton);
                 Thread.sleep(1000);
                 QXClient.get().gestures().waitAndClickElementisVisible(submit);
-            }
-            else if (HUfull.isEnabled()) {
+            } else if (HUfull.isEnabled()) {
                 QXClient.get().gestures().waitAndClickElementisVisible(radioButton);
                 Thread.sleep(1000);
                 QXClient.get().gestures().waitAndClickElementisVisible(submit);
@@ -190,7 +195,7 @@ public class PickerInvalidQuantityOfflinePage {
 
         QXClient.get().gestures().waitForElementToVisible(sync);
         QXClient.get().gestures().isElementPresent(sync);
-        System.out.println("==============>"+"item is try to sync");
+        System.out.println("==============>" + "item is try to sync");
     }
 
     @FindBy(xpath = "//android.widget.TextView[@resource-id='com.dmartlabs.pwp:id/txt_pl_title']")
@@ -219,10 +224,8 @@ public class PickerInvalidQuantityOfflinePage {
         for (int m = 0; m < ListOfItemsInvalidQuantity1.size(); m++) {
             InvalidQuantityAL1.add(ListOfItemsInvalidQuantity1.get(m).getText());
         }
-        for(String  unique:InvalidQuantityAL1)
-        {
-            if(!InvalidQuantityAL.contains(unique))
-            {
+        for (String unique : InvalidQuantityAL1) {
+            if (!InvalidQuantityAL.contains(unique)) {
                 uniqueItems.add(unique);
                 System.out.println(unique);
             }
@@ -237,7 +240,7 @@ public class PickerInvalidQuantityOfflinePage {
 
             QXClient.get().gestures().waitForElementToVisible(wifiSignalOff);
             QXClient.get().gestures().isElementPresent(wifiSignalOff);
-            System.out.println("======================>"+"wifi is off");
+            System.out.println("======================>" + "wifi is off");
 
             //     QXClient.get().driver().findElement(By.xpath("//android.widget.TextView[@text='Grace Deep Impact Shower Gel 250m']"));
             MobileElement ItemName1 = (MobileElement) QXClient.get().driver().findElement(By.xpath("//android.widget.TextView[@text='" + uniqueItems1 + "']"));
@@ -247,6 +250,10 @@ public class PickerInvalidQuantityOfflinePage {
             MobileElement Hutype1 = (MobileElement) QXClient.get().driver().findElement(By.xpath("//android.widget.TextView[@resource-id='com.dmartlabs.pwp:id/txt_lip_product_name' and @text='" + uniqueItems1 + "']/parent::android.view.ViewGroup[@resource-id='com.dmartlabs.pwp:id/cl_lip_parent']/descendant::android.widget.TextView[@resource-id='com.dmartlabs.pwp:id/txt_lip_hu_type_value']"));
 //android.widget.TextView[@resource-id='com.dmartlabs.pwp:id/txt_lip_product_name' and @text='Colgate Maxfresh Blue Gel Tp(300g)']/parent::android.view.ViewGroup[@resource-id='com.dmartlabs.pwp:id/cl_lip_parent']/descendant::android.widget.TextView[@resource-id='com.dmartlabs.pwp:id/txt_lip_boxes_value']
             MobileElement CaselotQuantity1 = (MobileElement) QXClient.get().driver().findElement(By.xpath("//android.widget.TextView[@resource-id='com.dmartlabs.pwp:id/txt_lip_product_name' and @text='" + uniqueItems1 + "']/parent::android.view.ViewGroup[@resource-id='com.dmartlabs.pwp:id/cl_lip_parent']/descendant::android.widget.TextView[@resource-id='com.dmartlabs.pwp:id/txt_lip_boxes_value']"));
+
+
+            int caseLotNum = Integer.parseInt(CaselotQuantity1.getText().trim());
+
             QXClient.get().gestures().isElementPresent(ItemName1);
             QXClient.get().report().info("Item name is present" + "====>" + ItemName1.getText());
             Thread.sleep(100);
@@ -279,7 +286,7 @@ public class PickerInvalidQuantityOfflinePage {
             QXClient.get().gestures().waitAndClickElementisVisible(CompletePick);
             QXClient.get().report().info("after verifying,complete picking");
             Thread.sleep(200);
-            for (int j = 0; j < 2; j++) {
+            for (int j = 0; j < caseLotNum; j++) {
                 QXClient.get().gestures().waitAndClickElementisVisible(plus);
                 QXClient.get().report().info("adding case slot quantity");
             }
@@ -291,41 +298,40 @@ public class PickerInvalidQuantityOfflinePage {
         }
         QXClient.get().gestures().waitForElementToVisible(sync);
         QXClient.get().gestures().isElementPresent(sync);
-        System.out.println("==============>"+"item is try to sync");
+        System.out.println("==============>" + "item is try to sync");
 
 
     }
 
 
-
-    @FindBy(id="com.dmartlabs.pwp:id/btn_vhu_close_hu")
-    private  MobileElement closeHU;
+    @FindBy(id = "com.dmartlabs.pwp:id/btn_vhu_close_hu")
+    private MobileElement closeHU;
     @FindBy(xpath = "//android.widget.Button[@resource-id='android:id/button1']")
-    private  MobileElement CloseHuYes;
-    @FindBy (id = "com.dmartlabs.pwp:id/txt_phu_proceed_without_printer")
-    private  MobileElement withoutPrinter;
-    @FindBy(id="com.dmartlabs.pwp:id/txt_shu_proceed_without_scan")
-    private  MobileElement withoutScan;
+    private MobileElement CloseHuYes;
+    @FindBy(id = "com.dmartlabs.pwp:id/txt_phu_proceed_without_printer")
+    private MobileElement withoutPrinter;
+    @FindBy(id = "com.dmartlabs.pwp:id/txt_shu_proceed_without_scan")
+    private MobileElement withoutScan;
     @FindBy(xpath = "//android.widget.Button[@resource-id='com.dmartlabs.pwp:id/btn_fhwd_verified']")
-    private  MobileElement HuVerified;
+    private MobileElement HuVerified;
     @FindBy(id = "com.dmartlabs.pwp:id/btn_hm_continue_picking")
     private WebElement ContinuePicking;
 
     @FindBy(xpath = "//android.widget.Button[@resource-id='com.dmartlabs.pwp:id/btn_vhu_close_hu']")
-    private  MobileElement CloseHU;
+    private MobileElement CloseHU;
 
     @FindBy(xpath = "//android.widget.TextView[@resource-id='com.dmartlabs.pwp:id/txt_vhu_title']")
-    private  MobileElement HUTitle;
+    private MobileElement HUTitle;
     @FindBy(xpath = "//android.widget.TextView[@resource-id='com.dmartlabs.pwp:id/txt_vhu_tasks_progress_status']")
-    private  MobileElement NumberOfItems;
+    private MobileElement NumberOfItems;
 
-    @FindBy (xpath = "//android.widget.TextView[@resource-id='com.dmartlabs.pwp:id/txt_phu_print_hu_title']")
-    private  MobileElement PrintHuLabelTitle;
+    @FindBy(xpath = "//android.widget.TextView[@resource-id='com.dmartlabs.pwp:id/txt_phu_print_hu_title']")
+    private MobileElement PrintHuLabelTitle;
 
     @FindBy(xpath = "//android.widget.TextView[@resource-id='com.dmartlabs.pwp:id/txt_phu_dock_number']")
-    private  MobileElement DockType;
+    private MobileElement DockType;
 
-    public  void HUpageIsDisplayed() throws InterruptedException {
+    public void HUpageIsDisplayed() throws InterruptedException {
         Thread.sleep(200);
         //   QXClient.get().gestures().isElementPresent(CloseHU);
         QXClient.get().report().info("CloseHu button is displayyed");
@@ -334,19 +340,21 @@ public class PickerInvalidQuantityOfflinePage {
         QXClient.get().report().info("HU Titlle is displayed");
         QXClient.get().gestures().isElementPresent(NumberOfItems);
         Thread.sleep(200);
-        QXClient.get().report().info(NumberOfItems.getText()+" "+"no.of items present");
-        System.out.println(NumberOfItems.getText()+" "+"no.of items present");
+        QXClient.get().report().info(NumberOfItems.getText() + " " + "no.of items present");
+        System.out.println(NumberOfItems.getText() + " " + "no.of items present");
     }
-    @FindBy(xpath = "//android.widget.TextView[@text='Paste and scan the HU label']")
-    private  MobileElement ScanHulabeltitle;
-    @FindBy (xpath = "//android.widget.TextView[@resource-id='com.dmartlabs.pwp:id/txt_hm_title']")
-    private  MobileElement MoveToDispatchTitle;
 
-    @FindBy(id="com.dmartlabs.pwp:id/txt_fasd_title")
-    private  MobileElement noNetworktitle;
-    @FindBy(id="com.dmartlabs.pwp:id/btn_fasd_ok")
-    private  MobileElement NoNetworkOk;
-    public  void ClickOnCloseHU() throws InterruptedException {
+    @FindBy(xpath = "//android.widget.TextView[@text='Paste and scan the HU label']")
+    private MobileElement ScanHulabeltitle;
+    @FindBy(xpath = "//android.widget.TextView[@resource-id='com.dmartlabs.pwp:id/txt_hm_title']")
+    private MobileElement MoveToDispatchTitle;
+
+    @FindBy(id = "com.dmartlabs.pwp:id/txt_fasd_title")
+    private MobileElement noNetworktitle;
+    @FindBy(id = "com.dmartlabs.pwp:id/btn_fasd_ok")
+    private MobileElement NoNetworkOk;
+
+    public void ClickOnCloseHU() throws InterruptedException {
 
         QXClient.get().gestures().waitAndClickElementisVisible(closeHU);
         QXClient.get().report().info("After all items picking clicking on close Hu");
@@ -357,7 +365,7 @@ public class PickerInvalidQuantityOfflinePage {
         QXClient.get().gestures().isElementPresent(noNetworktitle);
         Thread.sleep(200);
         QXClient.get().gestures().toggleWiFi();
-        System.out.println("=======================>"+"wifi is turn on");
+        System.out.println("=======================>" + "wifi is turn on");
         QXClient.get().gestures().waitAndClickElementisVisible(NoNetworkOk);
         Thread.sleep(4000);
         QXClient.get().gestures().waitAndClickElementisVisible(closeHU);
@@ -369,23 +377,19 @@ public class PickerInvalidQuantityOfflinePage {
         try {
             QXClient.get().gestures().isElementPresent(PrintHuLabelTitle);
             QXClient.get().gestures().waitAndClickElementisVisible(withoutPrinter);
-        }
-        catch (Exception e)
-        {
-            Thread.sleep(200);
+        } catch (Exception e) {
+            System.out.println("inside catch block");
             QXClient.get().gestures().waitAndClickElementisVisible(closeHU);
-            QXClient.get().report().info("After all items picking clicking on close Hu");
-            Thread.sleep(500);
             QXClient.get().gestures().waitAndClickElementisVisible(CloseHuYes);
-         //   QXClient.get().gestures().isElementPresent(PrintHuLabelTitle);
             QXClient.get().gestures().isElementPresent(PrintHuLabelTitle);
             QXClient.get().gestures().waitAndClickElementisVisible(withoutPrinter);
         }
+
         QXClient.get().report().info("print HU label is displayed");
-     //   QXClient.get().gestures().isElementPresent(DockType);
-     //   QXClient.get().report().info(DockType.getText()+" "+"Dock Type");
+        // QXClient.get().gestures().isElementPresent(DockType);
+        //QXClient.get().report().info(DockType.getText()+" "+"Dock Type");
         //System.out.println((DockType.getText()+" "+"Dock Type"));
-     //   QXClient.get().gestures().waitAndClickElementisVisible(withoutPrinter);
+
         QXClient.get().report().info("successfully clicked on without printer");
         Thread.sleep(200);
         QXClient.get().gestures().isElementPresent(ScanHulabeltitle);
@@ -402,6 +406,80 @@ public class PickerInvalidQuantityOfflinePage {
         QXClient.get().report().info("Successfully cliked on continue picking");
     }
 
+    //====================================================================
+    //box type
+    // =======
+    @FindBy(id = "com.dmartlabs.pwp:id/btn_vhu_close_hu")
+    private MobileElement palletFull;
+    @FindBy(xpath = "//android.widget.Button[@text='YES']")
+    private MobileElement palletfullYes;
+    @FindBy(id = "com.dmartlabs.pwp:id/txt_hm_title")
+    private MobileElement moveToDispatchTitle;
+
+    @FindBy(id = "com.dmartlabs.pwp:id/txt_hm_dock_name")
+    private MobileElement dockName;
+    @FindBy(id = "com.dmartlabs.pwp:id/btn_hm_continue_picking")
+    private MobileElement continuePickBox;
+
+
+    public void clickOnContinuePicking() {
+        QXClient.get().gestures().isElementPresent(palletFull);
+        QXClient.get().report().info("palletFull page is displayed");
+
+        QXClient.get().gestures().waitAndClickElementisVisible(palletFull);
+        QXClient.get().gestures().waitAndClickElementisVisible(palletfullYes);
+
+        QXClient.get().gestures().isElementPresent(moveToDispatchTitle);
+        QXClient.get().report().info(dockName.getText());
+        System.out.println(dockName.getText() + "=========>" + dockName);
+        QXClient.get().gestures().waitAndClickElementisVisible(continuePickBox);
+    }
+
+    @FindBy(id = "com.dmartlabs.pwp:id/txt_fasd_status_message")
+    private MobileElement noNetworkConnectionDialougeBox;
+
+    @FindBy(id = "com.dmartlabs.pwp:id/btn_fasd_ok")
+    private MobileElement noNetworkConnectionDialougeBoxOkBtn;
+
+    public void clickOnContinuePickingInOffline() throws InterruptedException {
+        QXClient.get().gestures().isElementPresent(palletFull);
+        QXClient.get().report().info("palletFull page is displayed");
+
+        QXClient.get().gestures().waitAndClickElementisVisible(palletFull);
+        QXClient.get().gestures().waitAndClickElementisVisible(palletfullYes);
+        Thread.sleep(100);
+
+        Assert.assertTrue(QXClient.get().gestures().isElementPresent(noNetworkConnectionDialougeBox));
+        QXClient.get().report().info("===============>" + "noNetworkConnectionDialougeBox is present");
+        QXClient.get().gestures().toggleWiFi();
+        System.out.println("===================>" + "wifi turn on");
+        QXClient.get().report().info("===================>" + "wifi turn on");
+        Thread.sleep(4000);
+        noNetworkConnectionDialougeBoxOkBtn.click();
+
+        QXClient.get().gestures().waitAndClickElementisVisible(palletFull);
+        Thread.sleep(100);
+        QXClient.get().gestures().waitAndClickElementisVisible(palletfullYes);
+        Thread.sleep(100);
+        try {
+            QXClient.get().gestures().isElementPresent(moveToDispatchTitle);
+            System.out.println(dockName.getText() + "=========>" + dockName);
+        }
+        catch (Exception e)
+        {
+            QXClient.get().gestures().waitAndClickElementisVisible(palletFull);
+            Thread.sleep(100);
+            QXClient.get().gestures().waitAndClickElementisVisible(palletfullYes);
+            QXClient.get().gestures().isElementPresent(moveToDispatchTitle);
+            System.out.println(dockName.getText() + "=========>" + dockName);
+        }
+        QXClient.get().report().info(dockName.getText());
+        System.out.println(dockName.getText() + "=========>" + dockName);
+        QXClient.get().gestures().waitAndClickElementisVisible(continuePickBox);
+
+    }
+
 
 }
+
 //=================================================================================

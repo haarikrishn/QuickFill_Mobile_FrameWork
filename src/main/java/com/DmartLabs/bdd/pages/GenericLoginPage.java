@@ -9,13 +9,14 @@ import org.openqa.selenium.support.PageFactory;
 public class GenericLoginPage {
 
 
+
     public GenericLoginPage() {
 
         PageFactory.initElements(new AppiumFieldDecorator(QXClient.get().driver()), this);
 
     }
 
-//declaration
+    //declaration
     @FindBy(id = "com.dmartlabs.pwp:id/edt_username")
     public MobileElement username;
     @FindBy(id = "btn_lso_next")
@@ -31,13 +32,13 @@ public class GenericLoginPage {
     //initilization
 
 
-   //utilization
+    //utilization
     public  void ClickOnLogin(String UserName,String PassWord)
     {
-       QXClient.get().gestures().waitForElementToVisible(username);
+        QXClient.get().gestures().waitForElementToVisible(username);
         username.sendKeys(UserName);
         QXClient.get().report().info("Enter the UserName");
-       QXClient.get().gestures().clickOnElement(userNameNext);
+        QXClient.get().gestures().clickOnElement(userNameNext);
         QXClient.get().report().info("click on next");
         QXClient.get().gestures().waitForElementToVisible(password);
         password.sendKeys(PassWord);
@@ -45,11 +46,11 @@ public class GenericLoginPage {
         QXClient.get().gestures().clickOnElement(login);
         QXClient.get().report().info("click on login");
     }
-//==========================================================
+    //==========================================================
     //generic clik on picker
 //select picker
-@FindBy(xpath = "//android.widget.TextView[@text='Picker']")
-private MobileElement SelectPicker;
+    @FindBy(xpath = "//android.widget.TextView[@text='Picker']")
+    private MobileElement SelectPicker;
     @FindBy(xpath = "//android.widget.TextView[@resource-id='com.dmartlabs.pwp:id/txt_fch_title']")
     private  MobileElement PickerTitle;
 
@@ -65,7 +66,7 @@ private MobileElement SelectPicker;
 
     public void isPwpHomePageDisplayed() throws InterruptedException {
         QXClient.get().gestures().isElementPresent(pwpHome);
-      //  QXClient.get().gestures().scrollVertically1(2);
+        //  QXClient.get().gestures().scrollVertically1(2);
         QXClient.get().report().info("pwp home page is displayed");
 
     }

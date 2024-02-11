@@ -344,6 +344,36 @@ public class picker1OfflinePage {
 
         }
     }
+
+    //====================================================================
+//    box type
+    @FindBy(id="com.dmartlabs.pwp:id/btn_vhu_close_hu")
+    private  MobileElement palletFull;
+    @FindBy(xpath = "//android.widget.Button[@text='YES']")
+    private  MobileElement palletfullYes;
+    @FindBy(id = "com.dmartlabs.pwp:id/txt_hm_title")
+    private  MobileElement moveToDispatchTitle;
+
+    @FindBy(id="com.dmartlabs.pwp:id/txt_hm_dock_name")
+    private  MobileElement dockName;
+    @FindBy(id = "com.dmartlabs.pwp:id/btn_hm_continue_picking")
+    private  MobileElement continuePickBox;
+
+
+
+    public  void clickOnContinuePicking()
+    {
+        QXClient.get().gestures().isElementPresent(palletFull);
+        QXClient.get().report().info("palletFull page is displayed");
+
+        QXClient.get().gestures().waitAndClickElementisVisible(palletFull);
+        QXClient.get().gestures().waitAndClickElementisVisible(palletfullYes);
+        QXClient.get().gestures().isElementPresent(moveToDispatchTitle);
+        System.out.println(dockName.getText()+"=========>"+dockName);
+        QXClient.get().report().info(dockName.getText());
+        System.out.println(dockName.getText()+"=========>"+dockName);
+        QXClient.get().gestures().waitAndClickElementisVisible(continuePickBox);
+    }
 }
 
 

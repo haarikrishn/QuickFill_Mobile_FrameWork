@@ -142,6 +142,9 @@ public class DeliveryDetailsPage {
     
     String remoteSyncIconXpath = "//android.widget.TextView[@text='%s']/following-sibling::android.widget.ImageView";
 
+    @FindBy(id = "com.dmartlabs.pwp:id/iv_lia_remote_sync")
+    private MobileElement remoteSyncIconForMultiUserLoading;
+
     @FindBy(id = "com.dmartlabs.pwp:id/txt_fibe_title")
     private MobileElement cannotConfirmDeliveryDialougeBox;
 

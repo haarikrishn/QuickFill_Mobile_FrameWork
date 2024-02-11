@@ -141,6 +141,8 @@ public class picker1TwoHUsOfflinepage {
 //android.widget.TextView[@resource-id='com.dmartlabs.pwp:id/txt_lip_product_name' and @text='Colgate Maxfresh Blue Gel Tp(300g)']/parent::android.view.ViewGroup[@resource-id='com.dmartlabs.pwp:id/cl_lip_parent']/descendant::android.widget.TextView[@resource-id='com.dmartlabs.pwp:id/txt_lip_boxes_value']
             MobileElement CaselotQuantity = (MobileElement) QXClient.get().driver().findElement(By.xpath("//android.widget.TextView[@resource-id='com.dmartlabs.pwp:id/txt_lip_product_name' and @text='" + itemTextFirstHu + "']/parent::android.view.ViewGroup[@resource-id='com.dmartlabs.pwp:id/cl_lip_parent']/descendant::android.widget.TextView[@resource-id='com.dmartlabs.pwp:id/txt_lip_boxes_value']"));
 
+
+            int caseLotNum = Integer.parseInt(CaselotQuantity.getText().trim());
             QXClient.get().gestures().isElementPresent(ItemName);
             QXClient.get().report().info("Item name is present"+"====>"+ItemName.getText());
             Thread.sleep(100);
@@ -173,7 +175,7 @@ public class picker1TwoHUsOfflinepage {
             QXClient.get().gestures().waitAndClickElementisVisible(CompletePick);
             QXClient.get().report().info("after verifying,complete picking");
             Thread.sleep(200);
-            for (int j = 0; j < 2; j++) {
+            for (int j = 0; j < caseLotNum; j++) {
                 QXClient.get().gestures().waitAndClickElementisVisible(plus);
                 QXClient.get().report().info("adding case slot quantity");
             }
@@ -272,38 +274,36 @@ public class picker1TwoHUsOfflinepage {
         QXClient.get().report().info("=======================>"+"wifi is turn on");
         QXClient.get().gestures().waitAndClickElementisVisible(NoNetworkOk);
         //   Thread.sleep(200);
-        Thread.sleep(4500);
+        Thread.sleep(4000);
         QXClient.get().gestures().waitAndClickElementisVisible(closeHU);
         QXClient.get().report().info("After all items picking clicking on close Hu");
-        Thread.sleep(1000);
+        Thread.sleep(500);
         QXClient.get().gestures().waitAndClickElementisVisible(CloseHuYes);
+        try
+        {
+            QXClient.get().gestures().isElementPresent(PrintHuLabelTitle);
+            QXClient.get().gestures().waitAndClickElementisVisible(withoutPrinter);
+        }
+        catch (Exception e)
+        {
+            System.out.println("inside catch block");
+            QXClient.get().gestures().waitAndClickElementisVisible(closeHU);
+            QXClient.get().gestures().waitAndClickElementisVisible(CloseHuYes);
+            QXClient.get().gestures().isElementPresent(PrintHuLabelTitle);
+            QXClient.get().gestures().waitAndClickElementisVisible(withoutPrinter);
 
+        }
 
         QXClient.get().report().info("successfully clicked on close hu yes");
         Thread.sleep(200);
-try {
-    QXClient.get().gestures().isElementPresent(PrintHuLabelTitle);
-    QXClient.get().gestures().waitAndClickElementisVisible(withoutPrinter);
-}
-catch(Exception e) {
-    System.out.println("insiide catch");
-    Thread.sleep(200);
-    QXClient.get().gestures().waitAndClickElementisVisible(closeHU);
-    QXClient.get().report().info("After all items picking clicking on close Hu");
-    Thread.sleep(1000);
-    QXClient.get().gestures().waitAndClickElementisVisible(CloseHuYes);
- //   QXClient.get().gestures().isElementPresent(PrintHuLabelTitle);
-    QXClient.get().gestures().isElementPresent(PrintHuLabelTitle);
-    QXClient.get().gestures().waitAndClickElementisVisible(withoutPrinter);
 
 
-}
         QXClient.get().report().info("print HU label is displayed");
-       // QXClient.get().gestures().isElementPresent(DockType);
-     //   QXClient.get().report().info(DockType.getText()+" "+"Dock Type");
-      //  System.out.println((DockType.getText()+" "+"Dock Type"));
+        //    QXClient.get().gestures().isElementPresent(DockType);
+        //  QXClient.get().report().info(DockType.getText()+" "+"Dock Type");
+        //System.out.println((DockType.getText()+" "+"Dock Type"));
 
-   //     QXClient.get().gestures().waitAndClickElementisVisible(withoutPrinter);
+
         QXClient.get().report().info("successfully clicked on without printer");
         Thread.sleep(200);
 
@@ -380,6 +380,7 @@ catch(Exception e) {
 //android.widget.TextView[@resource-id='com.dmartlabs.pwp:id/txt_lip_product_name' and @text='Colgate Maxfresh Blue Gel Tp(300g)']/parent::android.view.ViewGroup[@resource-id='com.dmartlabs.pwp:id/cl_lip_parent']/descendant::android.widget.TextView[@resource-id='com.dmartlabs.pwp:id/txt_lip_boxes_value']
             MobileElement CaselotQuantity1 = (MobileElement) QXClient.get().driver().findElement(By.xpath("//android.widget.TextView[@resource-id='com.dmartlabs.pwp:id/txt_lip_product_name' and @text='" + uniqueItems1 + "']/parent::android.view.ViewGroup[@resource-id='com.dmartlabs.pwp:id/cl_lip_parent']/descendant::android.widget.TextView[@resource-id='com.dmartlabs.pwp:id/txt_lip_boxes_value']"));
 
+            int caseLotNum = Integer.parseInt(CaselotQuantity1.getText().trim());
             QXClient.get().gestures().isElementPresent(ItemName1);
             QXClient.get().report().info("Item name is present"+"====>"+ItemName1.getText());
             Thread.sleep(100);
@@ -412,7 +413,7 @@ catch(Exception e) {
             QXClient.get().gestures().waitAndClickElementisVisible(CompletePick);
             QXClient.get().report().info("after verifying,complete picking");
             Thread.sleep(200);
-            for (int j = 0; j < 2; j++) {
+            for (int j = 0; j < caseLotNum; j++) {
                 QXClient.get().gestures().waitAndClickElementisVisible(plus);
                 QXClient.get().report().info("adding case slot quantity");
             }
@@ -433,11 +434,11 @@ catch(Exception e) {
     }
     public  void ClickOnSecondHuCloseHUInOffline() throws InterruptedException {
 
-    QXClient.get().gestures().waitAndClickElementisVisible(closeHU);
-    QXClient.get().report().info("After all items picking clicking on close Hu");
-    Thread.sleep(200);
-    QXClient.get().gestures().waitAndClickElementisVisible(CloseHuYes);
-    Thread.sleep(200);
+        QXClient.get().gestures().waitAndClickElementisVisible(closeHU);
+        QXClient.get().report().info("After all items picking clicking on close Hu");
+        Thread.sleep(200);
+        QXClient.get().gestures().waitAndClickElementisVisible(CloseHuYes);
+        Thread.sleep(200);
         System.out.println(noNetworktitle.getText());
         QXClient.get().gestures().isElementPresent(noNetworktitle);
         QXClient.get().report().info(noNetworktitle.getText());
@@ -454,38 +455,25 @@ catch(Exception e) {
         Thread.sleep(500);
         QXClient.get().gestures().waitAndClickElementisVisible(CloseHuYes);
         Thread.sleep(200);
-//try {
-//    QXClient.get().gestures().isElementPresent(PrintHuLabelTitle);
-//} catch (Exception e){
-//    System.out.println("inside catch");
-//    Thread.sleep(100);
-//    QXClient.get().gestures().waitAndClickElementisVisible(closeHU);
-//    QXClient.get().report().info("After all items picking clicking on close Hu");
-//    Thread.sleep(500);
-//    QXClient.get().gestures().waitAndClickElementisVisible(CloseHuYes);
-//    Thread.sleep(200);
-//  //  QXClient.get().gestures().isElementPresent(PrintHuLabelTitle);
-//}
-        QXClient.get().report().info("print HU label is displayed");
-    //    QXClient.get().gestures().isElementPresent(DockType);
-   //     QXClient.get().report().info(DockType.getText()+" "+"Dock Type");
-     //   System.out.println((DockType.getText()+" "+"Dock Type"));
-
-        try {
-            QXClient.get().gestures().isElementPresent(PrintHuLabelTitle);
-            QXClient.get().gestures().waitAndClickElementisVisible(withoutPrinter);
-        } catch (Exception e){
-            System.out.println("Inside catch block XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX");
-            System.out.println("inside catch");
-            Thread.sleep(100);
-            QXClient.get().gestures().waitAndClickElementisVisible(closeHU);
-            QXClient.get().report().info("After all items picking clicking on close Hu");
-            Thread.sleep(500);
-            QXClient.get().gestures().waitAndClickElementisVisible(CloseHuYes);
-            Thread.sleep(200);
+        try
+        {
             QXClient.get().gestures().isElementPresent(PrintHuLabelTitle);
             QXClient.get().gestures().waitAndClickElementisVisible(withoutPrinter);
         }
+        catch (Exception e) {
+            System.out.println("inside catch block");
+            QXClient.get().gestures().waitAndClickElementisVisible(closeHU);
+            QXClient.get().gestures().waitAndClickElementisVisible(CloseHuYes);
+            QXClient.get().gestures().isElementPresent(PrintHuLabelTitle);
+            QXClient.get().gestures().waitAndClickElementisVisible(withoutPrinter);
+        }
+
+        QXClient.get().report().info("print HU label is displayed");
+        // QXClient.get().gestures().isElementPresent(DockType);
+        //QXClient.get().report().info(DockType.getText()+" "+"Dock Type");
+        //System.out.println((DockType.getText()+" "+"Dock Type"));
+
+
         QXClient.get().report().info("successfully clicked on without printer");
         Thread.sleep(200);
 
@@ -506,12 +494,121 @@ catch(Exception e) {
         QXClient.get().gestures().waitAndClickElementisVisible(ContinuePicking);
         QXClient.get().report().info("Successfully cliked on continue picking");
     }
+    //    =======================================================================
+    //box type
+    // =======
+    @FindBy(id="com.dmartlabs.pwp:id/btn_vhu_close_hu")
+    private  MobileElement palletFull;
+    @FindBy(xpath = "//android.widget.Button[@text='YES']")
+    private  MobileElement palletfullYes;
+    @FindBy(id = "com.dmartlabs.pwp:id/txt_hm_title")
+    private  MobileElement moveToDispatchTitle;
 
+    @FindBy(id="com.dmartlabs.pwp:id/txt_hm_dock_name")
+    private  MobileElement dockName;
+    @FindBy(id = "com.dmartlabs.pwp:id/btn_hm_continue_picking")
+    private  MobileElement continuePickBox;
+
+    @FindBy(id="com.dmartlabs.pwp:id/txt_pl_view_hu")
+    private  MobileElement ViewPallet;
+//==================================================================================================================
+    //offline box type
+
+    public  void clicknViewPallet()
+    {
+        QXClient.get().gestures().waitAndClickElementisVisible(ViewPallet);
+    }
+
+    public  void clickOnContinuePicking()
+    {
+
+        QXClient.get().gestures().isElementPresent(palletFull);
+        QXClient.get().report().info("palletFull page is displayed");
+
+        QXClient.get().gestures().waitAndClickElementisVisible(palletFull);
+        QXClient.get().gestures().waitAndClickElementisVisible(palletfullYes);
+
+        QXClient.get().gestures().isElementPresent(moveToDispatchTitle);
+        QXClient.get().report().info(dockName.getText());
+        System.out.println(dockName.getText()+"=========>"+dockName);
+        QXClient.get().gestures().waitAndClickElementisVisible(continuePickBox);
+    }
+
+    public  void clickOnContinuePickingInOfflineTwoHU() throws InterruptedException {
+
+        QXClient.get().gestures().isElementPresent(palletFull);
+        QXClient.get().report().info("palletFull page is displayed");
+
+        QXClient.get().gestures().waitAndClickElementisVisible(palletFull);
+        Thread.sleep(100);
+        QXClient.get().gestures().waitAndClickElementisVisible(palletfullYes);
+
+        System.out.println(noNetworktitle.getText());
+        QXClient.get().report().info(noNetworktitle.getText());
+        QXClient.get().gestures().isElementPresent(noNetworktitle);
+        Thread.sleep(200);
+        QXClient.get().gestures().toggleWiFi();
+        System.out.println("=======================>"+"wifi is turn on");
+        QXClient.get().report().info("=======================>"+"wifi is turn on");
+        QXClient.get().gestures().waitAndClickElementisVisible(NoNetworkOk);
+        //   Thread.sleep(200);
+        Thread.sleep(4000);
+
+        QXClient.get().gestures().waitAndClickElementisVisible(palletFull);
+        Thread.sleep(100);
+        QXClient.get().gestures().waitAndClickElementisVisible(palletfullYes);
+        Thread.sleep(100);
+        try {
+            QXClient.get().gestures().isElementPresent(moveToDispatchTitle);
+            QXClient.get().report().info(dockName.getText());
+        }
+        catch (Exception e)
+        {
+            System.out.println("inside catch");
+            QXClient.get().gestures().waitAndClickElementisVisible(palletFull);
+            Thread.sleep(100);
+            QXClient.get().gestures().waitAndClickElementisVisible(palletfullYes);
+            QXClient.get().gestures().isElementPresent(moveToDispatchTitle);
+            QXClient.get().report().info(dockName.getText());
+        }
+        System.out.println(dockName.getText()+"=========>"+dockName);
+        QXClient.get().gestures().waitAndClickElementisVisible(continuePickBox);
+    }
 }
 //==========
 
 
 
+//=====================================================================================================
+//
+//    public  void  clicknViewPallet()
+//    {
+//
+//        QXClient.get().gestures().waitAndClickElementisVisible(ViewPallet);
+//    }
+//
+//    public void  PalletFullPageDisplayed()
+//    {
+//        QXClient.get().gestures().isElementPresent(palletFull);
+//        QXClient.get().report().info("palletFull page is displayed");
+//    }
+//    public  void clickOnPalletFull()
+//    {
+//        QXClient.get().gestures().waitAndClickElementisVisible(palletFull);
+//        QXClient.get().gestures().waitAndClickElementisVisible(palletfullYes);
+//    }
+//
+//    public void moveToDispatchTitleIsDisplayed()
+//    {
+//        QXClient.get().gestures().isElementPresent(moveToDispatchTitle);
+//        QXClient.get().report().info(dockName.getText());
+//        System.out.println(dockName.getText()+"=========>"+dockName);
+//    }
+//    public  void clickOnContinuePicking()
+//    {
+//        QXClient.get().gestures().waitAndClickElementisVisible(continuePickBox);
+//
+//    }
 
 
 

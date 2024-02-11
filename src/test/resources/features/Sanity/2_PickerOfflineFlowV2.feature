@@ -1,4 +1,4 @@
-Feature: Pick the items in Delivery and load the Delivery into the truck In offline Mode
+Feature: offline pallet: Pick the items in Delivery and load the Delivery into the truck In offline Mode
 
 #===================================================================================================================
 
@@ -9,7 +9,6 @@ Feature: Pick the items in Delivery and load the Delivery into the truck In offl
     When user verify the items one By One  and move to PickerSevenItems in offline mode
     Then verify Items picked or not
     And Logout the user from application
-    #  @Offline
 
     Given Enter username "<username>" and password "<password>" to login to the picker application
     And Verify that User is in PWP application's Home Page after login
@@ -34,12 +33,13 @@ Feature: Pick the items in Delivery and load the Delivery into the truck In offl
     Examples:
       | username | password    |
       | 101203   | Dmart@12345 |
+#      | 121346   | Sweety123@ |
 #      | 9000680178 | Sweety123@ |
 
 # ============================================================================================
 
   @PickerOneDeliveryTwoHUsAndLoadInOfflineModev2
- Scenario Outline: One Delivery Two HUs
+  Scenario Outline: One Delivery Two HUs
     Given Enter username "<username>" and password "<password>" to login to the picker application
     When user verify the items one By One  and move to pickList one HU in offline
     Then verify Items picked or not In Two HUs
@@ -64,9 +64,10 @@ Feature: Pick the items in Delivery and load the Delivery into the truck In offl
     Then Verify that loading operation is completed
     And Logout the user from Loader application
 
-   Examples:
-     | username   | password   |
+    Examples:
+      | username   | password   |
 #     | 9000680178 | Sweety123@ |
+#      | 121346   | Sweety123@ |
    | 101203   | Dmart@12345 |
 #  ===================================================================================================================
   @PickerInvalidQunatityAndLoadInOfflineModev2
@@ -101,6 +102,7 @@ Feature: Pick the items in Delivery and load the Delivery into the truck In offl
     Examples:
       | username   | password   |
 #    | 9000680178 | Sweety123@ |
+#      | 121346   | Sweety123@ |
      | 101203   | Dmart@12345 |
 
 

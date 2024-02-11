@@ -201,7 +201,7 @@ public class LoaderSteps {
     }
 
     @And("Load the delivery into the truck")
-    public void loadTheHUsIntoTheTruck() {
+    public void loadTheDeliveryIntoTheTruck() {
         QXClient.get().report().info("Load the delivery into the truck");
         if (dispatchType.equals("PALLET DISPATCH")) {
             SoftAssert softAssert = deliveryDetails.loadHUs();
@@ -350,5 +350,9 @@ public class LoaderSteps {
         deliveryDetails.verifyErrorMessage();
     }
 
-
+    @Then("Verify that Cannot confirm delivery dialouge box is displayed")
+    public void verifyThatCannotConfirmDeliveryDialougeBoxIsDisplayed() {
+        QXClient.get().report().info("Verify that Cannot confirm delivery dialouge box is displayed");
+        deliveryDetails.verifyErrorMessage();
+    }
 }

@@ -68,12 +68,7 @@ public class pickerAndLoaderOfflineflowStep {
         picker1TwoHUsOfflinepageObj.HUpageIsDisplayed();
         Thread.sleep(500);
         picker1TwoHUsOfflinepageObj.ClickOnSecondHuCloseHUInOffline();
-
-
-
     }
-
-
 
 //================================================================================================================
 //  @PickerInvalidQunatityAndLoadInOfflineMode
@@ -97,6 +92,5 @@ public class pickerAndLoaderOfflineflowStep {
         pickerInvalidQuantityOfflinePageObj.ClickOnCloseHU();
 
     }
-
 
 }

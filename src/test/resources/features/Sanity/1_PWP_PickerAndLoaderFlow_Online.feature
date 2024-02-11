@@ -1,4 +1,4 @@
-Feature: Pick the items in Delivery and load the Delivery into the truck
+Feature: online pallet:Pick the items in Delivery and load the Delivery into the truck
 
   @PickingSevenItemsOnlinev2
   Scenario Outline: pick the Picker1SevenItemsAndLoad
@@ -23,13 +23,15 @@ Feature: Pick the items in Delivery and load the Delivery into the truck
     And Logout the user from Loader application
 
     Examples:
-      | username   | password   |
-#      | 9000680178 | Sweety123@ |
-  | 101203   | Dmart@12345 |
+      | username | password   |
+#   | 9000680178 | Sweety123@ |
+ | 101203   | Dmart@12345 |
+#      | 121346   | Sweety123@ |
+
 
 #===================================================================================================================
   @PickerOneDeliveryTwoHUsOnlinev2
- Scenario Outline: One Delivery Two HUs
+  Scenario Outline: One Delivery Two HUs
     Given Enter username "<username>" and password "<password>" to login to the picker application
     When user verify the items one By One  and move to pickList one HU
     And user verify the items one By One  and move to pickList Second HU
@@ -52,7 +54,8 @@ Feature: Pick the items in Delivery and load the Delivery into the truck
 
     Examples:
       | username   | password   |
-#     | 9000680178 | Sweety123@ |
+#      | 121346   | Sweety123@ |
+#    | 9000680178 | Sweety123@ |
   | 101203   | Dmart@12345 |
 #  ===================================================================================================================
   @PickerInvalidQunatityOnlinev2
@@ -86,7 +89,8 @@ Feature: Pick the items in Delivery and load the Delivery into the truck
 
     Examples:
       | username   | password   |
-#      | 9000680178 | Sweety123@ |
+#      | 121346   | Sweety123@ |
+#     | 9000680178 | Sweety123@ |
       | 101203   | Dmart@12345 |
 
 

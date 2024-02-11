@@ -909,7 +909,7 @@ public class Gestures {
     public void scrollVertically1(int defaultScrollCount) {
         Dimension dimension = driver.manage().window().getSize();
         int scrollStart = (int) dimension.getHeight();
-        int scrollEnd = (int) (dimension.getHeight() * 0.188);
+        int scrollEnd = (int) (dimension.getHeight() * 0.1879);
         //int scrollEnd = 450;
         int widthHalf = (int) (dimension.getWidth() * 0.5);
 
@@ -944,7 +944,7 @@ public class Gestures {
     public void scrollVertically2(int defaultScrollCount) {
         Dimension dimension = driver.manage().window().getSize();
         int scrollEnd = (int) dimension.getHeight();
-        int scrollStart = (int) (dimension.getHeight() * 0.188);
+        int scrollStart = (int) (dimension.getHeight() * 0.1879);
         int widthHalf = (int) (dimension.getWidth() * 0.5);
 
         try {

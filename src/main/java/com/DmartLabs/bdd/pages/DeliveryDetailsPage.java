@@ -158,6 +158,9 @@ public class DeliveryDetailsPage {
     private static List<Map<String, String>> itemsExceptions;
     private boolean isScroll = true;
     private int scrollCount = 0;
+    private static int expectedLoadedArticle = 0;
+    private static int expectedLoadedBoxes=0;
+    private static int totalExpectedExceptionCount=0;
 
 
     public List<String> isDeliverDetailsPageDisplayed(Map<String, String> expectedDeliveryNumber){
@@ -738,10 +741,6 @@ public class DeliveryDetailsPage {
         }
     }
 
-    private static int expectedLoadedArticle = 0;
-    private static int expectedLoadedBoxes=0;
-    private static int totalExpectedExceptionCount=0;
-
     public void  itemsException(List<Map<String, String>> exceptions) {
         itemsExceptions=exceptions;
 
@@ -792,11 +791,12 @@ public class DeliveryDetailsPage {
             if (itemsExceptions!=null){
                 for (Map<String, String> exception:itemsExceptions){
 
-                    for (Map<String, String> checkRepeatedItems:itemsExceptions){
-                        if (exception.get("itemNames").equals(checkRepeatedItems.get("itemNames"))){
-                       //     repeatingExceptionArticles++;
-                        }
-                    }
+//                    for (Map<String, String> checkRepeatedItems:itemsExceptions){
+//                        if (exception.get("itemNames").equals(checkRepeatedItems.get("itemNames"))){
+//                       //     repeatingExceptionArticles++;
+//                        }
+//                    }
+
 
                     if (deliveryItem.equals(exception.get("itemNames"))){
                         int damagedBoxes = Integer.parseInt(exception.get("damagedBoxes"));

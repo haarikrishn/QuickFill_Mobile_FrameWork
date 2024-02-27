@@ -61,6 +61,7 @@ public class HomePage {
     public void logoutUser() throws InterruptedException {
         gestures = QXClient.get().gestures();
        // logOutIcon.click();
+        Thread.sleep(200);
         gestures.waitAndClickElementisVisible(logOutIcon);
         Thread.sleep(200);
         gestures.waitForVisbilityOfWebElement(logoutAlertPanel);

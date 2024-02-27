@@ -7,11 +7,13 @@ import io.appium.java_client.pagefactory.AppiumFieldDecorator;
 import org.openqa.selenium.By;
 import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.StaleElementReferenceException;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 import org.testng.Assert;
 
 import java.util.ArrayList;
+import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.Map;
 
@@ -31,7 +33,19 @@ public class LoaderPage {
     private MobileElement searchBox;
 
     @FindBy(id="com.dmartlabs.pwp:id/txt_lid_delivery_no")
-    private List<MobileElement> allDeliveries;
+    private List<WebElement> allDeliveries;
+
+    @FindBy(id = "com.dmartlabs.pwp:id/txt_lid_truck_no")
+    private MobileElement truckNumber;
+
+//    @FindBy(id = "com.dmartlabs.pwp:id/pb_lid_hu_progress_loader")
+//    private MobileElement pickProgress;
+
+    @FindBy(id = "com.dmartlabs.pwp:id/txt_fibe_title")
+    private MobileElement vehicleNotAssignedDialougeBox;
+
+    @FindBy(id = "com.dmartlabs.pwp:id/btn_fibe_ok")
+    private MobileElement vehicleNotAssignedDialougeBoxOkBtn;
 
     @FindBy(id = "com.dmartlabs.pwp:id/ib_fch_logout")
     private MobileElement logOutIcon;
@@ -51,15 +65,27 @@ public class LoaderPage {
     private String specficDeliveryXpath = "//android.widget.TextView[@text='%s']/parent::android.view.ViewGroup";
     private String destinationSiteId = "//android.widget.TextView[@text='%s']/preceding-sibling::android.widget.TextView[@resource-id='com.dmartlabs.pwp:id/txt_lid_site_name']";
     private String dispatchTypeXpath = "//android.widget.TextView[@text='%s']/following-sibling::android.widget.TextView[@resource-id='com.dmartlabs.pwp:id/txt_lid_dispatch_label']";
+    private String pickProgressXpath = "//android.widget.TextView[@text='%s']/following-sibling::android.widget.ProgressBar";
 
     @FindBy(id = "com.dmartlabs.pwp:id/txt_dl_search_error_msg")
     private MobileElement searchMsg;
+
+    private MobileElement deliveryCard = null;
 
     private static List<String> deliveryList = new ArrayList<>();;
     private static boolean isScroll = false;
     private static int scrollCount = 0;
 
+    private LinkedHashSet<String> deliveryListss = new LinkedHashSet<>();
+    private List<String> loadedDeliveries = new ArrayList<>();
+    private boolean result = true;
+
     public void isLoaderPageDisplayed(){
+        try {
+            Thread.sleep(1000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
         gestures = QXClient.get().gestures();
         boolean result = gestures.isElementPresent(loaderModule);
         if (result)
@@ -71,7 +97,7 @@ public class LoaderPage {
     }
 
     public List<String> getAllDeliveries(){
-        for (MobileElement delivery:allDeliveries){
+        for (WebElement delivery:allDeliveries){
             String deliveryNumber = delivery.getText().trim();
             if (!deliveryList.contains(deliveryNumber))
                     deliveryList.add(deliveryNumber);
@@ -85,7 +111,7 @@ public class LoaderPage {
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
-            for (MobileElement delivery:allDeliveries){
+            for (WebElement delivery:allDeliveries){
                 if (deliveryList.contains(delivery.getText().trim()))
                     isScroll = true;
             }
@@ -96,7 +122,7 @@ public class LoaderPage {
     }
 
     public List<String> getAllDeliveries1(){
-        for (MobileElement delivery:allDeliveries){
+        for (WebElement delivery:allDeliveries){
             deliveryList.add(delivery.getText());
         }
 
@@ -122,7 +148,7 @@ public class LoaderPage {
 
     public void scrollToDeliveryCardAndClick(String expectedDeliveryNumber){
 
-        for (MobileElement delivery:allDeliveries){
+        for (WebElement delivery:allDeliveries){
             String deliveryNumber = delivery.getText().trim();
             if (deliveryNumber.equals("#0075707900")){
                 continue;
@@ -139,7 +165,7 @@ public class LoaderPage {
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
-            for (MobileElement delivery:allDeliveries){
+            for (WebElement delivery:allDeliveries){
                 if (deliveryList.contains(delivery.getText().trim()))
                     isScroll = true;
 
@@ -152,24 +178,67 @@ public class LoaderPage {
         }
     }
 
+
     public void loadAllDeliveries(){
-        deliveryList = getAllDeliveries1();
+//        deliveryList = getAllDeliveries1();
         gestures = QXClient.get().gestures();
         DeliveryDetailsPage deliveryDetails = new DeliveryDetailsPage();
 
-        try {
-//            for (MobileElement delivery:allDeliveries){
-//                deliveryList.add(delivery.getText().trim());
+//        try {
+////            for (MobileElement delivery:allDeliveries){
+////                deliveryList.add(delivery.getText().trim());
+////            }
+//
+//            for (String deliveryNumber:deliveryList){
+//                if (deliveryNumber.contains("#0075707900") || deliveryNumber.contains("#936752817"))
+//                    continue;
+//                MobileElement delivery = getMobileElementFromDynamicXpath(specficDeliveryXpath, deliveryNumber);
+//                //gestures.waitForVisbilityOfWebElement(delivery);
+//                gestures.isElementPresent(delivery);
+//                String dispatchType = verifyDispatchType(deliveryNumber);
+//                clickOnDeliveryCard(deliveryNumber);
+//                if (dispatchType.equals("PALLET DISPATCH")) {
+//                    deliveryDetails.isDeliverDetailsPageDisplayed(deliveryNumber);
+//                    deliveryDetails.loadHUs();
+//                    deliveryDetails.confirmLoadedItems();
+//                    deliveryDetails.deliveryLoadingConfirmation();
+//                    searchDelivery(deliveryNumber);
+//                    isNoResultFoundMsgDisplayed();
+//                    allDeliveries.remove(delivery);
+//                } else if (dispatchType.equals("BOX DISPATCH")) {
+//                    deliveryDetails.isDeliverDetailsPageDisplayed(deliveryNumber);
+//                    deliveryDetails.loadBoxes();
+//                    deliveryDetails.verifyBoxesLoaded();
+//                    deliveryDetails.verifyArticleLoaded();
+//                    deliveryDetails.verifyBoxException();
+//                    deliveryDetails.confirmBoxTypeDeliveryLoading();
+//                    deliveryDetails.boxTypeDeliveryLoadingConfirmation();
+//                }
 //            }
+//        } catch (StaleElementReferenceException sre){
+//            loadAllDeliveries();
+//        }
+//        catch (Exception e){
+//            e.printStackTrace();
+//        }
 
-            for (String deliveryNumber:deliveryList){
-                if (deliveryNumber.contains("#0075707900") || deliveryNumber.contains("#936752817"))
+        try {
+            for (WebElement delivery:allDeliveries) {
+                if (delivery.getText().equals("9363567222") || delivery.getText().equals("9921595649"))
                     continue;
+                result = deliveryListss.add(delivery.getText());
+                if (!result)
+                    break;
+            }
+
+            for (String deliveryNumber:deliveryListss) {
+                if (loadedDeliveries.contains(deliveryNumber))
+                    continue;
+
                 MobileElement delivery = getMobileElementFromDynamicXpath(specficDeliveryXpath, deliveryNumber);
-                //gestures.waitForVisbilityOfWebElement(delivery);
                 gestures.isElementPresent(delivery);
                 String dispatchType = verifyDispatchType(deliveryNumber);
-                clickOnDeliveryCard(deliveryNumber);
+                clickOnDeliveryCard1(deliveryNumber);
                 if (dispatchType.equals("PALLET DISPATCH")) {
                     deliveryDetails.isDeliverDetailsPageDisplayed(deliveryNumber);
                     deliveryDetails.loadHUs();
@@ -177,7 +246,9 @@ public class LoaderPage {
                     deliveryDetails.deliveryLoadingConfirmation();
                     searchDelivery(deliveryNumber);
                     isNoResultFoundMsgDisplayed();
-                    allDeliveries.remove(delivery);
+                    searchBox.clear();
+                    gestures.refreshPage();
+                    loadedDeliveries.add(deliveryNumber);
                 } else if (dispatchType.equals("BOX DISPATCH")) {
                     deliveryDetails.isDeliverDetailsPageDisplayed(deliveryNumber);
                     deliveryDetails.loadBoxes();
@@ -186,12 +257,18 @@ public class LoaderPage {
                     deliveryDetails.verifyBoxException();
                     deliveryDetails.confirmBoxTypeDeliveryLoading();
                     deliveryDetails.boxTypeDeliveryLoadingConfirmation();
+                    loadedDeliveries.add(deliveryNumber);
                 }
+
             }
+
+            if (result){
+                loadAllDeliveries();
+            }
+
         } catch (StaleElementReferenceException sre){
             loadAllDeliveries();
-        }
-        catch (Exception e){
+        } catch (Exception e) {
             e.printStackTrace();
         }
 
@@ -208,9 +285,41 @@ public class LoaderPage {
 //    }
 
     public void searchDelivery(String deliveryNumber){
+        gestures.waitForVisiblityOfAllWebElement(allDeliveries);
         gestures.isElementPresent(searchBox);
         searchBox.sendKeys(deliveryNumber);
         QXClient.get().report().info("Delivery Number "+deliveryNumber+" is entered in search box");
+        try {
+            Thread.sleep(2000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void isVehicleAssigned(Map<String, String> expectedDeliveryNumber) {
+        deliveryCard = getMobileElementFromDynamicXpath(specficDeliveryXpath, expectedDeliveryNumber.get("deliveryNumber"));
+        gestures.isElementPresent(deliveryCard);
+        boolean result = gestures.isElementPresent(truckNumber);
+        if (result)
+            QXClient.get().report().pass("Registrantion Number for vehicle assigned for a delivery is "+truckNumber.getText());
+        else {
+            QXClient.get().report().fail("Vehicle is not assigned for a delivery");
+            clickOnDeliveryCard1(expectedDeliveryNumber);
+            isVehicleNotAssignedDialougeBoxDisplayed();
+        }
+
+        Assert.assertTrue(result,"Vehicle is not assigned for a delivery");
+    }
+
+    public void isVehicleNotAssignedDialougeBoxDisplayed() {
+        boolean result = gestures.isElementPresent(vehicleNotAssignedDialougeBox);
+        if (result)
+            QXClient.get().report().pass("Vehicle has not assigned dialouge box is displayed");
+        else
+            QXClient.get().report().fail("Vehicle has not assigned dialouge box is not displayed");
+
+        Assert.assertTrue(result,"Vehicle has not assigned dialouge box is not displayed");
+        vehicleNotAssignedDialougeBoxOkBtn.click();
     }
 
     public String verifyDispatchType(String deliveryNumber) {
@@ -237,6 +346,17 @@ public class LoaderPage {
             Assert.assertEquals(dispatchType, "BOX DISPATCH");
         }
         return dispatchType;
+    }
+
+    public void checkPickProgress(String deliveryNumber) {
+        MobileElement pickProgress = getMobileElementFromDynamicXpath(pickProgressXpath, deliveryNumber);
+        boolean result = gestures.isElementPresent(pickProgress);
+        Assert.assertTrue(result,"Pick Progress bar is not displayed");
+        float pickPerecentage = Float.parseFloat(pickProgress.getText());
+        if (pickPerecentage<100.0) {
+            QXClient.get().report().warning("Loading cannot be started as the Picking for a Delivery "+deliveryNumber+" is completed "+pickPerecentage+"%");
+            Assert.fail("Wait for picking to be completed for a Delivery " + deliveryNumber + ", right now picking completed for delivery is " + pickPerecentage + "%");
+        }
     }
 
     public void clickOnDeliveryCard(Map<String, String> deliveryNumber) {
@@ -278,7 +398,7 @@ public class LoaderPage {
 
     public void clickOnDeliveryCard1(Map<String, String> deliveryNumber) {
         String expectedDeliveryNumber = deliveryNumber.get("deliveryNumber");
-        MobileElement deliveryCard=null;
+        //MobileElement deliveryCard=null;
         try {
             deliveryCard = getMobileElementFromDynamicXpath(specficDeliveryXpath, expectedDeliveryNumber);
             if (allDeliveries.size()-1==3 && deliveryCard.getText().trim().equals(allDeliveries.get(allDeliveries.size()-1).getText().trim())){
@@ -363,6 +483,11 @@ public class LoaderPage {
         gestures.waitForVisbilityOfWebElement(logOutIcon).click();
         gestures.waitForVisbilityOfWebElement(logoutAlertPanel);
         logoutYesBtn.click();
+        try {
+            Thread.sleep(400L);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
         Assert.assertTrue(loggingOutPanel.isDisplayed());
         LoginPage loginPage = new LoginPage();
         loginPage.loginTitleIsDisplayed();

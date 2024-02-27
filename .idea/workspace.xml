@@ -88,15 +88,16 @@
       <command value="mvn install" />
     </option>
   </component>
-  <component name="RunManager" selected="Cucumber Java.Feature: 1_PWP_PickerAndLoaderFlow_Online">
-    <configuration name="Feature: 1_PWP_PickerAndLoaderFlow_Online" type="CucumberJavaRunConfigurationType" factoryName="Cucumber java" temporary="true" nameIsGenerated="true">
+  <component name="RunManager" selected="Cucumber Java.Scenario: pick the Picker1SevenItemsAndLoadBoxAndDispatchType">
+    <configuration name="Scenario: One Delivery Two HUs" type="CucumberJavaRunConfigurationType" factoryName="Cucumber java" temporary="true" nameIsGenerated="true">
       <option name="CUCUMBER_CORE_VERSION" value="5" />
-      <option name="FILE_PATH" value="$PROJECT_DIR$/src/test/resources/features/Sanity/1_PWP_PickerAndLoaderFlow_Online.feature" />
+      <option name="FILE_PATH" value="$PROJECT_DIR$/src/test/resources/features/Sanity/11_PWP_PickerAndLoaderFlow_Online.feature" />
       <option name="GLUE" value="com.DmartLabs.stepdefinitions" />
       <option name="MAIN_CLASS_NAME" value="io.cucumber.core.cli.Main" />
       <module name="PWP_MobileAutomationFramework" />
-      <option name="PROGRAM_PARAMETERS" value=" --plugin org.jetbrains.plugins.cucumber.java.run.CucumberJvm5SMFormatter" />
-      <option name="SUGGESTED_NAME" value="Feature: 1_PWP_PickerAndLoaderFlow_Online" />
+      <option name="NAME_FILTER" value="^One Delivery Two HUs$" />
+      <option name="PROGRAM_PARAMETERS" value=" --plugin org.jetbrains.plugins.cucumber.java.run.CucumberJvm5SMFormatter --name &quot;^One Delivery Two HUs$&quot;" />
+      <option name="SUGGESTED_NAME" value="Scenario: One Delivery Two HUs" />
       <option name="WORKING_DIRECTORY" value="$MODULE_WORKING_DIR$" />
       <extension name="coverage">
         <pattern>
@@ -108,14 +109,15 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="Feature: 4_PickerBoxTypeFlow_Online" type="CucumberJavaRunConfigurationType" factoryName="Cucumber java" temporary="true" nameIsGenerated="true">
+    <configuration name="Scenario: pick the Picker1SevenItemsAndLoadBoxAndDispatchType (1)" type="CucumberJavaRunConfigurationType" factoryName="Cucumber java" temporary="true" nameIsGenerated="true">
       <option name="CUCUMBER_CORE_VERSION" value="5" />
-      <option name="FILE_PATH" value="$PROJECT_DIR$/src/test/resources/features/Sanity/4_PickerBoxTypeFlow_Online.feature" />
+      <option name="FILE_PATH" value="$PROJECT_DIR$/src/test/resources/features/Sanity/11_PWP_PickerAndLoaderFlow_Online.feature" />
       <option name="GLUE" value="com.DmartLabs.stepdefinitions" />
       <option name="MAIN_CLASS_NAME" value="io.cucumber.core.cli.Main" />
       <module name="PWP_MobileAutomationFramework" />
-      <option name="PROGRAM_PARAMETERS" value=" --plugin org.jetbrains.plugins.cucumber.java.run.CucumberJvm5SMFormatter" />
-      <option name="SUGGESTED_NAME" value="Feature: 4_PickerBoxTypeFlow_Online" />
+      <option name="NAME_FILTER" value="^pick the Picker1SevenItemsAndLoadBoxAndDispatchType$" />
+      <option name="PROGRAM_PARAMETERS" value=" --plugin org.jetbrains.plugins.cucumber.java.run.CucumberJvm5SMFormatter --name &quot;^pick the Picker1SevenItemsAndLoadBoxAndDispatchType$&quot;" />
+      <option name="SUGGESTED_NAME" value="Scenario: pick the Picker1SevenItemsAndLoadBoxAndDispatchType" />
       <option name="WORKING_DIRECTORY" value="$MODULE_WORKING_DIR$" />
       <extension name="coverage">
         <pattern>
@@ -127,15 +129,15 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="Scenario: Give the exception for boxes and Load BOX type delivery into the truck" type="CucumberJavaRunConfigurationType" factoryName="Cucumber java" temporary="true" nameIsGenerated="true">
+    <configuration name="Scenario: pick the Picker1SevenItemsAndLoadBoxAndDispatchType" type="CucumberJavaRunConfigurationType" factoryName="Cucumber java" temporary="true" nameIsGenerated="true">
       <option name="CUCUMBER_CORE_VERSION" value="5" />
-      <option name="FILE_PATH" value="$PROJECT_DIR$/src/test/resources/features/Sanity/PWP_LoaderOfflineFunctionality.feature" />
+      <option name="FILE_PATH" value="$PROJECT_DIR$/src/test/resources/features/Sanity/12_PWP_PickerAndLoaderFlow_Offline.feature" />
       <option name="GLUE" value="com.DmartLabs.stepdefinitions" />
       <option name="MAIN_CLASS_NAME" value="io.cucumber.core.cli.Main" />
       <module name="PWP_MobileAutomationFramework" />
-      <option name="NAME_FILTER" value="^Give the exception for boxes and Load BOX type delivery into the truck$" />
-      <option name="PROGRAM_PARAMETERS" value=" --plugin org.jetbrains.plugins.cucumber.java.run.CucumberJvm5SMFormatter --name &quot;^Give the exception for boxes and Load BOX type delivery into the truck$&quot;" />
-      <option name="SUGGESTED_NAME" value="Scenario: Give the exception for boxes and Load BOX type delivery into the truck" />
+      <option name="NAME_FILTER" value="^pick the Picker1SevenItemsAndLoadBoxAndDispatchType$" />
+      <option name="PROGRAM_PARAMETERS" value=" --plugin org.jetbrains.plugins.cucumber.java.run.CucumberJvm5SMFormatter --name &quot;^pick the Picker1SevenItemsAndLoadBoxAndDispatchType$&quot;" />
+      <option name="SUGGESTED_NAME" value="Scenario: pick the Picker1SevenItemsAndLoadBoxAndDispatchType" />
       <option name="WORKING_DIRECTORY" value="$MODULE_WORKING_DIR$" />
       <extension name="coverage">
         <pattern>
@@ -147,15 +149,15 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="Scenario: Load BOX type delivery into the truck" type="CucumberJavaRunConfigurationType" factoryName="Cucumber java" temporary="true" nameIsGenerated="true">
+    <configuration name="Scenario: pick the items with invalid quantity" type="CucumberJavaRunConfigurationType" factoryName="Cucumber java" temporary="true" nameIsGenerated="true">
       <option name="CUCUMBER_CORE_VERSION" value="5" />
-      <option name="FILE_PATH" value="$PROJECT_DIR$/src/test/resources/features/Sanity/PWP_LoaderOfflineFunctionality.feature" />
+      <option name="FILE_PATH" value="$PROJECT_DIR$/src/test/resources/features/Sanity/11_PWP_PickerAndLoaderFlow_Online.feature" />
       <option name="GLUE" value="com.DmartLabs.stepdefinitions" />
       <option name="MAIN_CLASS_NAME" value="io.cucumber.core.cli.Main" />
       <module name="PWP_MobileAutomationFramework" />
-      <option name="NAME_FILTER" value="^Load BOX type delivery into the truck$" />
-      <option name="PROGRAM_PARAMETERS" value=" --plugin org.jetbrains.plugins.cucumber.java.run.CucumberJvm5SMFormatter --name &quot;^Load BOX type delivery into the truck$&quot;" />
-      <option name="SUGGESTED_NAME" value="Scenario: Load BOX type delivery into the truck" />
+      <option name="NAME_FILTER" value="^pick the items with invalid quantity$" />
+      <option name="PROGRAM_PARAMETERS" value=" --plugin org.jetbrains.plugins.cucumber.java.run.CucumberJvm5SMFormatter --name &quot;^pick the items with invalid quantity$&quot;" />
+      <option name="SUGGESTED_NAME" value="Scenario: pick the items with invalid quantity" />
       <option name="WORKING_DIRECTORY" value="$MODULE_WORKING_DIR$" />
       <extension name="coverage">
         <pattern>
@@ -167,40 +169,37 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="Scenario: Load all the Deliveries into trucks" type="CucumberJavaRunConfigurationType" factoryName="Cucumber java" temporary="true" nameIsGenerated="true">
-      <option name="CUCUMBER_CORE_VERSION" value="5" />
-      <option name="FILE_PATH" value="$PROJECT_DIR$/src/test/resources/features/Sanity/PWP_Loader.feature" />
-      <option name="GLUE" value="com.DmartLabs.stepdefinitions" />
-      <option name="MAIN_CLASS_NAME" value="io.cucumber.core.cli.Main" />
+    <configuration name="TestRunner" type="TestNG" temporary="true" nameIsGenerated="true">
       <module name="PWP_MobileAutomationFramework" />
-      <option name="NAME_FILTER" value="^Load all the Deliveries into trucks$" />
-      <option name="PROGRAM_PARAMETERS" value=" --plugin org.jetbrains.plugins.cucumber.java.run.CucumberJvm5SMFormatter --name &quot;^Load all the Deliveries into trucks$&quot;" />
-      <option name="SUGGESTED_NAME" value="Scenario: Load all the Deliveries into trucks" />
-      <option name="WORKING_DIRECTORY" value="$MODULE_WORKING_DIR$" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="io.cucumber.core.cli.*" />
+          <option name="PATTERN" value="com.DmartLabs.bdd.Runner.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
+      <option name="PACKAGE_NAME" value="com.DmartLabs.bdd.Runner" />
+      <option name="MAIN_CLASS_NAME" value="com.DmartLabs.bdd.Runner.TestRunner" />
+      <option name="TEST_OBJECT" value="CLASS" />
+      <properties />
+      <listeners />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
     <list>
-      <item itemvalue="Cucumber Java.Scenario: Load BOX type delivery into the truck" />
-      <item itemvalue="Cucumber Java.Scenario: Give the exception for boxes and Load BOX type delivery into the truck" />
-      <item itemvalue="Cucumber Java.Scenario: Load all the Deliveries into trucks" />
-      <item itemvalue="Cucumber Java.Feature: 4_PickerBoxTypeFlow_Online" />
-      <item itemvalue="Cucumber Java.Feature: 1_PWP_PickerAndLoaderFlow_Online" />
+      <item itemvalue="TestNG.TestRunner" />
+      <item itemvalue="Cucumber Java.Scenario: pick the Picker1SevenItemsAndLoadBoxAndDispatchType" />
+      <item itemvalue="Cucumber Java.Scenario: pick the Picker1SevenItemsAndLoadBoxAndDispatchType (1)" />
+      <item itemvalue="Cucumber Java.Scenario: One Delivery Two HUs" />
+      <item itemvalue="Cucumber Java.Scenario: pick the items with invalid quantity" />
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="Cucumber Java.Feature: 1_PWP_PickerAndLoaderFlow_Online" />
-        <item itemvalue="Cucumber Java.Feature: 4_PickerBoxTypeFlow_Online" />
-        <item itemvalue="Cucumber Java.Scenario: Load all the Deliveries into trucks" />
-        <item itemvalue="Cucumber Java.Scenario: Give the exception for boxes and Load BOX type delivery into the truck" />
-        <item itemvalue="Cucumber Java.Scenario: Load BOX type delivery into the truck" />
+        <item itemvalue="Cucumber Java.Scenario: pick the Picker1SevenItemsAndLoadBoxAndDispatchType" />
+        <item itemvalue="Cucumber Java.Scenario: pick the items with invalid quantity" />
+        <item itemvalue="Cucumber Java.Scenario: One Delivery Two HUs" />
+        <item itemvalue="Cucumber Java.Scenario: pick the Picker1SevenItemsAndLoadBoxAndDispatchType (1)" />
+        <item itemvalue="TestNG.TestRunner" />
       </list>
     </recent_temporary>
   </component>

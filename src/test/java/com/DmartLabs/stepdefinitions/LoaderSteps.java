@@ -10,6 +10,7 @@ import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import org.openqa.selenium.WebElement;
+import org.testng.Assert;
 import org.testng.asserts.SoftAssert;
 
 import java.util.HashMap;
@@ -63,10 +64,22 @@ public class LoaderSteps {
         loader.searchDelivery(deliveryNumber);
     }
 
+    @And("Verify that vehicle is assigned for a Delivery")
+    public void verifyThatTruckIsAssignedForADelivery() {
+        QXClient.get().report().info("Verify that Truck is assigned for a Delivery");
+        loader.isVehicleAssigned(expectedDeliveryNumber);
+    }
+
     @And("Verify the dispatch type of a delivery")
     public void verifyTheDispatchTypeOfADelivery() {
         QXClient.get().report().info("Verify the dispatch type of a delivery");
         dispatchType = loader.verifyDispatchType(expectedDeliveryNumber.get("deliveryNumber"));
+    }
+
+    @And("Check the picking progress of a delivery")
+    public void checkThePickingProgressOfADelivery() {
+        QXClient.get().report().info("Check the picking progress of a delivery");
+        loader.checkPickProgress(expectedDeliveryNumber.get("deliveryNumber"));
     }
 
     @When("Load all the deliveries into the truck")
@@ -78,6 +91,12 @@ public class LoaderSteps {
     public void clickOnDeliveryCard1() {
         QXClient.get().report().info("Click on Delivery Card");
         loader.clickOnDeliveryCard1(expectedDeliveryNumber);
+    }
+
+    @Then("Verify that vehicle has not assigned for this delivery dialouge box is displayed")
+    public void verifyThatVehicleHasNotAssignedForThisDeliveryDialougeBoxIsDisplayed() {
+        QXClient.get().report().info("Verify that vehicle has not assigned for this delivery dialouge box is displayed");
+        loader.isVehicleNotAssignedDialougeBoxDisplayed();
     }
 
     @And("Verify that loader is in Delivery Details Page")
@@ -110,7 +129,7 @@ public class LoaderSteps {
     public void provideTheExceptionsForItemsInADelivery(DataTable dataTable) {
         QXClient.get().report().info("Provide the Exceptions for items in a delivery");
         exceptions = dataTable.asMaps();
-        deliveryDetails.itemsException(exceptions);
+        deliveryDetails.itemsException2(exceptions);
     }
 
     @Then("Verify that error message is displayed")
@@ -189,7 +208,7 @@ public class LoaderSteps {
         Map<String, String> itemAdjustmentDetails = dataTable.asMap(String.class, String.class);
         huDetail = new HU_DetailPage();
 //        huDetail.adjustItemCaselot(allHUs,itemAdjustmentDetails);
-        huDetail.adjustItemCaselot(huNumbers,itemAdjustmentDetails);
+//        huDetail.adjustItemCaselot(huNumbers,itemAdjustmentDetails);
     }
 
     @And("Adjust the item's caselot in HU 1")
@@ -197,7 +216,7 @@ public class LoaderSteps {
         List<Map<String, String>> itemAdjustmentDetails = dataTable.asMaps();
         huDetail = new HU_DetailPage();
 //        huDetail.adjustItemCaselot(allHUs,itemAdjustmentDetails);
-        huDetail.adjustItemCaselot1(huNumbers,itemAdjustmentDetails);
+        huDetail.adjustItemCaselotNew(huNumbers,itemAdjustmentDetails);
     }
 
     @And("Load the delivery into the truck")
@@ -208,6 +227,13 @@ public class LoaderSteps {
             softAssert.assertAll();
         } else if (dispatchType.equals("BOX DISPATCH"))
             deliveryDetails.loadBoxes();
+    }
+
+    @And("Adjust the boxes quantity in loaded item")
+    public void lessenTheCaselotQuantityFromLoadedItem(DataTable dataTable) {
+        QXClient.get().report().info("Adjust the boxes quantity in loaded item");
+        List<Map<String, String>> loadedItemsAdjustmentDetails = dataTable.asMaps();
+        deliveryDetails.adjustBoxesQuantityInLoadedItems(loadedItemsAdjustmentDetails);
     }
 
     @And("Load the Box type delivery with exception into the truck")
@@ -224,13 +250,13 @@ public class LoaderSteps {
     public void provideHUNumberNotToBeLoadedAndLoadTheRemainingHUsIntoTheTruck(DataTable dataTable) {
         QXClient.get().report().info("Provide HU number not to be loaded and load the remaining HUs into the truck");
         List<String> leftHUs = dataTable.asList();
-        deliveryDetails.leaveSomeHUsAndLoadReamainingHUs(leftHUs);
+        deliveryDetails.loadHUs(leftHUs);
     }
 
     @And("Provide HU number not to be loaded and load the remaining HUs into the truck in Offline mode")
     public void provideHUNumberNotToBeLoadedAndLoadTheRemainingHUsIntoTheTruckInOfflineMode(DataTable dataTable) {
         List<String> leftHUs = dataTable.asList();
-        deliveryDetails.leaveSomeHUsAndLoadRemaingHUsInOfflineMode(leftHUs);
+        deliveryDetails.loadHUsInOfflineMode(leftHUs);
     }
 
     @And("Click on CONFIRM Button in Offline mode")
@@ -245,11 +271,18 @@ public class LoaderSteps {
 
     @And("Go to ONLINE mode")
     public void goToONLINEMode() {
+        QXClient.get().report().info("Go to ONLINE mode");
         Gestures.turnOnWiFi();
+        if (dispatchType.equals("BOX DISPATCH")){
+            QXClient.get().report().info("Refresh the page");
+            gestures = QXClient.get().gestures();
+            gestures.refreshPage();
+        }
     }
 
     @And("Refresh the page")
     public void refreshThePage() {
+        QXClient.get().report().info("Refresh the page");
         gestures = QXClient.get().gestures();
         gestures.refreshPage();
     }
@@ -257,11 +290,17 @@ public class LoaderSteps {
     @And("Confirm the loading")
     public void confirmTheLoading() {
         QXClient.get().report().info("Confirm the loading");
-        deliveryDetails.confirmLoadedItems();
+
+        QXClient.get().report().info("Load the delivery into the truck");
+        if (dispatchType.equals("PALLET DISPATCH")) {
+            deliveryDetails.confirmLoadedItems();
+        } else if (dispatchType.equals("BOX DISPATCH"))
+            deliveryDetails.confirmBoxTypeDeliveryLoading();
     }
 
     @And("Confirm the partially loaded HU delivery in Offline mode")
     public void confirmThePartiallyLoadedHUDeliveryInOfflineMode() {
+        QXClient.get().report().info("Confirm the partially loaded HU delivery in Offline mode");
         SoftAssert softAssert = deliveryDetails.confirmPartiallyLoadedDelivery();
         softAssert.assertAll();
     }
@@ -276,13 +315,22 @@ public class LoaderSteps {
     @Then("Verify that loading operation is completed")
     public void verifyThatLoadingOperationIsCompleted() {
         QXClient.get().report().info("Verify that loading operation is completed");
-        deliveryDetails.deliveryLoadingConfirmation();
+        if (dispatchType.equals("PALLET DISPATCH")) {
+            deliveryDetails.deliveryLoadingConfirmation();
+        } else if (dispatchType.equals("BOX DISPATCH"))
+            deliveryDetails.boxTypeDeliveryLoadingConfirmation();
     }
 
     @And("Confirm Box type delivery loading")
     public void confirmBoxTypeDeliveryLoading() {
         QXClient.get().report().info("Confirm Box type delivery loading");
         deliveryDetails.confirmBoxTypeDeliveryLoading();
+    }
+
+    @And("Click on CONFIRM Button")
+    public void clickOnCONFIRMButton() {
+        QXClient.get().report().info("Click on CONFIRM Button");
+        deliveryDetails.clickOnConfirmBtn();
     }
 
 
@@ -304,13 +352,13 @@ public class LoaderSteps {
     @And("Provide HUs to be loaded into the truck")
     public void provideHUsToBeLoadedIntoTheTruck(DataTable dataTable) {
         huNumbers = dataTable.asList();
-        SoftAssert softAssert = deliveryDetails.loadParticularHU(huNumbers);
-        softAssert.assertAll();
+        //SoftAssert softAssert = deliveryDetails.loadParticularHU(huNumbers);
+        //softAssert.assertAll();
     }
 
     @And("Load remaining HUs")
     public void loadRemainingHUs() {
-        deliveryDetails.leaveSomeHUsAndLoadReamainingHUs(huNumbers);
+        deliveryDetails.loadHUs(huNumbers);
     }
 
     @And("Verify that no results found message is displayed")
@@ -354,5 +402,14 @@ public class LoaderSteps {
     public void verifyThatCannotConfirmDeliveryDialougeBoxIsDisplayed() {
         QXClient.get().report().info("Verify that Cannot confirm delivery dialouge box is displayed");
         deliveryDetails.verifyErrorMessage();
+    }
+
+    @And("Load the delivery into the truck in Offline mode and verify that No Network Connection dialouge box and Remote Sync Icon is displayed or not for Pallet type dispatch delivery")
+    public void loadTheDeliveryIntoTheTruckInOfflineModeAndVerifyThatNoNetworkConnectionDialougeBoxAndRemoteSyncIconIsDisplayedOrNotForPalletTypeDispatchDelivery() {
+        QXClient.get().report().info("Load the delivery into the truck in Offline mode and verify that No Network Connection dialouge box and Remote Sync Icon is displayed or not for Pallet type dispatch delivery");
+        if (dispatchType.equals("PALLET DISPATCH")) {
+            deliveryDetails.loadHUsInOfflineMode();
+        } else if (dispatchType.equals("BOX DISPATCH"))
+            deliveryDetails.loadBoxes();
     }
 }

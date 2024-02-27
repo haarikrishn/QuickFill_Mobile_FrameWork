@@ -13,9 +13,8 @@ import org.openqa.selenium.support.PageFactory;
 import org.testng.Assert;
 import org.testng.asserts.SoftAssert;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Map;
+import java.nio.charset.StandardCharsets;
+import java.util.*;
 
 public class DeliveryDetailsPage {
 
@@ -37,6 +36,10 @@ public class DeliveryDetailsPage {
     @FindBy(id="com.dmartlabs.pwp:id/txt_lia_item_desc")
     private List<MobileElement> allItems;
 
+    @FindBy(id = "com.dmartlabs.pwp:id/txt_lia_ean_txt")
+    private List<MobileElement> boxTypeDeliveryAllEans;
+
+    private String itemFromEanXpath = "//android.widget.TextView[@text='%s']/preceding-sibling::android.widget.TextView[@resource-id='com.dmartlabs.pwp:id/txt_lia_item_desc']";
     private String exceptionsBtnXpath = "//android.widget.TextView[@text='%s']/following-sibling::android.widget.Button";
 
     @FindBy(id = "com.dmartlabs.pwp:id/txt_dd_article_loaded_count")
@@ -53,6 +56,9 @@ public class DeliveryDetailsPage {
 
     @FindBy(id = "com.dmartlabs.pwp:id/edt_dd_search")
     private MobileElement searchBox;
+
+    @FindBy(id = "com.dmartlabs.pwp:id/iv_da_clear_search")
+    private MobileElement removeSearchBox;
 
     @FindBy(id = "com.dmartlabs.pwp:id/txt_lia_caselot_count")
     private MobileElement totalBoxesCount;
@@ -142,6 +148,8 @@ public class DeliveryDetailsPage {
     
     String remoteSyncIconXpath = "//android.widget.TextView[@text='%s']/following-sibling::android.widget.ImageView";
 
+    String eanXpath = "//android.widget.TextView[@text='%s']/following-sibling::android.widget.TextView[@resource-id='com.dmartlabs.pwp:id/txt_lia_ean_txt']";
+
     @FindBy(id = "com.dmartlabs.pwp:id/iv_lia_remote_sync")
     private MobileElement remoteSyncIconForMultiUserLoading;
 
@@ -155,6 +163,11 @@ public class DeliveryDetailsPage {
     private MobileElement boxDeliveryConfirmationDialougeBox;
 
     private List<String> deliveryAllItems = new ArrayList<>();
+
+    private LinkedHashSet<String> huNumberss = new LinkedHashSet<>();
+    private SoftAssert softAssert = new SoftAssert();
+    private List<String> loadedHus = new ArrayList<>();
+
     private static List<Map<String, String>> itemsExceptions;
     private boolean isScroll = true;
     private int scrollCount = 0;
@@ -162,11 +175,22 @@ public class DeliveryDetailsPage {
     private static int expectedLoadedBoxes=0;
     private static int totalExpectedExceptionCount=0;
 
+    private static LinkedHashSet<String> itemsLists = new LinkedHashSet<>();
+    private static List<String> loadedItems = new ArrayList<>();
+    private static List<Map<String, String>> unloadableEans = new ArrayList<>();
+    private static int unloadedArticles = 0;
+
 
     public List<String> isDeliverDetailsPageDisplayed(Map<String, String> expectedDeliveryNumber){
+        try {
+            Thread.sleep(5000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
         gestures = QXClient.get().gestures();
-        MobileElement deliveryDetails = (MobileElement) gestures.waitForElementToAppear(deliveryNumber);
-        String actualDeliveryNumber = deliveryDetails.getText();
+        gestures.waitForElementToVisible(deliveryNumber);
+        String actualDeliveryNumber = deliveryNumber.getText();
+
         if (actualDeliveryNumber.equals(expectedDeliveryNumber.get("deliveryNumber")))
             QXClient.get().report().pass("Delivery Detail page is displayed");
         else
@@ -174,6 +198,11 @@ public class DeliveryDetailsPage {
 
         Assert.assertEquals(actualDeliveryNumber, expectedDeliveryNumber.get("deliveryNumber"));
         huNumbers = new ArrayList<>();
+        try {
+            Thread.sleep(500);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
         for (WebElement hu:allHUs){
             huNumbers.add(hu.getText().trim());
         }
@@ -182,6 +211,11 @@ public class DeliveryDetailsPage {
     }
 
     public List<String> isDeliverDetailsPageDisplayed(String deliveryNumber){
+        try {
+            Thread.sleep(5000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
         gestures = QXClient.get().gestures();
         MobileElement deliveryDetails = (MobileElement) gestures.waitForElementToAppear(this.deliveryNumber);
         String actualDeliveryNumber = deliveryDetails.getText();
@@ -290,20 +324,79 @@ public class DeliveryDetailsPage {
 //        return softAssert;
 //    }
 
+//    public SoftAssert loadHUs() {
+//        AppiumDriver driver = QXClient.get().driver();
+//        List<String> huNumbers = new ArrayList<>();
+//        SoftAssert softAssert = new SoftAssert();
+//        gestures = QXClient.get().gestures();
+//        allHUs = gestures.waitForVisiblityOfAllWebElement(allHUs);
+//
+//        for (int i = 0; i < allHUs.size(); i++) {
+//                String huNumber = allHUs.get(i).getText();
+//                huNumbers.add(huNumber);
+//        }
+//
+//        for (String huNumber : huNumbers) {
+//            boolean result;
+//
+//            try {
+//                Thread.sleep(3000);
+//                MobileElement loadBtn = getMobileElementFromDynamicXpath(loadBtnXpath, huNumber);
+//                loadBtn.click();
+//                gestures.waitForElementToVisible(yesBtn);
+//                yesBtn.click();
+//                Thread.sleep(1000);
+//                MobileElement huStatus = getMobileElementFromDynamicXpath(huStatusXpath, huNumber);
+//                result = gestures.isElementPresent(huStatus);
+//
+//                if (result)
+//                    QXClient.get().report().pass("HU is loaded into the truck");
+//                else
+//                    QXClient.get().report().fail("HU is not loaded into the truck");
+//
+//                softAssert.assertTrue(result, "item is not loaded");
+//            } catch (NoSuchElementException nse) {
+//                MobileElement huStatus = getMobileElementFromDynamicXpath(huStatusXpath, huNumber);
+//                result = gestures.isElementPresent(huStatus);
+//
+//                if (result)
+//                    QXClient.get().report().pass("HU is loaded into the truck");
+//                else
+//                    QXClient.get().report().fail("HU is not loaded into the truck");
+//
+//                softAssert.assertTrue(result, "item is not loaded");
+//                if (result)
+//                    continue;
+//            } catch (Exception e) {
+//                //e.printStackTrace();
+//            }
+//        }
+//        return softAssert;
+//    }
+
+
     public SoftAssert loadHUs() {
         AppiumDriver driver = QXClient.get().driver();
-        List<String> huNumbers = new ArrayList<>();
-        SoftAssert softAssert = new SoftAssert();
         gestures = QXClient.get().gestures();
         allHUs = gestures.waitForVisiblityOfAllWebElement(allHUs);
 
-        for (int i = 0; i < allHUs.size(); i++) {
-                String huNumber = allHUs.get(i).getText();
-                huNumbers.add(huNumber);
+        boolean flag = true;
+        try {
+            Thread.sleep(500L);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
         }
 
-        for (String huNumber : huNumbers) {
+        for (int i = 0; i < allHUs.size(); i++) {
+            flag = huNumberss.add(allHUs.get(i).getText());
+            if (!flag)
+                break;
+        }
+
+        for (String huNumber : huNumberss) {
             boolean result;
+            if (loadedHus.contains(huNumber))
+                continue;
 
             try {
                 Thread.sleep(3000);
@@ -311,15 +404,18 @@ public class DeliveryDetailsPage {
                 loadBtn.click();
                 gestures.waitForElementToVisible(yesBtn);
                 yesBtn.click();
+                searchBox.sendKeys(huNumber.split(" ")[1]);
                 Thread.sleep(1000);
                 MobileElement huStatus = getMobileElementFromDynamicXpath(huStatusXpath, huNumber);
                 result = gestures.isElementPresent(huStatus);
 
-                if (result)
+                if (result) {
+                    loadedHus.add(huNumber);
                     QXClient.get().report().pass("HU is loaded into the truck");
-                else
+                } else
                     QXClient.get().report().fail("HU is not loaded into the truck");
 
+                searchBox.clear();
                 softAssert.assertTrue(result, "item is not loaded");
             } catch (NoSuchElementException nse) {
                 MobileElement huStatus = getMobileElementFromDynamicXpath(huStatusXpath, huNumber);
@@ -337,63 +433,120 @@ public class DeliveryDetailsPage {
                 //e.printStackTrace();
             }
         }
+        if (flag){
+            loadHUs();
+        }
+        return softAssert;
+    }
+
+    public SoftAssert loadHUs(List<String> leftHus) {
+        AppiumDriver driver = QXClient.get().driver();
+        gestures = QXClient.get().gestures();
+        allHUs = gestures.waitForVisiblityOfAllWebElement(allHUs);
+
+        boolean flag = true;
+
+        for (int i = 0; i < allHUs.size(); i++) {
+            flag = huNumberss.add(allHUs.get(i).getText());
+            if (!flag)
+                break;
+        }
+
+        for (String huNumber : huNumberss) {
+            boolean result;
+
+            if (loadedHus.contains(huNumber))
+                continue;
+
+            try {
+                if (leftHus.contains(huNumber))
+                    continue;
+                Thread.sleep(3000);
+                MobileElement loadBtn = getMobileElementFromDynamicXpath(loadBtnXpath, huNumber);
+                loadBtn.click();
+                gestures.waitForElementToVisible(yesBtn);
+                yesBtn.click();
+                searchBox.sendKeys(huNumber.split(" ")[1]);
+                Thread.sleep(1000);
+                MobileElement huStatus = getMobileElementFromDynamicXpath(huStatusXpath, huNumber);
+                result = gestures.isElementPresent(huStatus);
+
+                if (result) {
+                    loadedHus.add(huNumber);
+                    QXClient.get().report().pass("HU is loaded into the truck");
+                } else
+                    QXClient.get().report().fail("HU is not loaded into the truck");
+
+                searchBox.clear();
+                softAssert.assertTrue(result, "item is not loaded");
+            } catch (NoSuchElementException nse) {
+                MobileElement huStatus = getMobileElementFromDynamicXpath(huStatusXpath, huNumber);
+                result = gestures.isElementPresent(huStatus);
+
+                if (result)
+                    QXClient.get().report().pass("HU is loaded into the truck");
+                else
+                    QXClient.get().report().fail("HU is not loaded into the truck");
+
+                softAssert.assertTrue(result, "item is not loaded");
+                if (result)
+                    continue;
+            } catch (Exception e) {
+                //e.printStackTrace();
+            }
+        }
+        if (flag){
+            loadHUs(leftHus);
+        }
         return softAssert;
     }
 
     public SoftAssert loadHUsInOfflineMode() {
         AppiumDriver driver = QXClient.get().driver();
-        List<String> huNumbers = new ArrayList<>();
-        SoftAssert softAssert = new SoftAssert();
-//        List<MobileElement> allHUs;
-//        try {
-//            allHUs.get(0);
-//        } catch (StaleElementReferenceException sRE){
-//            DeliveryDetailsPage deliveryDetails = new DeliveryDetailsPage();
-//            allHUs = (List<MobileElement>) driver.findElements(By.xpath("//android.widget.TextView[@resource-id='com.dmartlabs.pwp:id/txt_lihu_hu_number']"));
-//        }
-
-//        try {
-//            allHUs = (List<MobileElement>) driver.findElements(By.xpath("//android.widget.TextView[@resource-id='com.dmartlabs.pwp:id/txt_lihu_hu_number']"));
-//            for (int i = 0; i < allHUs.size(); i++) {
-//                String huNumber = allHUs.get(i).getText();
-//                huNumbers.add(huNumber);
-//            }
-//        } catch (StaleElementReferenceException sre){
-//            System.out.println("XXXXXXXXXXXXXXXXXXXXXX inside StaleElementReferenceException catch bloc ");
-//            allHUs = (List<MobileElement>) driver.findElements(By.xpath("//android.widget.TextView[@resource-id='com.dmartlabs.pwp:id/txt_lihu_hu_number']"));
-//            for (int i = 0; i < allHUs.size(); i++) {
-//                String huNumber = allHUs.get(i).getText();
-//                huNumbers.add(huNumber);
-//            }
-//        }
-
         gestures = QXClient.get().gestures();
         allHUs = gestures.waitForVisiblityOfAllWebElement(allHUs);
 
+        boolean flag = true;
+
         for (int i = 0; i < allHUs.size(); i++) {
-            String huNumber = allHUs.get(i).getText();
-            huNumbers.add(huNumber);
+            flag = huNumberss.add(allHUs.get(i).getText());
+            if (!flag)
+                break;
         }
 
-        for (String huNumber : huNumbers) {
+        for (String huNumber : huNumberss) {
             boolean result;
+            if (loadedHus.contains(huNumber))
+                continue;
 
             try {
+                Thread.sleep(3000);
                 MobileElement loadBtn = getMobileElementFromDynamicXpath(loadBtnXpath, huNumber);
                 loadBtn.click();
                 gestures.waitForElementToVisible(yesBtn);
                 yesBtn.click();
+                Thread.sleep(300L);
                 Assert.assertTrue(gestures.isElementPresent(noNetworkConnectionDialougeBox),"No network connection dialouge box is not displayed");
                 //Thread.sleep(500);
 //                gestures.waitForVisbilityOfWebElement(okBtn).click();
 //                gestures.waitForVisbilityOfWebElement(okBtn1).click();
                 gestures.isElementPresent(okBtn);
                 okBtn.click();
-                gestures.isElementPresent(okBtn1);
-                okBtn1.click();
+                if (gestures.isElementPresent(okBtn1))
+                    okBtn1.click();
                 Thread.sleep(500);
+                searchBox.sendKeys(huNumber.split(" ")[1]);
+                Thread.sleep(1000);
                 MobileElement huStatus = getMobileElementFromDynamicXpath(huStatusXpath, huNumber);
                 result = gestures.isElementPresent(huStatus);
+
+                if (result) {
+                    loadedHus.add(huNumber);
+                    QXClient.get().report().pass("HU is loaded into the truck");
+                } else
+                    QXClient.get().report().fail("HU is not loaded into the truck");
+
+                searchBox.clear();
                 softAssert.assertTrue(result, "item is not loaded");
             } catch (NoSuchElementException nse) {
                 System.out.println("XXXXXXXXXXXXXXXXXXXXXXX ============================> NSE Catch Block");
@@ -406,7 +559,9 @@ public class DeliveryDetailsPage {
                 //e.printStackTrace();
             }
         }
-//        MobileElement remoteSyncIcon = getMobileElementFromDynamicXpath(remoteSyncIconXpath, huNumber);
+        if (flag){
+            loadHUsInOfflineMode();
+        }
         Assert.assertTrue(gestures.isElementPresent(remoteSyncIcon),"remote sync icon is not displayed");
         remoteSyncIcon.click();
         Assert.assertTrue(gestures.isElementPresent(unableToConnectDialougeBox));
@@ -414,283 +569,384 @@ public class DeliveryDetailsPage {
         return softAssert;
     }
 
-    public SoftAssert loadHUs2() {
+    public SoftAssert loadHUsInOfflineMode(List<String> leftHus) {
         AppiumDriver driver = QXClient.get().driver();
-        List<String> huNumbers = new ArrayList<>();
-        SoftAssert softAssert = new SoftAssert();
-//        List<MobileElement> allHUs;
-//        try {
-//            allHUs.get(0);
-//        } catch (StaleElementReferenceException sRE){
-//            DeliveryDetailsPage deliveryDetails = new DeliveryDetailsPage();
-//            allHUs = (List<MobileElement>) driver.findElements(By.xpath("//android.widget.TextView[@resource-id='com.dmartlabs.pwp:id/txt_lihu_hu_number']"));
-//        }
-
-//        try {
-//            allHUs = (List<MobileElement>) driver.findElements(By.xpath("//android.widget.TextView[@resource-id='com.dmartlabs.pwp:id/txt_lihu_hu_number']"));
-//            for (int i = 0; i < allHUs.size(); i++) {
-//                String huNumber = allHUs.get(i).getText();
-//                huNumbers.add(huNumber);
-//            }
-//        } catch (StaleElementReferenceException sre){
-//            System.out.println("XXXXXXXXXXXXXXXXXXXXXX inside StaleElementReferenceException catch bloc ");
-//            allHUs = (List<MobileElement>) driver.findElements(By.xpath("//android.widget.TextView[@resource-id='com.dmartlabs.pwp:id/txt_lihu_hu_number']"));
-//            for (int i = 0; i < allHUs.size(); i++) {
-//                String huNumber = allHUs.get(i).getText();
-//                huNumbers.add(huNumber);
-//            }
-//        }
-
         gestures = QXClient.get().gestures();
         allHUs = gestures.waitForVisiblityOfAllWebElement(allHUs);
 
+        boolean flag = true;
+
         for (int i = 0; i < allHUs.size(); i++) {
-            String huNumber = allHUs.get(i).getText();
-            huNumbers.add(huNumber);
+            flag = huNumberss.add(allHUs.get(i).getText());
+            if (!flag)
+                break;
         }
 
-        for (String huNumber : huNumbers) {
-//            String huStatusXpath = "//android.widget.TextView[@text='" + huNumber + "']/following-sibling::android.widget.LinearLayout/descendant::android.widget.TextView[@resource-id='com.dmartlabs.pwp:id/txt_lihu_loaded_text']";
-//
-//            String loadBtnXpath = "//android.widget.TextView[@text='" + huNumber + "']/following-sibling::android.widget.LinearLayout/descendant::android.widget.Button[@text='LOAD']";
-
-
+        for (String huNumber : huNumberss) {
             boolean result;
 
+            if (loadedHus.contains(huNumber))
+                continue;
+
             try {
-                boolean emptyHU_Status = verifyThatHU_IsEmpty(huNumber);
-                if (emptyHU_Status)
+                if (leftHus.contains(huNumber))
                     continue;
-                //MobileElement loadBtn = (MobileElement) driver.findElement(By.xpath(loadBtnXpath));
                 Thread.sleep(3000);
                 MobileElement loadBtn = getMobileElementFromDynamicXpath(loadBtnXpath, huNumber);
                 loadBtn.click();
                 gestures.waitForElementToVisible(yesBtn);
                 yesBtn.click();
-                Thread.sleep(500);
-//                MobileElement huStatus = (MobileElement) driver.findElement(By.xpath(huStatusXpath));
-                MobileElement huStatus = getMobileElementFromDynamicXpath(huStatusXpath, huNumber);
-                result = gestures.isElementPresent(huStatus);
-                softAssert.assertTrue(result, "item is not loaded");
-            } catch (NoSuchElementException nse) {
-                System.out.println("XXXXXXXXXXXXXXXXXXXXXXX ============================> NSE Catch Block");
-                MobileElement huStatus = getMobileElementFromDynamicXpath(huStatusXpath, huNumber);
-                result = gestures.isElementPresent(huStatus);
-                softAssert.assertTrue(result, "item is not loaded");
-                if (result)
-                    continue;
-            } catch (Exception e) {
-                e.printStackTrace();
-            }
-        }
-        return softAssert;
-    }
-
-    public SoftAssert leaveSomeHUsAndLoadReamainingHUs(List<String> leftHus) {
-        AppiumDriver driver = QXClient.get().driver();
-        List<String> huNumbers = new ArrayList<>();
-        SoftAssert softAssert = new SoftAssert();
-//        List<MobileElement> allHUs;
-//        try {
-//            allHUs.get(0);
-//        } catch (StaleElementReferenceException sRE){
-//            DeliveryDetailsPage deliveryDetails = new DeliveryDetailsPage();
-//            allHUs = (List<MobileElement>) driver.findElements(By.xpath("//android.widget.TextView[@resource-id='com.dmartlabs.pwp:id/txt_lihu_hu_number']"));
-//        }
-
-//        try {
-//            allHUs = (List<MobileElement>) driver.findElements(By.xpath("//android.widget.TextView[@resource-id='com.dmartlabs.pwp:id/txt_lihu_hu_number']"));
-//            for (int i = 0; i < allHUs.size(); i++) {
-//                String huNumber = allHUs.get(i).getText();
-//                huNumbers.add(huNumber);
-//            }
-//        } catch (StaleElementReferenceException sre){
-//            System.out.println("XXXXXXXXXXXXXXXXXXXXXX inside StaleElementReferenceException catch bloc ");
-//            allHUs = (List<MobileElement>) driver.findElements(By.xpath("//android.widget.TextView[@resource-id='com.dmartlabs.pwp:id/txt_lihu_hu_number']"));
-//            for (int i = 0; i < allHUs.size(); i++) {
-//                String huNumber = allHUs.get(i).getText();
-//                huNumbers.add(huNumber);
-//            }
-//        }
-
-        gestures = QXClient.get().gestures();
-        allHUs = gestures.waitForVisiblityOfAllWebElement(allHUs);
-
-        for (int i = 0; i < allHUs.size(); i++) {
-            String huNumber = allHUs.get(i).getText();
-            huNumbers.add(huNumber);
-        }
-
-        for (String huNumber : huNumbers) {
-//            String huStatusXpath = "//android.widget.TextView[@text='" + huNumber + "']/following-sibling::android.widget.LinearLayout/descendant::android.widget.TextView[@resource-id='com.dmartlabs.pwp:id/txt_lihu_loaded_text']";
-//
-//            String loadBtnXpath = "//android.widget.TextView[@text='" + huNumber + "']/following-sibling::android.widget.LinearLayout/descendant::android.widget.Button[@text='LOAD']";
-
-
-            boolean result;
-
-            try {
-                //MobileElement loadBtn = (MobileElement) driver.findElement(By.xpath(loadBtnXpath));
-                Thread.sleep(3000);
-                MobileElement loadBtn = getMobileElementFromDynamicXpath(loadBtnXpath, huNumber);
-                if (leftHus.contains(huNumber)){
-                    continue;
-                }
-                loadBtn.click();
-                gestures.waitForElementToVisible(yesBtn);
-                yesBtn.click();
-                Thread.sleep(500);
-//                MobileElement huStatus = (MobileElement) driver.findElement(By.xpath(huStatusXpath));
-                MobileElement huStatus = getMobileElementFromDynamicXpath(huStatusXpath, huNumber);
-                result = gestures.isElementPresent(huStatus);
-                softAssert.assertTrue(result, "item is not loaded");
-            } catch (NoSuchElementException nse) {
-                System.out.println("XXXXXXXXXXXXXXXXXXXXXXX ============================> NSE Catch Block");
-                MobileElement huStatus = getMobileElementFromDynamicXpath(huStatusXpath, huNumber);
-                result = gestures.isElementPresent(huStatus);
-                softAssert.assertTrue(result, "item is not loaded");
-                if (result)
-                    continue;
-            } catch (Exception e) {
-                e.printStackTrace();
-            }
-        }
-        return softAssert;
-    }
-
-    public SoftAssert leaveSomeHUsAndLoadRemaingHUsInOfflineMode(List<String> leftHus) {
-        AppiumDriver driver = QXClient.get().driver();
-        List<String> huNumbers = new ArrayList<>();
-        SoftAssert softAssert = new SoftAssert();
-//        List<MobileElement> allHUs;
-//        try {
-//            allHUs.get(0);
-//        } catch (StaleElementReferenceException sRE){
-//            DeliveryDetailsPage deliveryDetails = new DeliveryDetailsPage();
-//            allHUs = (List<MobileElement>) driver.findElements(By.xpath("//android.widget.TextView[@resource-id='com.dmartlabs.pwp:id/txt_lihu_hu_number']"));
-//        }
-
-//        try {
-//            allHUs = (List<MobileElement>) driver.findElements(By.xpath("//android.widget.TextView[@resource-id='com.dmartlabs.pwp:id/txt_lihu_hu_number']"));
-//            for (int i = 0; i < allHUs.size(); i++) {
-//                String huNumber = allHUs.get(i).getText();
-//                huNumbers.add(huNumber);
-//            }
-//        } catch (StaleElementReferenceException sre){
-//            System.out.println("XXXXXXXXXXXXXXXXXXXXXX inside StaleElementReferenceException catch bloc ");
-//            allHUs = (List<MobileElement>) driver.findElements(By.xpath("//android.widget.TextView[@resource-id='com.dmartlabs.pwp:id/txt_lihu_hu_number']"));
-//            for (int i = 0; i < allHUs.size(); i++) {
-//                String huNumber = allHUs.get(i).getText();
-//                huNumbers.add(huNumber);
-//            }
-//        }
-
-        gestures = QXClient.get().gestures();
-        allHUs = gestures.waitForVisiblityOfAllWebElement(allHUs);
-
-        for (int i = 0; i < allHUs.size(); i++) {
-            String huNumber = allHUs.get(i).getText();
-            huNumbers.add(huNumber);
-        }
-
-        for (String huNumber : huNumbers) {
-//            String huStatusXpath = "//android.widget.TextView[@text='" + huNumber + "']/following-sibling::android.widget.LinearLayout/descendant::android.widget.TextView[@resource-id='com.dmartlabs.pwp:id/txt_lihu_loaded_text']";
-//
-//            String loadBtnXpath = "//android.widget.TextView[@text='" + huNumber + "']/following-sibling::android.widget.LinearLayout/descendant::android.widget.Button[@text='LOAD']";
-
-
-            boolean result;
-
-            try {
-                //MobileElement loadBtn = (MobileElement) driver.findElement(By.xpath(loadBtnXpath));
-                Thread.sleep(3000);
-                MobileElement loadBtn = getMobileElementFromDynamicXpath(loadBtnXpath, huNumber);
-                if (leftHus.contains(huNumber)){
-                    continue;
-                }
-                loadBtn.click();
-                gestures.waitForElementToVisible(yesBtn);
-                yesBtn.click();
+                Thread.sleep(300L);
                 Assert.assertTrue(gestures.isElementPresent(noNetworkConnectionDialougeBox),"No network connection dialouge box is not displayed");
-                //Thread.sleep(500);
-//                gestures.waitForVisbilityOfWebElement(okBtn).click();
-//                gestures.waitForVisbilityOfWebElement(okBtn1).click();
                 gestures.isElementPresent(okBtn);
                 okBtn.click();
+                if (gestures.isElementPresent(okBtn1))
+                    okBtn1.click();
+                Thread.sleep(500);
+                searchBox.sendKeys(huNumber.split(" ")[1]);
+                Thread.sleep(1000);
+                MobileElement huStatus = getMobileElementFromDynamicXpath(huStatusXpath, huNumber);
+                result = gestures.isElementPresent(huStatus);
+
+                if (result) {
+                    loadedHus.add(huNumber);
+                    QXClient.get().report().pass("HU is loaded into the truck");
+                } else
+                    QXClient.get().report().fail("HU is not loaded into the truck");
+
+                searchBox.clear();
+                softAssert.assertTrue(result, "item is not loaded");
+            } catch (NoSuchElementException nse) {
+                MobileElement huStatus = getMobileElementFromDynamicXpath(huStatusXpath, huNumber);
+                result = gestures.isElementPresent(huStatus);
+
+                if (result)
+                    QXClient.get().report().pass("HU is loaded into the truck");
+                else
+                    QXClient.get().report().fail("HU is not loaded into the truck");
+
+                softAssert.assertTrue(result, "item is not loaded");
+                if (result)
+                    continue;
+            } catch (Exception e) {
+                //e.printStackTrace();
+            }
+        }
+        if (flag){
+            loadHUsInOfflineMode(leftHus);
+        }
+        Assert.assertTrue(gestures.isElementPresent(remoteSyncIcon),"remote sync icon is not displayed");
+        remoteSyncIcon.click();
+        Assert.assertTrue(gestures.isElementPresent(unableToConnectDialougeBox));
+        unableToConnectDialougeBoxOkBtn.click();
+        return softAssert;
+    }
+
+//    public SoftAssert loadHUsInOfflineMode() {
+//        AppiumDriver driver = QXClient.get().driver();
+//        List<String> huNumbers = new ArrayList<>();
+//        SoftAssert softAssert = new SoftAssert();
+//
+//        gestures = QXClient.get().gestures();
+//        allHUs = gestures.waitForVisiblityOfAllWebElement(allHUs);
+//
+//        for (int i = 0; i < allHUs.size(); i++) {
+//            String huNumber = allHUs.get(i).getText();
+//            huNumbers.add(huNumber);
+//        }
+//
+//        for (String huNumber : huNumbers) {
+//            boolean result;
+//
+//            try {
+//                MobileElement loadBtn = getMobileElementFromDynamicXpath(loadBtnXpath, huNumber);
+//                loadBtn.click();
+//                gestures.waitForElementToVisible(yesBtn);
+//                yesBtn.click();
+//                Assert.assertTrue(gestures.isElementPresent(noNetworkConnectionDialougeBox),"No network connection dialouge box is not displayed");
+//                //Thread.sleep(500);
+////                gestures.waitForVisbilityOfWebElement(okBtn).click();
+////                gestures.waitForVisbilityOfWebElement(okBtn1).click();
+//                gestures.isElementPresent(okBtn);
+//                okBtn.click();
 //                gestures.isElementPresent(okBtn1);
 //                okBtn1.click();
-                Thread.sleep(500);
-//                MobileElement huStatus = (MobileElement) driver.findElement(By.xpath(huStatusXpath));
-                MobileElement huStatus = getMobileElementFromDynamicXpath(huStatusXpath, huNumber);
-                result = gestures.isElementPresent(huStatus);
-                softAssert.assertTrue(result, "item is not loaded");
-            } catch (NoSuchElementException nse) {
-                System.out.println("XXXXXXXXXXXXXXXXXXXXXXX ============================> NSE Catch Block");
-                MobileElement huStatus = getMobileElementFromDynamicXpath(huStatusXpath, huNumber);
-                result = gestures.isElementPresent(huStatus);
-                softAssert.assertTrue(result, "item is not loaded");
-                if (result)
-                    continue;
-            } catch (Exception e) {
-                e.printStackTrace();
-            }
-        }
-        return softAssert;
-    }
+//                Thread.sleep(500);
+//                MobileElement huStatus = getMobileElementFromDynamicXpath(huStatusXpath, huNumber);
+//                result = gestures.isElementPresent(huStatus);
+//                softAssert.assertTrue(result, "item is not loaded");
+//            } catch (NoSuchElementException nse) {
+//                System.out.println("XXXXXXXXXXXXXXXXXXXXXXX ============================> NSE Catch Block");
+//                MobileElement huStatus = getMobileElementFromDynamicXpath(huStatusXpath, huNumber);
+//                result = gestures.isElementPresent(huStatus);
+//                softAssert.assertTrue(result, "item is not loaded");
+//                if (result)
+//                    continue;
+//            } catch (Exception e) {
+//                //e.printStackTrace();
+//            }
+//        }
+////        MobileElement remoteSyncIcon = getMobileElementFromDynamicXpath(remoteSyncIconXpath, huNumber);
+//        Assert.assertTrue(gestures.isElementPresent(remoteSyncIcon),"remote sync icon is not displayed");
+//        remoteSyncIcon.click();
+//        Assert.assertTrue(gestures.isElementPresent(unableToConnectDialougeBox));
+//        unableToConnectDialougeBoxOkBtn.click();
+//        return softAssert;
+//    }
 
-    public SoftAssert loadParticularHU(List<String> huNumbers){
-        AppiumDriver driver = QXClient.get().driver();
-        SoftAssert softAssert = new SoftAssert();
+//    public SoftAssert loadHUs2() {
+//        AppiumDriver driver = QXClient.get().driver();
+//        List<String> huNumbers = new ArrayList<>();
+//        SoftAssert softAssert = new SoftAssert();
+////        List<MobileElement> allHUs;
+////        try {
+////            allHUs.get(0);
+////        } catch (StaleElementReferenceException sRE){
+////            DeliveryDetailsPage deliveryDetails = new DeliveryDetailsPage();
+////            allHUs = (List<MobileElement>) driver.findElements(By.xpath("//android.widget.TextView[@resource-id='com.dmartlabs.pwp:id/txt_lihu_hu_number']"));
+////        }
+//
+////        try {
+////            allHUs = (List<MobileElement>) driver.findElements(By.xpath("//android.widget.TextView[@resource-id='com.dmartlabs.pwp:id/txt_lihu_hu_number']"));
+////            for (int i = 0; i < allHUs.size(); i++) {
+////                String huNumber = allHUs.get(i).getText();
+////                huNumbers.add(huNumber);
+////            }
+////        } catch (StaleElementReferenceException sre){
+////            System.out.println("XXXXXXXXXXXXXXXXXXXXXX inside StaleElementReferenceException catch bloc ");
+////            allHUs = (List<MobileElement>) driver.findElements(By.xpath("//android.widget.TextView[@resource-id='com.dmartlabs.pwp:id/txt_lihu_hu_number']"));
+////            for (int i = 0; i < allHUs.size(); i++) {
+////                String huNumber = allHUs.get(i).getText();
+////                huNumbers.add(huNumber);
+////            }
+////        }
+//
+//        gestures = QXClient.get().gestures();
+//        allHUs = gestures.waitForVisiblityOfAllWebElement(allHUs);
+//
+//        for (int i = 0; i < allHUs.size(); i++) {
+//            String huNumber = allHUs.get(i).getText();
+//            huNumbers.add(huNumber);
+//        }
+//
+//        for (String huNumber : huNumbers) {
+////            String huStatusXpath = "//android.widget.TextView[@text='" + huNumber + "']/following-sibling::android.widget.LinearLayout/descendant::android.widget.TextView[@resource-id='com.dmartlabs.pwp:id/txt_lihu_loaded_text']";
+////
+////            String loadBtnXpath = "//android.widget.TextView[@text='" + huNumber + "']/following-sibling::android.widget.LinearLayout/descendant::android.widget.Button[@text='LOAD']";
+//
+//
+//            boolean result;
+//
+//            try {
+//                boolean emptyHU_Status = verifyThatHU_IsEmpty(huNumber);
+//                if (emptyHU_Status)
+//                    continue;
+//                //MobileElement loadBtn = (MobileElement) driver.findElement(By.xpath(loadBtnXpath));
+//                Thread.sleep(3000);
+//                MobileElement loadBtn = getMobileElementFromDynamicXpath(loadBtnXpath, huNumber);
+//                loadBtn.click();
+//                gestures.waitForElementToVisible(yesBtn);
+//                yesBtn.click();
+//                Thread.sleep(500);
+////                MobileElement huStatus = (MobileElement) driver.findElement(By.xpath(huStatusXpath));
+//                MobileElement huStatus = getMobileElementFromDynamicXpath(huStatusXpath, huNumber);
+//                result = gestures.isElementPresent(huStatus);
+//                softAssert.assertTrue(result, "item is not loaded");
+//            } catch (NoSuchElementException nse) {
+//                System.out.println("XXXXXXXXXXXXXXXXXXXXXXX ============================> NSE Catch Block");
+//                MobileElement huStatus = getMobileElementFromDynamicXpath(huStatusXpath, huNumber);
+//                result = gestures.isElementPresent(huStatus);
+//                softAssert.assertTrue(result, "item is not loaded");
+//                if (result)
+//                    continue;
+//            } catch (Exception e) {
+//                e.printStackTrace();
+//            }
+//        }
+//        return softAssert;
+//    }
 
-        gestures = QXClient.get().gestures();
-        allHUs = gestures.waitForVisiblityOfAllWebElement(allHUs);
+//    public SoftAssert leaveSomeHUsAndLoadReamainingHUs(List<String> leftHus) {
+//        AppiumDriver driver = QXClient.get().driver();
+//        List<String> huNumbers = new ArrayList<>();
+//        SoftAssert softAssert = new SoftAssert();
+//
+//        gestures = QXClient.get().gestures();
+//        allHUs = gestures.waitForVisiblityOfAllWebElement(allHUs);
+//
+//        for (int i = 0; i < allHUs.size(); i++) {
+//            String huNumber = allHUs.get(i).getText();
+//            huNumbers.add(huNumber);
+//        }
+//
+//        for (String huNumber : huNumbers) {
+//            boolean result;
+//
+//            try {
+//                Thread.sleep(3000);
+//                MobileElement loadBtn = getMobileElementFromDynamicXpath(loadBtnXpath, huNumber);
+//                if (leftHus.contains(huNumber)){
+//                    continue;
+//                }
+//                loadBtn.click();
+//                gestures.waitForElementToVisible(yesBtn);
+//                yesBtn.click();
+//                Thread.sleep(500);
+//                MobileElement huStatus = getMobileElementFromDynamicXpath(huStatusXpath, huNumber);
+//                result = gestures.isElementPresent(huStatus);
+//                softAssert.assertTrue(result, "item is not loaded");
+//            } catch (NoSuchElementException nse) {
+//                System.out.println("XXXXXXXXXXXXXXXXXXXXXXX ============================> NSE Catch Block");
+//                MobileElement huStatus = getMobileElementFromDynamicXpath(huStatusXpath, huNumber);
+//                result = gestures.isElementPresent(huStatus);
+//                softAssert.assertTrue(result, "item is not loaded");
+//                if (result)
+//                    continue;
+//            } catch (Exception e) {
+//                e.printStackTrace();
+//            }
+//        }
+//        return softAssert;
+//    }
 
-        for (int i = 0; i < allHUs.size(); i++) {
-            String huNumber = allHUs.get(i).getText();
-            huNumbers.add(huNumber);
-        }
-
-        for (String huNumber : huNumbers) {
-            boolean result;
-            try {
-                Thread.sleep(3000);
-                MobileElement loadBtn = getMobileElementFromDynamicXpath(loadBtnXpath, huNumber);
-                loadBtn.click();
-                gestures.waitForElementToVisible(yesBtn);
-                yesBtn.click();
-                gestures.isElementPresent(okBtn);
-                okBtn.click();
-                Thread.sleep(500);
-                MobileElement huStatus = getMobileElementFromDynamicXpath(huStatusXpath, huNumber);
-                result = gestures.isElementPresent(huStatus);
-                softAssert.assertTrue(result, "item is not loaded");
-            } catch (NoSuchElementException nse) {
-                MobileElement huStatus = getMobileElementFromDynamicXpath(huStatusXpath, huNumber);
-                result = gestures.isElementPresent(huStatus);
-                softAssert.assertTrue(result, "item is not loaded");
-                if (result)
-                    continue;
-            } catch (Exception e) {
-                e.printStackTrace();
-            }
-        }
-        return softAssert;
-    }
+//    public SoftAssert leaveSomeHUsAndLoadRemaingHUsInOfflineMode(List<String> leftHus) {
+//        AppiumDriver driver = QXClient.get().driver();
+//        List<String> huNumbers = new ArrayList<>();
+//        SoftAssert softAssert = new SoftAssert();
+////        List<MobileElement> allHUs;
+////        try {
+////            allHUs.get(0);
+////        } catch (StaleElementReferenceException sRE){
+////            DeliveryDetailsPage deliveryDetails = new DeliveryDetailsPage();
+////            allHUs = (List<MobileElement>) driver.findElements(By.xpath("//android.widget.TextView[@resource-id='com.dmartlabs.pwp:id/txt_lihu_hu_number']"));
+////        }
+//
+////        try {
+////            allHUs = (List<MobileElement>) driver.findElements(By.xpath("//android.widget.TextView[@resource-id='com.dmartlabs.pwp:id/txt_lihu_hu_number']"));
+////            for (int i = 0; i < allHUs.size(); i++) {
+////                String huNumber = allHUs.get(i).getText();
+////                huNumbers.add(huNumber);
+////            }
+////        } catch (StaleElementReferenceException sre){
+////            System.out.println("XXXXXXXXXXXXXXXXXXXXXX inside StaleElementReferenceException catch bloc ");
+////            allHUs = (List<MobileElement>) driver.findElements(By.xpath("//android.widget.TextView[@resource-id='com.dmartlabs.pwp:id/txt_lihu_hu_number']"));
+////            for (int i = 0; i < allHUs.size(); i++) {
+////                String huNumber = allHUs.get(i).getText();
+////                huNumbers.add(huNumber);
+////            }
+////        }
+//
+//        gestures = QXClient.get().gestures();
+//        allHUs = gestures.waitForVisiblityOfAllWebElement(allHUs);
+//
+//        for (int i = 0; i < allHUs.size(); i++) {
+//            String huNumber = allHUs.get(i).getText();
+//            huNumbers.add(huNumber);
+//        }
+//
+//        for (String huNumber : huNumbers) {
+////            String huStatusXpath = "//android.widget.TextView[@text='" + huNumber + "']/following-sibling::android.widget.LinearLayout/descendant::android.widget.TextView[@resource-id='com.dmartlabs.pwp:id/txt_lihu_loaded_text']";
+////
+////            String loadBtnXpath = "//android.widget.TextView[@text='" + huNumber + "']/following-sibling::android.widget.LinearLayout/descendant::android.widget.Button[@text='LOAD']";
+//
+//
+//            boolean result;
+//
+//            try {
+//                //MobileElement loadBtn = (MobileElement) driver.findElement(By.xpath(loadBtnXpath));
+//                Thread.sleep(3000);
+//                MobileElement loadBtn = getMobileElementFromDynamicXpath(loadBtnXpath, huNumber);
+//                if (leftHus.contains(huNumber)){
+//                    continue;
+//                }
+//                loadBtn.click();
+//                gestures.waitForElementToVisible(yesBtn);
+//                yesBtn.click();
+//                Assert.assertTrue(gestures.isElementPresent(noNetworkConnectionDialougeBox),"No network connection dialouge box is not displayed");
+//                //Thread.sleep(500);
+////                gestures.waitForVisbilityOfWebElement(okBtn).click();
+////                gestures.waitForVisbilityOfWebElement(okBtn1).click();
+//                gestures.isElementPresent(okBtn);
+//                okBtn.click();
+////                gestures.isElementPresent(okBtn1);
+////                okBtn1.click();
+//                Thread.sleep(500);
+////                MobileElement huStatus = (MobileElement) driver.findElement(By.xpath(huStatusXpath));
+//                MobileElement huStatus = getMobileElementFromDynamicXpath(huStatusXpath, huNumber);
+//                result = gestures.isElementPresent(huStatus);
+//                softAssert.assertTrue(result, "item is not loaded");
+//            } catch (NoSuchElementException nse) {
+//                System.out.println("XXXXXXXXXXXXXXXXXXXXXXX ============================> NSE Catch Block");
+//                MobileElement huStatus = getMobileElementFromDynamicXpath(huStatusXpath, huNumber);
+//                result = gestures.isElementPresent(huStatus);
+//                softAssert.assertTrue(result, "item is not loaded");
+//                if (result)
+//                    continue;
+//            } catch (Exception e) {
+//                e.printStackTrace();
+//            }
+//        }
+//        return softAssert;
+//    }
+//
+//    public SoftAssert loadParticularHU(List<String> huNumbers){
+//        AppiumDriver driver = QXClient.get().driver();
+//        SoftAssert softAssert = new SoftAssert();
+//
+//        gestures = QXClient.get().gestures();
+//        allHUs = gestures.waitForVisiblityOfAllWebElement(allHUs);
+//
+//        for (int i = 0; i < allHUs.size(); i++) {
+//            String huNumber = allHUs.get(i).getText();
+//            huNumbers.add(huNumber);
+//        }
+//
+//        for (String huNumber : huNumbers) {
+//            boolean result;
+//            try {
+//                Thread.sleep(3000);
+//                MobileElement loadBtn = getMobileElementFromDynamicXpath(loadBtnXpath, huNumber);
+//                loadBtn.click();
+//                gestures.waitForElementToVisible(yesBtn);
+//                yesBtn.click();
+//                gestures.isElementPresent(okBtn);
+//                okBtn.click();
+//                Thread.sleep(500);
+//                MobileElement huStatus = getMobileElementFromDynamicXpath(huStatusXpath, huNumber);
+//                result = gestures.isElementPresent(huStatus);
+//                softAssert.assertTrue(result, "item is not loaded");
+//            } catch (NoSuchElementException nse) {
+//                MobileElement huStatus = getMobileElementFromDynamicXpath(huStatusXpath, huNumber);
+//                result = gestures.isElementPresent(huStatus);
+//                softAssert.assertTrue(result, "item is not loaded");
+//                if (result)
+//                    continue;
+//            } catch (Exception e) {
+//                e.printStackTrace();
+//            }
+//        }
+//        return softAssert;
+//    }
 
 
     public boolean verifyThatHU_IsEmpty(String huNumber){
         MobileElement huStatus = null;
         try {
+            searchBox.sendKeys(huNumber);
+            Thread.sleep(800L);
             huStatus = getMobileElementFromDynamicXpath(huStatusXpath, huNumber);
             String actualHU_Status = huStatus.getText();
+            searchBox.clear();
             if (actualHU_Status.equals("Loaded") || actualHU_Status.equals("Empty")) {
+                QXClient.get().report().info("HU is "+actualHU_Status);
                 if (!actualHU_Status.equals("Loaded"))
-                    Assert.assertEquals(actualHU_Status, "Empty");
+                    Assert.assertEquals(actualHU_Status, "Empty","HU is not empty !!!");
                 return huStatus.isDisplayed();
             }
         } catch (Exception e){
 
         }
+        searchBox.clear();
         return false;
     }
 
@@ -741,49 +997,457 @@ public class DeliveryDetailsPage {
         }
     }
 
-    public void  itemsException(List<Map<String, String>> exceptions) {
+//    public void  itemsException(List<Map<String, String>> exceptions) {
+//        itemsExceptions=exceptions;
+//
+//        for (int i=0; i<exceptions.size(); i++) {
+//
+//            if (exceptions.get(i).containsKey("itemNames")){
+//
+//                if (i > 0 && exceptions.get(i).get("itemNames").equals(exceptions.get(i - 1).get("itemNames"))) {
+//                    totalExpectedExceptionCount = totalExpectedExceptionCount + Integer.parseInt(exceptions.get(i).get("damagedBoxes"));
+//                    ItemsExceptionPage itemsExceptionPage = new ItemsExceptionPage();
+//                    itemsExceptionPage.addExceptionToSameItem(exceptions.get(i));
+//                    itemsExceptionPage.clickOnBackBtn();
+//                    Assert.assertTrue(gestures.isElementPresent(deliveryNumber));
+//                    gestures.refreshPage();
+//                } else {
+//                    String itemName = exceptions.get(i).get("itemNames");
+//                    totalExpectedExceptionCount = totalExpectedExceptionCount + Integer.parseInt(exceptions.get(i).get("damagedBoxes"));
+//                    QXClient.get().report().info(itemName + " is having a exception");
+//
+//                    gestures.isElementPresent(searchBtn);
+//                    searchBtn.click();
+//                    gestures.isElementPresent(searchBox);
+//                    searchBox.sendKeys(itemName);
+//                    MobileElement exceptionBtn = getMobileElementFromDynamicXpath(exceptionsBtnXpath, itemName);
+//                    int totalBoxes = Integer.parseInt(totalBoxesCount.getText().split("/")[1]);
+//                    int damagedBoxes = Integer.parseInt(exceptions.get(i).get("damagedBoxes"));
+//                    exceptionBtn.click();
+//                    ItemsExceptionPage itemsExceptionPage = new ItemsExceptionPage();
+//                    itemsExceptionPage.selectExceptionType(exceptions.get(i));
+//
+//                    if (totalBoxes > damagedBoxes) {
+//                        itemsExceptionPage.isItemExceptionTitleDisplayed();
+//                        if (!exceptions.get(i).get("exceptionType").equals("Cancel"))
+//                            itemsExceptionPage.isExceptionCardDisplayed();
+//
+//                        if ((i + 1) != exceptions.size() && !exceptions.get(i + 1).get("itemNames").equals(exceptions.get(i).get("itemNames")) || (i + 1) == exceptions.size()) {
+//                            itemsExceptionPage.clickOnBackBtn();
+//                            Assert.assertTrue(gestures.isElementPresent(deliveryNumber));
+//                            gestures.isElementPresent(searchBtn);
+//                            searchBtn.click();
+//                        }
+//                    }
+//                }
+//            } else if (exceptions.get(i).containsKey("ean")){
+//                if (i > 0 && exceptions.get(i).get("ean").equals(exceptions.get(i - 1).get("ean"))) {
+//                    totalExpectedExceptionCount = totalExpectedExceptionCount + Integer.parseInt(exceptions.get(i).get("damagedBoxes"));
+//                    ItemsExceptionPage itemsExceptionPage = new ItemsExceptionPage();
+//                    itemsExceptionPage.addExceptionToSameItem(exceptions.get(i));
+//                    itemsExceptionPage.clickOnBackBtn();
+//                    Assert.assertTrue(gestures.isElementPresent(deliveryNumber));
+//                    gestures.refreshPage();
+//                } else {
+//                    String ean = exceptions.get(i).get("ean");
+//                    totalExpectedExceptionCount = totalExpectedExceptionCount + Integer.parseInt(exceptions.get(i).get("damagedBoxes"));
+//                    QXClient.get().report().info(ean + " is having a exception");
+//
+//                    gestures.isElementPresent(searchBtn);
+//                    searchBtn.click();
+//                    gestures.isElementPresent(searchBox);
+//                    searchBox.sendKeys(ean);
+//                    MobileElement exceptionBtn = getMobileElementFromDynamicXpath(exceptionsBtnXpath, ean);
+//                    int totalBoxes = Integer.parseInt(totalBoxesCount.getText().split("/")[1]);
+//                    int damagedBoxes = Integer.parseInt(exceptions.get(i).get("damagedBoxes"));
+//                    exceptionBtn.click();
+//                    ItemsExceptionPage itemsExceptionPage = new ItemsExceptionPage();
+//                    itemsExceptionPage.selectExceptionType(exceptions.get(i));
+//
+//                    if (totalBoxes > damagedBoxes) {
+//                        itemsExceptionPage.isItemExceptionTitleDisplayed();
+//                        if (!exceptions.get(i).get("exceptionType").equals("Cancel"))
+//                            itemsExceptionPage.isExceptionCardDisplayed();
+//
+//                        if ((i + 1) != exceptions.size() && !exceptions.get(i + 1).get("ean").equals(exceptions.get(i).get("ean")) || (i + 1) == exceptions.size()) {
+//                            itemsExceptionPage.clickOnBackBtn();
+//                            Assert.assertTrue(gestures.isElementPresent(deliveryNumber));
+//                            gestures.isElementPresent(searchBtn);
+//                            searchBtn.click();
+//                        }
+//                    }
+//                }
+//            }
+//        }
+
+//        for (Map<String, String> exception:exceptions) {
+//            int repeatingExceptionItems=0;
+//            for (Map<String, String>repeatingException:exceptions){
+//                if (exception.get("itemNames").equals(repeatingException.get("itemNames")))
+//                    repeatingExceptionItems++;
+//            }
+//
+//            String itemName = exception.get("itemNames");
+//            totalExpectedExceptionCount = totalExpectedExceptionCount + Integer.parseInt(exception.get("damagedBoxes"));
+//            QXClient.get().report().info(itemName + " is having a exception");
+//
+//            gestures.isElementPresent(searchBtn);
+//            searchBtn.click();
+//            gestures.isElementPresent(searchBox);
+//            searchBox.sendKeys(itemName);
+//            MobileElement exceptionBtn = getMobileElementFromDynamicXpath(exceptionsBtnXpath, itemName);
+//            int totalBoxes = Integer.parseInt(totalBoxesCount.getText().split("/")[1]);
+//            int damagedBoxes = Integer.parseInt(exception.get("damagedBoxes"));
+//            exceptionBtn.click();
+//            ItemsExceptionPage itemsExceptionPage = new ItemsExceptionPage();
+//            itemsExceptionPage.selectExceptionType(exception);
+//
+//            if (totalBoxes>damagedBoxes){
+//                itemsExceptionPage.isItemExceptionTitleDisplayed();
+//                if (!exception.get("exceptionType").equals("Cancel"))
+//                    itemsExceptionPage.isExceptionCardDisplayed();
+//
+//                itemsExceptionPage.clickOnBackBtn();
+//                Assert.assertTrue(gestures.isElementPresent(deliveryNumber));
+//                gestures.isElementPresent(searchBtn);
+//                searchBtn.click();
+//            }
+//
+//        }
+//    }
+
+
+//    public void  itemsException1(List<Map<String, String>> exceptions) {
+//        itemsExceptions=exceptions;
+//        int itemsTotalDamagedBoxes=0;
+//        int totalBoxes = 0;
+//        for (int i=0; i<exceptions.size(); i++) {
+//
+//            if (exceptions.get(i).containsKey("itemNames")){
+//
+//                if (i > 0 && exceptions.get(i).get("itemNames").equals(exceptions.get(i - 1).get("itemNames"))) {
+//                    totalExpectedExceptionCount = totalExpectedExceptionCount + Integer.parseInt(exceptions.get(i).get("damagedBoxes"));
+//                    if (itemsTotalDamagedBoxes<=totalBoxes){
+//                        if (itemsTotalDamagedBoxes==totalBoxes){
+//                            Map<String, String> unloadableItem = new HashMap<>();
+//                            unloadableItem.put("itemNames", exceptions.get(i).get("itemNames"));
+//                            //unloadableItems.add(unloadableItem);
+//                        }
+//                        ItemsExceptionPage itemsExceptionPage = new ItemsExceptionPage();
+//                        itemsExceptionPage.addExceptionToSameItem(exceptions.get(i));
+//                        itemsExceptionPage.clickOnBackBtn();
+//                        Assert.assertTrue(gestures.isElementPresent(deliveryNumber));
+//                        gestures.refreshPage();
+//                    } else {
+//                        System.out.println("Wrong Damaged Box quantity is provided !!!!!!!");
+//                    }
+//                    try {
+//                        if (exceptions.get(i+1).get("itemNames").equals(exceptions.get(i).get("itemNames")))
+//                            itemsTotalDamagedBoxes = itemsTotalDamagedBoxes+Integer.parseInt(exceptions.get(i+1).get("damagedBoxes"));
+//                    } catch (Exception e){
+//
+//                    }
+//                } else {
+//                    itemsTotalDamagedBoxes=0;
+//                    String itemName = exceptions.get(i).get("itemNames");
+//                    totalExpectedExceptionCount = totalExpectedExceptionCount + Integer.parseInt(exceptions.get(i).get("damagedBoxes"));
+//                    QXClient.get().report().info(itemName + " is having a exception");
+//                    gestures.isElementPresent(searchBtn);
+//                    searchBtn.click();
+//                    gestures.isElementPresent(searchBox);
+//                    searchBox.sendKeys(itemName);
+//                    MobileElement exceptionBtn = getMobileElementFromDynamicXpath(exceptionsBtnXpath, itemName);
+//                    totalBoxes = Integer.parseInt(totalBoxesCount.getText().split("/")[1]);
+//                    int damagedBoxes = Integer.parseInt(exceptions.get(i).get("damagedBoxes"));
+//                    exceptionBtn.click();
+//                    ItemsExceptionPage itemsExceptionPage = new ItemsExceptionPage();
+//                    itemsExceptionPage.selectExceptionType(exceptions.get(i));
+//
+//                    if (damagedBoxes<=totalBoxes){
+//                        if (damagedBoxes==totalBoxes){
+//                            Map<String, String> unloadableItem = new HashMap<>();
+//                            unloadableItem.put("itemName", exceptions.get(i).get("itemNames"));
+//                            //unloadableItems.add(unloadableItem);
+//                        }
+//
+//                        itemsExceptionPage.isItemExceptionTitleDisplayed();
+//                        if (!exceptions.get(i).get("exceptionType").equals("Cancel"))
+//                            itemsExceptionPage.isExceptionCardDisplayed();
+//
+//                        if ((i + 1) != exceptions.size() && !exceptions.get(i + 1).get("itemNames").equals(exceptions.get(i).get("itemNames")) || (i + 1) == exceptions.size()) {
+//                            itemsExceptionPage.clickOnBackBtn();
+//                            Assert.assertTrue(gestures.isElementPresent(deliveryNumber));
+//                            gestures.isElementPresent(searchBtn);
+//                            searchBtn.click();
+//                        } else {
+//                            itemsTotalDamagedBoxes = itemsTotalDamagedBoxes+damagedBoxes+Integer.parseInt(exceptions.get(i+1).get("damagedBoxes"));
+//                        }
+//                    }
+//
+//                }
+//            } else if (exceptions.get(i).containsKey("ean")){
+//                if (i > 0 && exceptions.get(i).get("ean").equals(exceptions.get(i - 1).get("ean"))) {
+//                    totalExpectedExceptionCount = totalExpectedExceptionCount + Integer.parseInt(exceptions.get(i).get("damagedBoxes"));
+//                    ItemsExceptionPage itemsExceptionPage = new ItemsExceptionPage();
+//                    itemsExceptionPage.addExceptionToSameItem(exceptions.get(i));
+//                    itemsExceptionPage.clickOnBackBtn();
+//                    Assert.assertTrue(gestures.isElementPresent(deliveryNumber));
+//                    gestures.refreshPage();
+//                } else {
+//                    String ean = exceptions.get(i).get("ean");
+//                    totalExpectedExceptionCount = totalExpectedExceptionCount + Integer.parseInt(exceptions.get(i).get("damagedBoxes"));
+//                    QXClient.get().report().info(ean + " is having a exception");
+//
+//                    gestures.isElementPresent(searchBtn);
+//                    searchBtn.click();
+//                    gestures.isElementPresent(searchBox);
+//                    searchBox.sendKeys(ean);
+//                    MobileElement exceptionBtn = getMobileElementFromDynamicXpath(exceptionsBtnXpath, ean);
+//                    totalBoxes = Integer.parseInt(totalBoxesCount.getText().split("/")[1]);
+//                    int damagedBoxes = Integer.parseInt(exceptions.get(i).get("damagedBoxes"));
+//                    exceptionBtn.click();
+//                    ItemsExceptionPage itemsExceptionPage = new ItemsExceptionPage();
+//                    itemsExceptionPage.selectExceptionType(exceptions.get(i));
+//
+//                    if (totalBoxes > damagedBoxes) {
+//                        itemsExceptionPage.isItemExceptionTitleDisplayed();
+//                        if (!exceptions.get(i).get("exceptionType").equals("Cancel"))
+//                            itemsExceptionPage.isExceptionCardDisplayed();
+//
+//                        if ((i + 1) != exceptions.size() && !exceptions.get(i + 1).get("ean").equals(exceptions.get(i).get("ean")) || (i + 1) == exceptions.size()) {
+//                            itemsExceptionPage.clickOnBackBtn();
+//                            Assert.assertTrue(gestures.isElementPresent(deliveryNumber));
+//                            gestures.isElementPresent(searchBtn);
+//                            searchBtn.click();
+//                        }
+//                    }
+//                }
+//            }
+//        }
+//    }
+
+    public void  itemsException2(List<Map<String, String>> exceptions) {
         itemsExceptions=exceptions;
+        int itemsTotalDamagedBoxes=0;
+        int totalBoxes = 0;
+        String unloadableItemName = null;
 
-        for (Map<String, String> exception:exceptions) {
-            int repeatingExceptionItems=0;
-            for (Map<String, String>repeatingException:exceptions){
-                if (exception.get("itemNames").equals(repeatingException.get("itemNames")))
-                    repeatingExceptionItems++;
+        for (int i=0; i<exceptions.size(); i++) {
+
+            if (exceptions.get(i).containsKey("itemNames")){
+
+                if (i > 0 && exceptions.get(i).get("itemNames").equals(exceptions.get(i - 1).get("itemNames"))) {
+                    totalExpectedExceptionCount = totalExpectedExceptionCount + Integer.parseInt(exceptions.get(i).get("damagedBoxes"));
+                    ItemsExceptionPage itemsExceptionPage = new ItemsExceptionPage();
+                    itemsExceptionPage.addExceptionToSameItem(exceptions.get(i));
+                    if (i==exceptions.size()-1) {
+                        itemsExceptionPage.clickOnBackBtn();
+                        Assert.assertTrue(gestures.isElementPresent(deliveryNumber));
+                        gestures.refreshPage();
+                    }
+                } else {
+                    String itemName = exceptions.get(i).get("itemNames");
+                    totalExpectedExceptionCount = totalExpectedExceptionCount + Integer.parseInt(exceptions.get(i).get("damagedBoxes"));
+                    QXClient.get().report().info(itemName + " is having a exception");
+
+                    gestures.isElementPresent(searchBtn);
+                    searchBtn.click();
+                    gestures.isElementPresent(searchBox);
+                    searchBox.sendKeys(itemName);
+                    MobileElement exceptionBtn = getMobileElementFromDynamicXpath(exceptionsBtnXpath, itemName);
+                    totalBoxes = Integer.parseInt(totalBoxesCount.getText().split("/")[1]);
+                    int damagedBoxes = Integer.parseInt(exceptions.get(i).get("damagedBoxes"));
+                    exceptionBtn.click();
+                    ItemsExceptionPage itemsExceptionPage = new ItemsExceptionPage();
+                    itemsExceptionPage.selectExceptionType(exceptions.get(i));
+
+                    if (totalBoxes >= damagedBoxes) {
+                        itemsExceptionPage.isItemExceptionTitleDisplayed();
+                        if (!exceptions.get(i).get("exceptionType").equals("Cancel"))
+                            itemsExceptionPage.isExceptionCardDisplayed();
+
+                        if ((i + 1) != exceptions.size() && !exceptions.get(i + 1).get("itemNames").equals(exceptions.get(i).get("itemNames")) || (i + 1) == exceptions.size()) {
+                            itemsExceptionPage.clickOnBackBtn();
+                            Assert.assertTrue(gestures.isElementPresent(deliveryNumber));
+                            gestures.isElementPresent(searchBtn);
+                            searchBtn.click();
+                        }
+                    }
+                }
+            } else if (exceptions.get(i).containsKey("ean")){
+
+                if (i > 0 && exceptions.get(i).get("ean").equals(exceptions.get(i - 1).get("ean"))) {
+                    totalExpectedExceptionCount = totalExpectedExceptionCount + Integer.parseInt(exceptions.get(i).get("damagedBoxes"));
+                    if (itemsTotalDamagedBoxes<=totalBoxes){
+                        if (itemsTotalDamagedBoxes==totalBoxes){
+                            Map<String, String> unloadableEan = new HashMap<>();
+                            unloadableEan.put("itemName", unloadableItemName);
+                            unloadableEan.put("damagedBoxes", String.valueOf(itemsTotalDamagedBoxes));
+                            unloadableEans.add(unloadableEan);
+                        }
+                        ItemsExceptionPage itemsExceptionPage = new ItemsExceptionPage();
+                        itemsExceptionPage.addExceptionToSameItem(exceptions.get(i));
+                        if (i==exceptions.size()-1) {
+                            itemsExceptionPage.clickOnBackBtn();
+                            Assert.assertTrue(gestures.isElementPresent(deliveryNumber));
+                            gestures.refreshPage();
+                        }
+                    } else {
+                        System.out.println("Damaged Box quantity is more than Total Box quantity !!!!!!!");
+                    }
+                    try {
+                        if (exceptions.get(i+1).get("itemNames").equals(exceptions.get(i).get("itemNames")))
+                            itemsTotalDamagedBoxes = itemsTotalDamagedBoxes+Integer.parseInt(exceptions.get(i+1).get("damagedBoxes"));
+                    } catch (Exception e){
+
+                    }
+                } else {
+                    itemsTotalDamagedBoxes=0;
+                    String ean = exceptions.get(i).get("ean");
+                    totalExpectedExceptionCount = totalExpectedExceptionCount + Integer.parseInt(exceptions.get(i).get("damagedBoxes"));
+                    QXClient.get().report().info(ean + " is having a exception");
+
+                    gestures.isElementPresent(searchBtn);
+                    searchBtn.click();
+                    gestures.isElementPresent(searchBox);
+                    searchBox.sendKeys(ean);
+                    MobileElement exceptionBtn = getMobileElementFromDynamicXpath(exceptionsBtnXpath, ean);
+                    unloadableItemName = getMobileElementFromDynamicXpath(itemFromEanXpath, exceptions.get(i).get("ean")).getText();
+                    totalBoxes = Integer.parseInt(totalBoxesCount.getText().split("/")[1]);
+                    int damagedBoxes = Integer.parseInt(exceptions.get(i).get("damagedBoxes"));
+                    if (damagedBoxes==totalBoxes){
+                        Map<String, String> unloadableEan = new HashMap<>();
+                        unloadableEan.put("itemName", unloadableItemName);
+                        unloadableEans.add(unloadableEan);
+                    }
+                    exceptionBtn.click();
+                    ItemsExceptionPage itemsExceptionPage = new ItemsExceptionPage();
+                    itemsExceptionPage.selectExceptionType(exceptions.get(i));
+
+                    if (damagedBoxes<=totalBoxes) {
+                        itemsExceptionPage.isItemExceptionTitleDisplayed();
+                        if (!exceptions.get(i).get("exceptionType").equals("Cancel"))
+                            itemsExceptionPage.isExceptionCardDisplayed();
+
+                        if ((i + 1) != exceptions.size() && !exceptions.get(i + 1).get("ean").equals(exceptions.get(i).get("ean")) || (i + 1) == exceptions.size()) {
+                            itemsExceptionPage.clickOnBackBtn();
+                            Assert.assertTrue(gestures.isElementPresent(deliveryNumber));
+                            gestures.isElementPresent(searchBtn);
+                            searchBtn.click();
+                        } else {
+                            itemsTotalDamagedBoxes = itemsTotalDamagedBoxes+damagedBoxes+Integer.parseInt(exceptions.get(i+1).get("damagedBoxes"));
+                            System.out.println("itemsTotalDamagedBoxes ============> "+itemsTotalDamagedBoxes);
+                        }
+                    }
+                }
             }
-
-            String itemName = exception.get("itemNames");
-            totalExpectedExceptionCount = totalExpectedExceptionCount + Integer.parseInt(exception.get("damagedBoxes"));
-            QXClient.get().report().info(itemName + " is having a exception");
-            gestures.isElementPresent(searchBtn);
-            searchBtn.click();
-            gestures.isElementPresent(searchBox);
-            searchBox.sendKeys(itemName);
-            MobileElement exceptionBtn = getMobileElementFromDynamicXpath(exceptionsBtnXpath, itemName);
-            int totalBoxes = Integer.parseInt(totalBoxesCount.getText().split("/")[1]);
-            int damagedBoxes = Integer.parseInt(exception.get("damagedBoxes"));
-            exceptionBtn.click();
-            ItemsExceptionPage itemsExceptionPage = new ItemsExceptionPage();
-            itemsExceptionPage.selectExceptionType(exception);
-
-            if (totalBoxes>damagedBoxes){
-                itemsExceptionPage.isItemExceptionTitleDisplayed();
-                if (!exception.get("exceptionType").equals("Cancel"))
-                    itemsExceptionPage.isExceptionCardDisplayed();
-
-                itemsExceptionPage.clickOnBackBtn();
-                Assert.assertTrue(gestures.isElementPresent(deliveryNumber));
-                gestures.isElementPresent(searchBtn);
-                searchBtn.click();
-            }
-
         }
+
     }
 
-    public void loadBoxes() {
-        deliveryAllItems = getDeliveryAllItems();
-        expectedLoadedArticle = deliveryAllItems.size();
-        for (String deliveryItem:deliveryAllItems){
-            //int repeatingExceptionArticles=0;
+
+//    public void loadBoxes() {
+//        deliveryAllItems = getDeliveryAllItems();
+//        System.out.println("all items ======================> "+deliveryAllItems.size());
+//        expectedLoadedArticle = deliveryAllItems.size();
+//        for (String deliveryItem:deliveryAllItems){
+//            //int repeatingExceptionArticles=0;
+//            gestures.isElementPresent(totalBoxesCount);
+//            int totalBoxes = Integer.parseInt(totalBoxesCount.getText().split("/")[1]);
+//            expectedLoadedBoxes=expectedLoadedBoxes+totalBoxes;
+//
+//            if (itemsExceptions!=null){
+//                for (Map<String, String> exception:itemsExceptions){
+//
+////                    for (Map<String, String> checkRepeatedItems:itemsExceptions){
+////                        if (exception.get("itemNames").equals(checkRepeatedItems.get("itemNames"))){
+////                       //     repeatingExceptionArticles++;
+////                        }
+////                    }
+//
+//                    if (exception.containsKey("itemNames")) {
+//                        if (deliveryItem.equals(exception.get("itemNames"))) {
+//                            int damagedBoxes = Integer.parseInt(exception.get("damagedBoxes"));
+//                            totalBoxes = totalBoxes - damagedBoxes;
+//                            expectedLoadedBoxes = expectedLoadedBoxes - damagedBoxes;
+//                        }
+//                    } else if (exception.containsKey("ean")){
+//                        if (unloadableEans.size()==0) {
+//                            String ean = getMobileElementFromDynamicXpath(eanXpath, deliveryItem).getText();
+//                            if (ean.equals(exception.get("ean"))) {
+//                                int damagedBoxes = Integer.parseInt(exception.get("damagedBoxes"));
+//                                totalBoxes = totalBoxes - damagedBoxes;
+//                                expectedLoadedBoxes = expectedLoadedBoxes - damagedBoxes;
+//                            }
+//                        }
+//                    }
+//
+//                }
+//            }
+//
+////            if (repeatingExceptionArticles>1)
+////                expectedLoadedArticle = expectedLoadedArticle--;
+//
+//            if (unloadableEans.size()>0){
+//                int i=0;
+//                for (Map<String, String> unloadableEan:unloadableEans) {
+//                    if (deliveryItem.equals(unloadableEan.get("itemName"))){
+//                        expectedLoadedBoxes = expectedLoadedBoxes-(Integer.parseInt(unloadableEan.get("damagedBoxes")));
+//                        expectedLoadedArticle--;
+//                        i++;
+//                        break;
+//                   }
+//                }
+//                if (i>0){
+//                    continue;
+//                } else {
+//                    MobileElement itemCardElement = getMobileElementFromDynamicXpath(itemCard, deliveryItem);
+//                    itemCardElement.click();
+//                    ArticleDetailsPage articleDetailsPage = new ArticleDetailsPage();
+//                    articleDetailsPage.verifyLoaderIsInArticleDetailPage();
+//                    articleDetailsPage.adjustItemBoxes(totalBoxes);
+//                    isDeliverDetailsPageDisplayed();
+//                }
+//            } else {
+//                if (totalBoxes==0) {
+//                    expectedLoadedArticle--;
+//                    continue;
+//                }
+//
+//                MobileElement itemCardElement = getMobileElementFromDynamicXpath(itemCard, deliveryItem);
+//                itemCardElement.click();
+//                ArticleDetailsPage articleDetailsPage = new ArticleDetailsPage();
+//                articleDetailsPage.verifyLoaderIsInArticleDetailPage();
+//                articleDetailsPage.adjustItemBoxes(totalBoxes);
+//                isDeliverDetailsPageDisplayed();
+//            }
+//
+//        }
+//    }
+
+
+    public void loadBoxes(){
+        boolean result = true;
+        for (MobileElement items:allItems){
+            result=itemsLists.add(items.getText());
+            if (!result) {
+                //itemsLists.remove(items.getText());
+                break;
+            }
+//            if (!itemsLists.contains(items.getText())) {
+//                itemsLists.add(items.getText());
+//            } else {
+//                result = false;
+//                break;
+//            }
+        }
+
+        //expectedLoadedArticle = expectedLoadedArticle+itemsLists.size();
+        expectedLoadedArticle = itemsLists.size();
+        //String firstItem = itemsLists.iterator().next();
+        for (String item:itemsLists) {
+            if (loadedItems.contains(item))
+                continue;
             gestures.isElementPresent(totalBoxesCount);
             int totalBoxes = Integer.parseInt(totalBoxesCount.getText().split("/")[1]);
             expectedLoadedBoxes=expectedLoadedBoxes+totalBoxes;
@@ -791,36 +1455,191 @@ public class DeliveryDetailsPage {
             if (itemsExceptions!=null){
                 for (Map<String, String> exception:itemsExceptions){
 
-//                    for (Map<String, String> checkRepeatedItems:itemsExceptions){
-//                        if (exception.get("itemNames").equals(checkRepeatedItems.get("itemNames"))){
-//                       //     repeatingExceptionArticles++;
-//                        }
-//                    }
-
-
-                    if (deliveryItem.equals(exception.get("itemNames"))){
-                        int damagedBoxes = Integer.parseInt(exception.get("damagedBoxes"));
-                        totalBoxes=totalBoxes-damagedBoxes;
-                        expectedLoadedBoxes = expectedLoadedBoxes-damagedBoxes;
+                    if (exception.containsKey("itemNames")) {
+                        if (item.equals(exception.get("itemNames"))) {
+                            int damagedBoxes = Integer.parseInt(exception.get("damagedBoxes"));
+                            totalBoxes = totalBoxes - damagedBoxes;
+                            expectedLoadedBoxes = expectedLoadedBoxes - damagedBoxes;
+                        }
+                    } else if (exception.containsKey("ean")){
+                        if (unloadableEans.size()==0) {
+                            String ean = getMobileElementFromDynamicXpath(eanXpath, item).getText();
+                            if (ean.equals(exception.get("ean"))) {
+                                int damagedBoxes = Integer.parseInt(exception.get("damagedBoxes"));
+                                totalBoxes = totalBoxes - damagedBoxes;
+                                expectedLoadedBoxes = expectedLoadedBoxes - damagedBoxes;
+                            }
+                        }
                     }
 
                 }
             }
 
-//            if (repeatingExceptionArticles>1)
-//                expectedLoadedArticle = expectedLoadedArticle--;
+            if (unloadableEans.size()>0){
+                int i=0;
+                for (Map<String, String> unloadableEan:unloadableEans) {
+                    if (item.equals(unloadableEan.get("itemName"))){
+                        loadedItems.add(item);
+                        expectedLoadedBoxes = expectedLoadedBoxes-(Integer.parseInt(unloadableEan.get("damagedBoxes")));
+                        //expectedLoadedArticle--;
+                        unloadedArticles++;
+                        i++;
+                        break;
+                    }
+                }
+                if (i>0){
+                    continue;
+                } else {
+                    MobileElement itemCardElement = getMobileElementFromDynamicXpath(itemCard, item);
+                    itemCardElement.click();
+                    loadedItems.add(item);
+                    ArticleDetailsPage articleDetailsPage = new ArticleDetailsPage();
+                    articleDetailsPage.verifyLoaderIsInArticleDetailPage();
+                    articleDetailsPage.adjustItemBoxes(totalBoxes);
+                    isDeliverDetailsPageDisplayed();
+                }
+            } else {
+                if (totalBoxes==0) {
+                    loadedItems.add(item);
+                    //expectedLoadedArticle--;
+                    unloadedArticles++;
+                    continue;
+                }
 
-            if (totalBoxes==0) {
-                expectedLoadedArticle--;
-                continue;
+                MobileElement itemCardElement = getMobileElementFromDynamicXpath(itemCard, item);
+                itemCardElement.click();
+                loadedItems.add(item);
+                ArticleDetailsPage articleDetailsPage = new ArticleDetailsPage();
+                articleDetailsPage.verifyLoaderIsInArticleDetailPage();
+                articleDetailsPage.adjustItemBoxes(totalBoxes);
+                isDeliverDetailsPageDisplayed();
             }
+        }
 
-            MobileElement itemCardElement = getMobileElementFromDynamicXpath(itemCard, deliveryItem);
-            itemCardElement.click();
-            ArticleDetailsPage articleDetailsPage = new ArticleDetailsPage();
-            articleDetailsPage.verifyLoaderIsInArticleDetailPage();
-            articleDetailsPage.adjustItemBoxes(totalBoxes);
-            isDeliverDetailsPageDisplayed();
+//        itemsLists = new LinkedHashSet<>();
+//        itemsLists.add(firstItem);
+
+        if (result){
+            loadBoxes();
+        }
+
+    }
+
+//    private static List<MobileElement> itemsList = new ArrayList<>();
+//    public void loadBoxes1() {
+//        boolean result = false;
+//        expectedLoadedArticle = deliveryAllItems.size();
+//        for (MobileElement items:allItems){
+//            System.out.println(items.getText());
+//            result = itemsList.add(items);
+//            if (result==false)
+//                break;
+//        }
+//
+//        System.out.println("Items ==================> "+itemsList.size());
+//
+//        for (MobileElement item:itemsList)
+//            System.out.println(item.getText());
+//
+//        for (MobileElement item:itemsList){
+//            gestures.isElementPresent(totalBoxesCount);
+//            int totalBoxes = Integer.parseInt(totalBoxesCount.getText().split("/")[1]);
+//            expectedLoadedBoxes=expectedLoadedBoxes+totalBoxes;
+//            if (itemsExceptions!=null){
+//                for (Map<String, String> exception:itemsExceptions){
+//                    if (exception.containsKey("itemNames")) {
+//                        if (item.getText().equals(exception.get("itemNames"))) {
+//                            int damagedBoxes = Integer.parseInt(exception.get("damagedBoxes"));
+//                            totalBoxes = totalBoxes - damagedBoxes;
+//                            expectedLoadedBoxes = expectedLoadedBoxes - damagedBoxes;
+//                        }
+//                    } else if (exception.containsKey("ean")){
+//                        if (unloadableEans.size()==0) {
+//                            String ean = getMobileElementFromDynamicXpath(eanXpath, item.getText()).getText();
+//                            if (ean.equals(exception.get("ean"))) {
+//                                int damagedBoxes = Integer.parseInt(exception.get("damagedBoxes"));
+//                                totalBoxes = totalBoxes - damagedBoxes;
+//                                expectedLoadedBoxes = expectedLoadedBoxes - damagedBoxes;
+//                            }
+//                        }
+//                    }
+//
+//                }
+//            }
+//
+//            if (unloadableEans.size()>0){
+//                int i=0;
+//                for (Map<String, String> unloadableEan:unloadableEans) {
+//                    if (item.getText().equals(unloadableEan.get("itemName"))){
+//                        expectedLoadedBoxes = expectedLoadedBoxes-(Integer.parseInt(unloadableEan.get("damagedBoxes")));
+//                        expectedLoadedArticle--;
+//                        i++;
+//                        break;
+//                    }
+//                }
+//                if (i>0){
+//                    continue;
+//                } else {
+////                    MobileElement itemCardElement = getMobileElementFromDynamicXpath(itemCard, item.getText());
+////                    itemCardElement.click();
+//                    item.click();
+//                    ArticleDetailsPage articleDetailsPage = new ArticleDetailsPage();
+//                    articleDetailsPage.verifyLoaderIsInArticleDetailPage();
+//                    articleDetailsPage.adjustItemBoxes(totalBoxes);
+//                    isDeliverDetailsPageDisplayed();
+//                }
+//            } else {
+//                if (totalBoxes==0) {
+//                    expectedLoadedArticle--;
+//                    continue;
+//                }
+//
+////                MobileElement itemCardElement = getMobileElementFromDynamicXpath(itemCard, item.getText());
+////                itemCardElement.click();
+//                item.click();
+//                ArticleDetailsPage articleDetailsPage = new ArticleDetailsPage();
+//                articleDetailsPage.verifyLoaderIsInArticleDetailPage();
+//                articleDetailsPage.adjustItemBoxes(totalBoxes);
+//                isDeliverDetailsPageDisplayed();
+//            }
+//
+//        }
+//
+//        if (result){
+//            loadBoxes1();
+//        }
+//
+//    }
+
+    public void adjustBoxesQuantityInLoadedItems(List<Map<String, String>> loadedItemsAdjustmentDetails) {
+        for (Map<String, String>adjustmentDetails:loadedItemsAdjustmentDetails){
+            //int[] loadingProgress = {expectedLoadedBoxes, expectedLoadedArticle};
+            String itemName = adjustmentDetails.get("itemNames");
+            String actions = adjustmentDetails.get("actions");
+            int quantityAdjustment = Integer.parseInt(adjustmentDetails.get("boxesQuantityAdjustment"));
+            gestures.isElementPresent(searchBtn);
+            try {
+                Thread.sleep(500l);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+            searchBtn.click();
+            gestures.isElementPresent(searchBox);
+            searchBox.sendKeys(itemName);
+            int totalBoxes = Integer.parseInt(totalBoxesCount.getText().split("/")[1]);
+            int loadedBoxes = Integer.parseInt(totalBoxesCount.getText().split("/")[0]);
+            getMobileElementFromDynamicXpath(itemCard, itemName).click();
+            try {
+                Thread.sleep(500L);
+                ArticleDetailsPage articleDetailsPage = new ArticleDetailsPage();
+                int[] loadingProgress = articleDetailsPage.adjustBoxesQuantity(actions, quantityAdjustment, totalBoxes, loadedBoxes, expectedLoadedBoxes, expectedLoadedArticle);
+                expectedLoadedBoxes = loadingProgress[0];
+                expectedLoadedArticle = loadingProgress[1];
+                Thread.sleep(500L);
+                removeSearchBox.click();
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
         }
     }
 
@@ -839,6 +1658,7 @@ public class DeliveryDetailsPage {
     public void verifyArticleLoaded(){
         String articleLoadedString = (articleLoaded.getText().split("/")[0]).trim();
         int actualArticleLoaded = Integer.parseInt(articleLoadedString);
+        expectedLoadedArticle = expectedLoadedArticle-unloadedArticles;
 
         if (actualArticleLoaded==expectedLoadedArticle)
             QXClient.get().report().pass("Article Loaded container is passed");
@@ -886,6 +1706,10 @@ public class DeliveryDetailsPage {
 //        }
 //    }
 
+    public void clickOnConfirmBtn() {
+        confirmBtn.click();
+    }
+
     public void confirmLoadedItemsInOfflineMode(){
         confirmBtn.click();
     }
@@ -903,6 +1727,29 @@ public class DeliveryDetailsPage {
 
     public void confirmBoxTypeDeliveryLoading() {
         confirmBtn.click();
+        boolean result = gestures.isElementPresent(unsyncItemsDialougeBox);
+        if (result) {
+            QXClient.get().report().info("Unsync Items DialougeBox is displayed");
+            gestures.isElementPresent(cannotConfirmDeliveryBoxOkBtn);
+            cannotConfirmDeliveryBoxOkBtn.click();
+            QXClient.get().report().info("Click on OK button");
+//            scrollToEndDeliveryItem();
+            gestures.refreshPage();
+            gestures.waitForInvisiblityOfAllElement(allRemoteSyncIcon);
+            try {
+                Thread.sleep(5000L);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+            confirmBtn.click();
+            QXClient.get().report().info("Click on CONFIRM button");
+        }
+        gestures.isElementPresent(confirmBoxDeliveryYesBtn);
+        confirmBoxDeliveryYesBtn.click();
+    }
+
+    public void confirmBoxTypeDeliveryLoading1() {
+        confirmBtn.click();
 //        if (gestures.isElementPresent(unsyncItemsDialougeBox)){
 //            //gestures.waitForVisbilityOfWebElement(okBtn);
 //            cannotConfirmDeliveryBoxOkBtn.click();
@@ -910,18 +1757,21 @@ public class DeliveryDetailsPage {
 //            gestures.waitForInvisiblityOfAllElement(allRemoteSyncIcon);
 //            confirmBtn.click();
 //        }
-        boolean result = gestures.isElementPresent(unsyncItemsDialougeBox);
-        if (result) {
-            //gestures.waitForVisbilityOfWebElement(okBtn);
-            QXClient.get().report().info("Unsync Items DialougeBox is displayed");
-            gestures.isElementPresent(cannotConfirmDeliveryBoxOkBtn);
-            cannotConfirmDeliveryBoxOkBtn.click();
-            QXClient.get().report().info("Click on OK button");
-            scrollToEndDeliveryItem();
-            gestures.waitForInvisiblityOfAllElement(allRemoteSyncIcon);
-            confirmBtn.click();
-            QXClient.get().report().info("Click on CONFIRM button");
+        boolean result = true;
+        while (result) {
+            result = gestures.isElementPresent(unsyncItemsDialougeBox);
+            if (result) {
+                //gestures.waitForVisbilityOfWebElement(okBtn);
+                QXClient.get().report().info("Unsync Items DialougeBox is displayed");
+                gestures.isElementPresent(cannotConfirmDeliveryBoxOkBtn);
+                cannotConfirmDeliveryBoxOkBtn.click();
+                QXClient.get().report().info("Click on OK button");
+//            scrollToEndDeliveryItem();
+                gestures.refreshPage();
+            }
         }
+        confirmBtn.click();
+        QXClient.get().report().info("Click on CONFIRM button");
         result = gestures.isElementPresent(confirmBoxDeliveryYesBtn);
         confirmBoxDeliveryYesBtn.click();
     }
@@ -959,7 +1809,7 @@ public class DeliveryDetailsPage {
             else
                 QXClient.get().report().fail("Delivery Loading Confirmation dialouge box is not displayed");
 
-            Assert.assertTrue(result,"delivery is not loaded");
+            Assert.assertTrue(result,"Delivery Loading Confirmation dialouge box is not displayed");
         }
     }
 
@@ -1011,6 +1861,38 @@ public class DeliveryDetailsPage {
     private MobileElement getMobileElementFromDynamicXpath(String partialXpath, String replaceCharacter){
         String xpath = String.format(partialXpath, replaceCharacter);
         return (MobileElement) QXClient.get().driver().findElement(By.xpath(xpath));
+    }
+
+    private List<String> huList = new ArrayList<>();
+    private String specificHUXpath = "//android.widget.TextView[@text='%s']";
+
+    public List<String> getAllHUs(){
+        for (WebElement hu:allHUs){
+            String huText = hu.getText();
+            if (!huList.contains(huText))
+                huList.add(huText);
+        }
+
+
+        if (isScroll){
+            QXClient.get().gestures().scrollDeliveryItemsUpwards(1);
+            try {
+                Thread.sleep(500);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+
+            if (allHUs.get(0).getText().equals(huList.get(huList.size()-1))){
+                huList.remove(huList.get(huList.size()-1));
+                getAllHUs();
+            }
+            else
+                isScroll = false;
+        }
+        gestures.scrollDeliveryItemsDownward(1);
+
+
+        return huList;
     }
 
 }

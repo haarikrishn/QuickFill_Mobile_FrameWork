@@ -32,6 +32,9 @@ public class ItemsExceptionPage {
     @FindBy(id = "com.dmartlabs.pwp:id/txt_huvel_title")
     private MobileElement itemExceptionPageTitle;
 
+    @FindBy(id = "com.dmartlabs.pwp:id/txt_huvel_ean_number")
+    private MobileElement eanNumber;
+
     @FindBy(xpath = "//android.widget.Button[@text='Damaged']")
     private MobileElement damagedButton;
 
@@ -47,39 +50,73 @@ public class ItemsExceptionPage {
     @FindBy(id = "com.dmartlabs.pwp:id/fab_huvel_add_exception")
     private MobileElement addExceptionBtn;
 
-    @FindBy(id = "com.dmartlabs.pwp:id/cv_laei_parent")
+    @FindBy(id = "com.dmartlabs.pwp:id/cl_laei_parent")
     private MobileElement exceptionCard;
 
     private Gestures gestures;
 
     public void addExceptionToSameItem(Map<String, String> exception){
-        if (itemExceptionPageTitle.getText().equals(exception.get("itemNames"))) {
-            addExceptionBtn.click();
-            if (exception.get("exceptionType").equals("Damaged")) {
-                QXClient.get().report().info("Exception Type is Damaged");
-                damagedButton.click();
-                DamagedExceptionPage damagedExceptionPage = new DamagedExceptionPage();
-                damagedExceptionPage.isDamagedExceptionPageDisplayed();
-                damagedExceptionPage.enterDetails(exception.get("damagedBoxes"), exception.get("comments"));
-            } else if (exception.get("exceptionType").equals("Short")) {
-                QXClient.get().report().info("Exception Type is Short");
-                shortButton.click();
-                ShortExceptionPage shortExceptionPage = new ShortExceptionPage();
-                shortExceptionPage.isShortExceptionPageDisplayed();
-                shortExceptionPage.enterDetails(exception.get("damagedBoxes"), exception.get("comments"));
-            } else if (exception.get("exceptionType").equals("Other")) {
-                QXClient.get().report().info("Exception Type is Other");
-                otherButton.click();
-                OtherExceptionPage otherExceptionPage = new OtherExceptionPage();
-                otherExceptionPage.isOtherExceptionPageDisplayed();
-                otherExceptionPage.enterDetails(exception.get("damagedBoxes"), exception.get("comments"));
-            } else {
-                QXClient.get().report().info("Exception Type is not given and Loader clicked on Cancel button");
-                cancelButton.click();
+        gestures = QXClient.get().gestures();
+        if (exception.containsKey("itemNames")){
+            gestures.isElementPresent(itemExceptionPageTitle);
+            if (itemExceptionPageTitle.getText().equals(exception.get("itemNames"))) {
+                addExceptionBtn.click();
+                if (exception.get("exceptionType").equals("Damaged")) {
+                    QXClient.get().report().info("Exception Type is Damaged");
+                    damagedButton.click();
+                    DamagedExceptionPage damagedExceptionPage = new DamagedExceptionPage();
+                    damagedExceptionPage.isDamagedExceptionPageDisplayed();
+                    damagedExceptionPage.enterDetails(exception.get("damagedBoxes"), exception.get("comments"));
+                } else if (exception.get("exceptionType").equals("Short")) {
+                    QXClient.get().report().info("Exception Type is Short");
+                    shortButton.click();
+                    ShortExceptionPage shortExceptionPage = new ShortExceptionPage();
+                    shortExceptionPage.isShortExceptionPageDisplayed();
+                    shortExceptionPage.enterDetails(exception.get("damagedBoxes"), exception.get("comments"));
+                } else if (exception.get("exceptionType").equals("Other")) {
+                    QXClient.get().report().info("Exception Type is Other");
+                    otherButton.click();
+                    OtherExceptionPage otherExceptionPage = new OtherExceptionPage();
+                    otherExceptionPage.isOtherExceptionPageDisplayed();
+                    otherExceptionPage.enterDetails(exception.get("damagedBoxes"), exception.get("comments"));
+                } else {
+                    QXClient.get().report().info("Exception Type is not given and Loader clicked on Cancel button");
+                    cancelButton.click();
+                }
             }
-        }
-        else {
-            return;
+            else {
+                return;
+            }
+        } else if (exception.containsKey("ean")){
+            String actualEanNumber = eanNumber.getText().split(" ")[1].trim();
+            if (actualEanNumber.equals(exception.get("ean"))) {
+                addExceptionBtn.click();
+                if (exception.get("exceptionType").equals("Damaged")) {
+                    QXClient.get().report().info("Exception Type is Damaged");
+                    damagedButton.click();
+                    DamagedExceptionPage damagedExceptionPage = new DamagedExceptionPage();
+                    damagedExceptionPage.isDamagedExceptionPageDisplayed();
+                    damagedExceptionPage.enterDetails(exception.get("damagedBoxes"), exception.get("comments"));
+                } else if (exception.get("exceptionType").equals("Short")) {
+                    QXClient.get().report().info("Exception Type is Short");
+                    shortButton.click();
+                    ShortExceptionPage shortExceptionPage = new ShortExceptionPage();
+                    shortExceptionPage.isShortExceptionPageDisplayed();
+                    shortExceptionPage.enterDetails(exception.get("damagedBoxes"), exception.get("comments"));
+                } else if (exception.get("exceptionType").equals("Other")) {
+                    QXClient.get().report().info("Exception Type is Other");
+                    otherButton.click();
+                    OtherExceptionPage otherExceptionPage = new OtherExceptionPage();
+                    otherExceptionPage.isOtherExceptionPageDisplayed();
+                    otherExceptionPage.enterDetails(exception.get("damagedBoxes"), exception.get("comments"));
+                } else {
+                    QXClient.get().report().info("Exception Type is not given and Loader clicked on Cancel button");
+                    cancelButton.click();
+                }
+            }
+            else {
+                return;
+            }
         }
 
     }
@@ -103,7 +140,7 @@ public class ItemsExceptionPage {
 //            addExceptionToSameItem(exception);
 //            return;
 //        }
-
+        gestures.isElementPresent(selectExceptionTypeDialougeTitle);
         try {
             selectExceptionTypeDialougeTitle.isDisplayed();
         }catch (NoSuchElementException nse){
@@ -161,13 +198,24 @@ public class ItemsExceptionPage {
     }
 
     public void isExceptionCardDisplayed() {
-        boolean result = gestures.isElementPresent(exceptionCard);
+//        try {
+//            Thread.sleep(1500);
+//        } catch (InterruptedException e) {
+//            e.printStackTrace();
+//        }
+        boolean result = false;
+        try {
+           result = gestures.isElementPresent(exceptionCard);
+        } catch (Exception e){
+            isExceptionCardDisplayed();
+        }
+
         if (result)
             QXClient.get().report().pass("Exception for item is displayed in Item's Exception Page");
         else
             QXClient.get().report().fail("Exception for item is not displayed in Item's Exception Page");
 
-        Assert.assertTrue(gestures.isElementPresent(exceptionCard));
+        Assert.assertTrue(result);
     }
 
     public void clickOnBackBtn(){

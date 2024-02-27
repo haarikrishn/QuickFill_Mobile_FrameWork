@@ -9,15 +9,10 @@ import org.testng.annotations.BeforeClass;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
-@CucumberOptions(features = "src//test//resources//features",
-        tags = "@load",
-        //tags = "@Offline",
-        //tags = "@PickerOneDeliveryTwoHUsAndLoadInOfflineModev2",
-        //tags = "@BOX_Offline",
-        //tags = "@Loader1",
-        //tags = "@BOX",
+@CucumberOptions(features = "./src/test/resources/features/Sanity/12_PWP_PickerAndLoaderFlow_Offline.feature",
+        //tags = "@login",
+        tags = "@PickingSevenItemsOfflineBoxAndDispatchType",
         //tags = "@sanityUk",
-        //tags = "@PickerOneDeliveryTwoHUs",
         dryRun = false,
         glue = "com/DmartLabs/stepdefinitions",
         plugin = {"pretty",
@@ -27,7 +22,7 @@ import org.testng.annotations.Test;
         },
         monochrome = true)
 
-public class TestRunner {
+public class PickerAndLoaderOfflineFlowRunner {
     private TestNGCucumberRunner testNGCucumberRunner;
 
     @BeforeClass(alwaysRun = true)

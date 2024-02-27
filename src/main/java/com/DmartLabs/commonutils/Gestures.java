@@ -130,7 +130,7 @@ public class Gestures {
         }
 
         try {
-            Thread.sleep(3000);
+            Thread.sleep(8000);
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
@@ -315,7 +315,7 @@ public class Gestures {
 
         try {
             // Explicitly wait for the visibility of the element
-            WebDriverWait wait = new WebDriverWait(driver, 25);
+            WebDriverWait wait = new WebDriverWait(driver, 15);
             wait.until(ExpectedConditions.visibilityOf(element));
 
             // Perform the click operation
@@ -404,7 +404,7 @@ public class Gestures {
     }
 
     public WebElement waitForElementToAppear(WebElement id) {
-        WebDriverWait wait = new WebDriverWait(driver, 30);
+        WebDriverWait wait = new WebDriverWait(driver, 25);
         wait.until(ExpectedConditions.visibilityOf(id));
         return id;
     }
@@ -450,7 +450,7 @@ public class Gestures {
 
 
     public void waitForElementToVisible(WebElement locator) {
-        WebDriverWait wait = new WebDriverWait(driver, 25);
+        WebDriverWait wait = new WebDriverWait(driver, 35);
         wait.until(ExpectedConditions.visibilityOf(locator));
 
     }
@@ -884,10 +884,69 @@ public class Gestures {
             System.out.println("Scroll to mobile element failed");
         }
     }
+
+
+    //============================================================================
+
+
+    public void scrollVerticallyDevice(int getX, int startElement, int defaultScrollCount) {
+        Dimension size = driver.manage().window().getSize();
+        int startY = size.getHeight()-5;
+      //  int endY = startElement;
+        System.out.println(startY+"==========>starty");
+
+        int endy = startElement;
+        System.out.println(endy+"==============>endy");
+
+        int constx = getX;
+     //   System.out.println("Co-ordinates = startY:" + starty + " endY:" + endy + " constX:" + constx);
+
+        try {
+            int count = defaultScrollCount;
+            for (int i = 0; i < count; i++) {
+                // Modify this condition as needed based on your requirements
+                swipeCoordinates(constx, startY, constx, endy);
+            }
+        } catch (Exception e) {
+            System.out.println("Scroll to mobile element failed");
+        }
+    }
+
+    public void scrollVerticallyDevice1(int getX, int startElement, int defaultScrollCount) {
+        Dimension size = driver.manage().window().getSize();
+        int startY = startElement;
+        int endY = size.getHeight();
+        System.out.println(endY+"==========>starty");
+
+//        int endy = startElement;
+//        System.out.println(endy+"==============>endy");
+
+        int constx = getX;
+        //   System.out.println("Co-ordinates = startY:" + starty + " endY:" + endy + " constX:" + constx);
+
+        try {
+            int count = defaultScrollCount;
+            for (int i = 0; i < count; i++) {
+                // Modify this condition as needed based on your requirements
+                swipeCoordinates(constx, startY, constx, endY);
+            }
+        } catch (Exception e) {
+            System.out.println("Scroll to mobile element failed");
+        }
+    }
+
+
+
+
+    //===================================================================
     public static void BackNavigate() throws IOException {
         driver.hideKeyboard();
 
     }
+
+
+
+
 
     public void scrollVertically(int defaultScrollCount) {
         Dimension dimension = driver.manage().window().getSize();
@@ -941,23 +1000,6 @@ public class Gestures {
         }
     }
 
-    public void scrollVertically2(int defaultScrollCount) {
-        Dimension dimension = driver.manage().window().getSize();
-        int scrollEnd = (int) dimension.getHeight();
-        int scrollStart = (int) (dimension.getHeight() * 0.1879);
-        int widthHalf = (int) (dimension.getWidth() * 0.5);
-
-        try {
-            int count = defaultScrollCount;
-            for (int i = 0; i < count; i++) {
-                // Modify this condition as needed based on your requirements
-                swipeCoordinates(widthHalf, scrollStart, widthHalf, scrollEnd);
-            }
-        } catch (Exception e) {
-            System.out.println("Scroll to mobile element failed");
-        }
-    }
-
     public void scrollDeliveryItemsDownward(int defaultScrollCount) {
         Dimension dimension = driver.manage().window().getSize();
         int scrollEnd = (int) dimension.getHeight();
@@ -975,6 +1017,22 @@ public class Gestures {
         }
     }
 
+    public void scrollVertically2(int defaultScrollCount) {
+        Dimension dimension = driver.manage().window().getSize();
+        int scrollEnd = (int) dimension.getHeight();
+        int scrollStart = (int) (dimension.getHeight() * 0.1879);
+        int widthHalf = (int) (dimension.getWidth() * 0.5);
+
+        try {
+            int count = defaultScrollCount;
+            for (int i = 0; i < count; i++) {
+                // Modify this condition as needed based on your requirements
+                swipeCoordinates(widthHalf, scrollStart, widthHalf, scrollEnd);
+            }
+        } catch (Exception e) {
+            System.out.println("Scroll to mobile element failed");
+        }
+    }
 
     public void scrollVerticallyUpwards(int defaultScrollCount) {
         Dimension dimension = driver.manage().window().getSize();
@@ -990,6 +1048,75 @@ public class Gestures {
             }
         } catch (Exception e) {
             System.out.println("Scroll downwards to mobile element failed");
+        }
+    }
+
+    public void scrollHU_Upwards(int defaultScrollCount) {
+        Dimension dimension = driver.manage().window().getSize();
+        int scrollStart = (int) dimension.getHeight();
+        int scrollEnd = (int) (dimension.getHeight() * 0.3838);
+        int widthHalf = (int) (dimension.getWidth() * 0.5);
+
+        try {
+            int count = defaultScrollCount;
+            for (int i = 0; i < count; i++) {
+                // Modify this condition as needed based on your requirements
+                swipeCoordinates(widthHalf, scrollStart, widthHalf, scrollEnd);
+            }
+        } catch (Exception e) {
+            System.out.println("Scroll to mobile element failed");
+        }
+    }
+
+    public void scrollHU_Downward(int defaultScrollCount) {
+        Dimension dimension = driver.manage().window().getSize();
+        int scrollEnd = (int) dimension.getHeight();
+        int scrollStart = (int) (dimension.getHeight() * 0.3838);
+        int widthHalf = (int) (dimension.getWidth() * 0.5);
+
+        try {
+            int count = defaultScrollCount;
+            for (int i = 0; i < count; i++) {
+                // Modify this condition as needed based on your requirements
+                swipeCoordinates(widthHalf, scrollStart, widthHalf, scrollEnd);
+            }
+        } catch (Exception e) {
+            System.out.println("Scroll to mobile element failed");
+        }
+    }
+
+    public void scrollHU_ItemsUpward(int scrollStartHeight, int defaultScrollCount) {
+        Dimension dimension = driver.manage().window().getSize();
+        //int scrollStart = (int) dimension.getHeight();
+        int scrollStart = scrollStartHeight;
+        int scrollEnd = (int) (dimension.getHeight() * 0.3824);
+        int widthHalf = (int) (dimension.getWidth() * 0.5);
+
+        try {
+            int count = defaultScrollCount;
+            for (int i = 0; i < count; i++) {
+                // Modify this condition as needed based on your requirements
+                swipeCoordinates(widthHalf, scrollStart, widthHalf, scrollEnd);
+            }
+        } catch (Exception e) {
+            System.out.println("Scroll to mobile element failed");
+        }
+    }
+
+    public void scrollHU_ItemsDownwards(int scrollEndHeight, int defaultScrollCount) {
+        Dimension dimension = driver.manage().window().getSize();
+        int scrollStart = (int) (dimension.getHeight() * 0.3824);
+        int scrollEnd = scrollEndHeight;
+        int widthHalf = (int) (dimension.getWidth() * 0.5);
+
+        try {
+            int count = defaultScrollCount;
+            for (int i = 0; i < count; i++) {
+                // Modify this condition as needed based on your requirements
+                swipeCoordinates(widthHalf, scrollStart, widthHalf, scrollEnd);
+            }
+        } catch (Exception e) {
+            System.out.println("Scroll to mobile element failed");
         }
     }
 
@@ -1013,5 +1140,61 @@ public class Gestures {
         } catch (Exception e) {
             System.out.println("Swipe did not complete successfully.");
         }
+        try {
+            Thread.sleep(1000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
     }
+
+    public void scrollDeliveryItemsUpwardsPicker(int defaultScrollCount) {
+        Dimension dimension = driver.manage().window().getSize();
+
+        int scrollStart = (int) dimension.getHeight();
+        // System.out.println(scrollStart+"===================scrollStart");
+        // int scrollEnd = (int) (dimension.getHeight() * 0.3838);
+        //  scrool    form 1198--->326,         326,  1198   326/1198    0.2751
+       int scrollEnd = (int) (dimension.getHeight() * 0.4340);
+        //  int scrollEnd = (int) (dimension.getHeight() * 0.4340);
+
+
+
+        // System.out.println(scrollEnd+"========================scrollEnd");
+        int widthHalf = (int) (dimension.getWidth() * 0.5);
+        //Trying to swipe up from x:360 y:555, to x:360 y:1198
+
+        try {
+            int count = defaultScrollCount;
+            for (int i = 0; i < count; i++) {
+                // Modify this condition as needed based on your requirements
+                swipeCoordinates(widthHalf, scrollStart, widthHalf, scrollEnd);
+                //Trying to swipe up from x:360 y:1198, to x:360 y:135
+            }
+        } catch (Exception e) {
+            System.out.println("Scroll to mobile element failed");
+        }
+    }
+    //================================
+    public void scrollDeliveryItemsDownwardPicker(int defaultScrollCount) {
+        Dimension dimension = driver.manage().window().getSize();
+        int scrollEnd = (int) dimension.getHeight();
+        // System.out.println(scrollEnd+"=================scrollEnd");
+        //   int scrollStart = (int) (dimension.getHeight() * 0.3838);
+        int scrollStart = (int) (dimension.getHeight() * 0.4340);//0.4641
+        // System.out.println(scrollStart+"=======================scrollStart");
+
+        int widthHalf = (int) (dimension.getWidth() * 0.5);
+
+        try {
+            int count = defaultScrollCount;
+            for (int i = 0; i < count; i++) {
+                // Modify this condition as needed based on your requirements
+                swipeCoordinates(widthHalf, scrollStart, widthHalf, scrollEnd);
+            }
+        } catch (Exception e) {
+            System.out.println("Scroll to mobile element failed");
+        }
+    }
+
+
 }

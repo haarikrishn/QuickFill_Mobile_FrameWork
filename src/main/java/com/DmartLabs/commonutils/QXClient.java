@@ -23,6 +23,7 @@ public class QXClient {
     public  static  ThreadLocal<String>threadSafeNormalDeliveryNumber=new ThreadLocal<>();
     public  static  ThreadLocal<String>threadSafeTwoHUsDeliveryNumber=new ThreadLocal<>();
     public  static  ThreadLocal<String>threadSafeIncorrectQuantityDeliveryNumber=new ThreadLocal<>();
+    public  static  ThreadLocal<String>threadSafeDispatchType=new ThreadLocal<>();
 
     public QXClient(AppiumDriver appiumDriver){
         this.appiumDriver = appiumDriver;
@@ -132,6 +133,17 @@ public class QXClient {
     public  static  void setIncorrectQuantityDeliveryNumber(String IncorrectQuantityDeliveryNumber)
     {
         QXClient.threadSafeIncorrectQuantityDeliveryNumber.set(IncorrectQuantityDeliveryNumber);
+    }
+
+    public  static  String getDispatchType()
+    {
+        return threadSafeDispatchType.get();
+        //threadSafeDispatchType
+    }
+
+    public  static  void setDispatchType(String DispatchType)
+    {
+        QXClient.threadSafeDispatchType.set(DispatchType);
     }
 
 

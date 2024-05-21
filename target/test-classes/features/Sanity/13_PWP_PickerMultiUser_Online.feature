@@ -22,5 +22,5 @@ Feature:multiUser onlline: Verify the functionality of multi users
     Examples:
       | username | password    |
 #      | 9000680178 | Sweety123@ |
-      | 101203   | Dmart@12345 |
-#      | 121346   | Sweety123@ |
+#      | 101203   | Dmart@12345 |
+     | 121346   | Sweety123@ |

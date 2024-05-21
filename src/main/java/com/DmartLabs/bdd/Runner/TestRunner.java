@@ -10,7 +10,7 @@ import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
 @CucumberOptions(features = "src//test//resources//features",
-        tags = "@load",
+     //   tags = "@load",
         //tags = "@Offline",
         //tags = "@PickerOneDeliveryTwoHUsAndLoadInOfflineModev2",
         //tags = "@BOX_Offline",
@@ -18,6 +18,9 @@ import org.testng.annotations.Test;
         //tags = "@BOX",
         //tags = "@sanityUk",
         //tags = "@PickerOneDeliveryTwoHUs",
+        //tags = "@UpdateTaskByAuditor",
+        //tags="@UpdateTaskByAuditorOffline",
+        tags="@CreateTasks",
         dryRun = false,
         glue = "com/DmartLabs/stepdefinitions",
         plugin = {"pretty",

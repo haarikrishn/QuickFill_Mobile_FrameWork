@@ -1,4 +1,28 @@
 -------------------------------------------------------------------------------
 Test set: TestSuite
 -------------------------------------------------------------------------------
-Tests run: 0, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 2.207 s - in TestSuite
+Tests run: 6, Failures: 6, Errors: 0, Skipped: 0, Time elapsed: 29.898 s <<< FAILURE! - in TestSuite
+com.DmartLabs.bdd.Runner.TestNgRunner.scenario["pick the Picker1SevenItemsAndLoadBoxAndDispatchType", "Optional[online BoxAndDispatchType:Pick the items in Delivery and load the Delivery into the truck]"](1)  Time elapsed: 5.562 s  <<< FAILURE!
+java.lang.IllegalArgumentException: Can not set io.appium.java_client.MobileElement field com.DmartLabs.bdd.pages.GenericLoginPage.username to null value
+	at com.DmartLabs.bdd.Runner.TestNgRunner.scenario(TestNgRunner.java:44)
+
+com.DmartLabs.bdd.Runner.TestNgRunner.scenario["One Delivery Two HUs", "Optional[online BoxAndDispatchType:Pick the items in Delivery and load the Delivery into the truck]"](2)  Time elapsed: 3.801 s  <<< FAILURE!
+java.lang.IllegalArgumentException: Can not set io.appium.java_client.MobileElement field com.DmartLabs.bdd.pages.GenericLoginPage.username to null value
+	at com.DmartLabs.bdd.Runner.TestNgRunner.scenario(TestNgRunner.java:44)
+
+com.DmartLabs.bdd.Runner.TestNgRunner.scenario["pick the items with invalid quantity", "Optional[online BoxAndDispatchType:Pick the items in Delivery and load the Delivery into the truck]"](3)  Time elapsed: 3.746 s  <<< FAILURE!
+java.lang.IllegalArgumentException: Can not set io.appium.java_client.MobileElement field com.DmartLabs.bdd.pages.GenericLoginPage.username to null value
+	at com.DmartLabs.bdd.Runner.TestNgRunner.scenario(TestNgRunner.java:44)
+
+com.DmartLabs.bdd.Runner.TestNgRunner.scenario["pick the Picker1SevenItemsAndLoadBoxAndDispatchType", "Optional[offline BoxAndDispatchType:Pick the items in Delivery and load the Delivery into the truck]"](4)  Time elapsed: 3.79 s  <<< FAILURE!
+java.lang.IllegalArgumentException: Can not set io.appium.java_client.MobileElement field com.DmartLabs.bdd.pages.GenericLoginPage.username to null value
+	at com.DmartLabs.bdd.Runner.TestNgRunner.scenario(TestNgRunner.java:44)
+
+com.DmartLabs.bdd.Runner.TestNgRunner.scenario["One Delivery Two HUs", "Optional[offline BoxAndDispatchType:Pick the items in Delivery and load the Delivery into the truck]"](5)  Time elapsed: 6.942 s  <<< FAILURE!
+java.lang.IllegalArgumentException: Can not set io.appium.java_client.MobileElement field com.DmartLabs.bdd.pages.GenericLoginPage.username to null value
+	at com.DmartLabs.bdd.Runner.TestNgRunner.scenario(TestNgRunner.java:44)
+
+com.DmartLabs.bdd.Runner.TestNgRunner.scenario["pick the items with invalid quantity", "Optional[offline BoxAndDispatchType:Pick the items in Delivery and load the Delivery into the truck]"](6)  Time elapsed: 4.033 s  <<< FAILURE!
+java.lang.IllegalArgumentException: Can not set io.appium.java_client.MobileElement field com.DmartLabs.bdd.pages.GenericLoginPage.username to null value
+	at com.DmartLabs.bdd.Runner.TestNgRunner.scenario(TestNgRunner.java:44)
+

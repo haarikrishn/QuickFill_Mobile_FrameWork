@@ -87,6 +87,9 @@ public class pickerOfflineFlowBoxAndPalletType11Step {
         pickerBoxAndPalletType11Page.EmptyListDisplayed();
     }
 
+
+
+
 //===========================================================================
 
 

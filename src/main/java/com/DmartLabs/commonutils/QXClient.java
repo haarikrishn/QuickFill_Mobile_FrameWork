@@ -6,12 +6,13 @@ import org.apache.log4j.Logger;
 
 import java.io.IOException;
 import java.security.GeneralSecurityException;
-
+import com.DmartLabs.commonutils.*;
 
 public class QXClient {
 
     private AppiumDriver appiumDriver;
-    private QXReport qxReport;
+//   private QXReport qxReport;
+   // private QXReport qxReport;
     private Gestures gestures;
     private WaitForUtils waitForUtils;
     private ExcelUtils excelUtils;

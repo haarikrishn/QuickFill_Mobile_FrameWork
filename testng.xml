@@ -1,12 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
-<suite name="Suite">
-  <test  name="Test">
-
-    <classes>
-
-      <class name="com.DmartLabs.bdd.Runner.TestRunner"/>
-      
-    </classes>
-  </test> <!-- Test -->
-</suite> <!-- Suite -->
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="All Test Suite">
+    <test verbose="2" preserve-order="true"
+          name="C:/Git FrameWork Storage/Pwp_QA_2_27_2024/src/main/java/com/DmartLabs/bdd/Runner/TestNgRunner.java">
+        <classes>
+            <class name="com.DmartLabs.bdd.Runner.TestNgRunner">
+                <methods>
+                    <include name="scenario"/>
+                </methods>
+            </class>
+        </classes>
+    </test>
+</suite>

@@ -1,4 +1,13 @@
-com\qt\stepdefinitions\Regression.class
-com\qt\stepdefinitions\Hooks.class
-com\qt\stepdefinitions\LiveCheck.class
-com\qt\stepdefinitions\SmokeTest.class
+com\DmartLabs\stepdefinitions\LoaderSteps.class
+com\DmartLabs\stepdefinitions\pickerOfflineFlowBoxAndPalletType11Step.class
+com\DmartLabs\stepdefinitions\QF_23_OfflineUpdateTaskByRefillerStep.class
+com\DmartLabs\stepdefinitions\QF_RefillerOfflineStep.class
+com\DmartLabs\stepdefinitions\LogoutSteps.class
+com\DmartLabs\stepdefinitions\QF_GenericStep.class
+com\DmartLabs\stepdefinitions\pickerOnlineFlowBoxAndPalletType11Step.class
+com\DmartLabs\stepdefinitions\LoginSteps.class
+com\DmartLabs\stepdefinitions\QF_AllOfflineStep.class
+com\DmartLabs\stepdefinitions\pickerOnlineMultiUserBoxAndPalletType11Step.class
+com\DmartLabs\stepdefinitions\HomePageSteps.class
+com\DmartLabs\stepdefinitions\GenericStep.class
+com\DmartLabs\stepdefinitions\Hooks.class

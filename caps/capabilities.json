@@ -26,8 +26,8 @@
   },
   "capabilities": {
     "android": {
-      "appPackage": "com.dmartlabs.pwp",
-      "appActivity": "com.dmartlabs.pwp.view.foundation.SplashActivity",
+      "appPackage": "com.dlabs.meradmart.mobile",
+      "appActivity": "com.dlabs.meradmart.mobile.MainActivity",
       "platformName": "Android",
       "newCommandTimeout": 600,
       "launchTimeout": 90000
@@ -36,7 +36,7 @@
   },
   "devices":[
     {
-      "name":"0123456789ABCDEF",
+      "name":"FD12150000964",
       "version":"8.1.0",
       "platform":"Android"
     }

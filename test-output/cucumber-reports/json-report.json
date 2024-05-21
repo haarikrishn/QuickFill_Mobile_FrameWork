@@ -1,0 +1,600 @@
+[
+  {
+    "line": 1,
+    "elements": [
+      {
+        "start_timestamp": "2024-03-21T12:47:22.705Z",
+        "before": [
+          {
+            "result": {
+              "duration": 31082000000,
+              "status": "passed"
+            },
+            "match": {
+              "location": "com.DmartLabs.stepdefinitions.Hooks.setUp()"
+            }
+          }
+        ],
+        "line": 28,
+        "name": "Create Multiple Tasks by Refill Requester",
+        "description": "",
+        "id": "verify-the-functionality-of-create-task-by-requester;create-multiple-tasks-by-refill-requester",
+        "after": [
+          {
+            "result": {
+              "duration": 2502000000,
+              "status": "passed"
+            },
+            "match": {
+              "location": "com.DmartLabs.stepdefinitions.Hooks.tearDown()"
+            }
+          }
+        ],
+        "type": "scenario",
+        "keyword": "Scenario",
+        "steps": [
+          {
+            "result": {
+              "duration": 44321000000,
+              "status": "passed"
+            },
+            "before": [
+              {
+                "result": {
+                  "status": "passed"
+                },
+                "match": {
+                  "location": "com.DmartLabs.stepdefinitions.Hooks.beforeScenarioStart(io.cucumber.java.Scenario)"
+                }
+              }
+            ],
+            "line": 29,
+            "name": "Enter username \"6789014\" and password \"Dmart@12345\" to login to the QuickFill application",
+            "match": {
+              "arguments": [
+                {
+                  "val": "\"6789014\"",
+                  "offset": 15
+                },
+                {
+                  "val": "\"Dmart@12345\"",
+                  "offset": 38
+                }
+              ],
+              "location": "com.DmartLabs.stepdefinitions.QF_GenericStep.enterUsernameAndPasswordToLoginToTheQuickFillApplication(java.lang.String,java.lang.String)"
+            },
+            "after": [
+              {
+                "result": {
+                  "duration": 4000000,
+                  "status": "passed"
+                },
+                "match": {
+                  "location": "com.DmartLabs.stepdefinitions.Hooks.addScreenshot(io.cucumber.java.Scenario)"
+                }
+              }
+            ],
+            "keyword": "Given "
+          },
+          {
+            "result": {
+              "duration": 492000000,
+              "status": "passed"
+            },
+            "before": [
+              {
+                "result": {
+                  "duration": 2000000,
+                  "status": "passed"
+                },
+                "match": {
+                  "location": "com.DmartLabs.stepdefinitions.Hooks.beforeScenarioStart(io.cucumber.java.Scenario)"
+                }
+              }
+            ],
+            "line": 30,
+            "name": "Verify that Requester is in Create Tasks page",
+            "match": {
+              "location": "com.DmartLabs.stepdefinitions.CreateTasksByRefillRequesterSteps.verifyThatRequesterIsInCreateTasksPage()"
+            },
+            "after": [
+              {
+                "result": {
+                  "duration": 1000000,
+                  "status": "passed"
+                },
+                "match": {
+                  "location": "com.DmartLabs.stepdefinitions.Hooks.addScreenshot(io.cucumber.java.Scenario)"
+                }
+              }
+            ],
+            "keyword": "And "
+          },
+          {
+            "result": {
+              "duration": 34639000000,
+              "status": "passed"
+            },
+            "before": [
+              {
+                "result": {
+                  "duration": 4000000,
+                  "status": "passed"
+                },
+                "match": {
+                  "location": "com.DmartLabs.stepdefinitions.Hooks.beforeScenarioStart(io.cucumber.java.Scenario)"
+                }
+              }
+            ],
+            "line": 31,
+            "name": "Enter the Ean Numbers in Search box, select the task type and create the tasks",
+            "match": {
+              "location": "com.DmartLabs.stepdefinitions.CreateTasksByRefillRequesterSteps.enterTheEanNumbersInSearchBoxSelectTheTaskTypeAndCreateTheTasks(io.cucumber.datatable.DataTable)"
+            },
+            "after": [
+              {
+                "result": {
+                  "status": "passed"
+                },
+                "match": {
+                  "location": "com.DmartLabs.stepdefinitions.Hooks.addScreenshot(io.cucumber.java.Scenario)"
+                }
+              }
+            ],
+            "rows": [
+              {
+                "cells": [
+                  "ean",
+                  "taskType",
+                  "requestedQuantity",
+                  "priceboards",
+                  "requesterComments"
+                ]
+              },
+              {
+                "cells": [
+                  "8901030962226",
+                  "Refill",
+                  "10",
+                  "",
+                  ""
+                ]
+              },
+              {
+                "cells": [
+                  "8901030970672",
+                  "Board",
+                  "",
+                  "A4/4 - Medium price board,A4/1 - Full page price board,A4/10 - Strip price board",
+                  "Check Priceboard task"
+                ]
+              },
+              {
+                "cells": [
+                  "8901030818233",
+                  "Other",
+                  "",
+                  "",
+                  "Creating Others task"
+                ]
+              }
+            ],
+            "keyword": "And "
+          },
+          {
+            "result": {
+              "duration": 1522000000,
+              "status": "passed"
+            },
+            "before": [
+              {
+                "result": {
+                  "status": "passed"
+                },
+                "match": {
+                  "location": "com.DmartLabs.stepdefinitions.Hooks.beforeScenarioStart(io.cucumber.java.Scenario)"
+                }
+              }
+            ],
+            "line": 36,
+            "name": "Click on Tasks Button",
+            "match": {
+              "location": "com.DmartLabs.stepdefinitions.CreateTasksByRefillRequesterSteps.clickOnTasksButton()"
+            },
+            "after": [
+              {
+                "result": {
+                  "duration": 1000000,
+                  "status": "passed"
+                },
+                "match": {
+                  "location": "com.DmartLabs.stepdefinitions.Hooks.addScreenshot(io.cucumber.java.Scenario)"
+                }
+              }
+            ],
+            "keyword": "And "
+          },
+          {
+            "result": {
+              "duration": 1915000000,
+              "status": "passed"
+            },
+            "before": [
+              {
+                "result": {
+                  "duration": 1000000,
+                  "status": "passed"
+                },
+                "match": {
+                  "location": "com.DmartLabs.stepdefinitions.Hooks.beforeScenarioStart(io.cucumber.java.Scenario)"
+                }
+              }
+            ],
+            "line": 37,
+            "name": "Verify that Tasks page is displayed",
+            "match": {
+              "location": "com.DmartLabs.stepdefinitions.CreateTasksByRefillRequesterSteps.verifyThatTasksPageIsDisplayed()"
+            },
+            "after": [
+              {
+                "result": {
+                  "duration": 1000000,
+                  "status": "passed"
+                },
+                "match": {
+                  "location": "com.DmartLabs.stepdefinitions.Hooks.addScreenshot(io.cucumber.java.Scenario)"
+                }
+              }
+            ],
+            "keyword": "And "
+          },
+          {
+            "result": {
+              "duration": 730000000,
+              "status": "passed"
+            },
+            "before": [
+              {
+                "result": {
+                  "duration": 1000000,
+                  "status": "passed"
+                },
+                "match": {
+                  "location": "com.DmartLabs.stepdefinitions.Hooks.beforeScenarioStart(io.cucumber.java.Scenario)"
+                }
+              }
+            ],
+            "line": 38,
+            "name": "Click on Open tab in Tasks page",
+            "match": {
+              "location": "com.DmartLabs.stepdefinitions.CreateTasksByRefillRequesterSteps.clickOnOpenTabInTasksPage()"
+            },
+            "after": [
+              {
+                "result": {
+                  "duration": 1000000,
+                  "status": "passed"
+                },
+                "match": {
+                  "location": "com.DmartLabs.stepdefinitions.Hooks.addScreenshot(io.cucumber.java.Scenario)"
+                }
+              }
+            ],
+            "keyword": "And "
+          },
+          {
+            "result": {
+              "duration": 238000000,
+              "status": "passed"
+            },
+            "before": [
+              {
+                "result": {
+                  "duration": 1000000,
+                  "status": "passed"
+                },
+                "match": {
+                  "location": "com.DmartLabs.stepdefinitions.Hooks.beforeScenarioStart(io.cucumber.java.Scenario)"
+                }
+              }
+            ],
+            "line": 39,
+            "name": "Verify that the Task is created successfully",
+            "match": {
+              "location": "com.DmartLabs.stepdefinitions.CreateTasksByRefillRequesterSteps.verifyThatTheTaskIsCreatedSuccessfully()"
+            },
+            "after": [
+              {
+                "result": {
+                  "status": "passed"
+                },
+                "match": {
+                  "location": "com.DmartLabs.stepdefinitions.Hooks.addScreenshot(io.cucumber.java.Scenario)"
+                }
+              }
+            ],
+            "keyword": "Then "
+          },
+          {
+            "result": {
+              "duration": 254000000,
+              "status": "passed"
+            },
+            "before": [
+              {
+                "result": {
+                  "status": "passed"
+                },
+                "match": {
+                  "location": "com.DmartLabs.stepdefinitions.Hooks.beforeScenarioStart(io.cucumber.java.Scenario)"
+                }
+              }
+            ],
+            "line": 40,
+            "name": "Click on Floor Walk button",
+            "match": {
+              "location": "com.DmartLabs.stepdefinitions.CreateTasksByRefillRequesterSteps.clickOnFloorWalkButton()"
+            },
+            "after": [
+              {
+                "result": {
+                  "status": "passed"
+                },
+                "match": {
+                  "location": "com.DmartLabs.stepdefinitions.Hooks.addScreenshot(io.cucumber.java.Scenario)"
+                }
+              }
+            ],
+            "keyword": "And "
+          },
+          {
+            "result": {
+              "duration": 654000000,
+              "status": "passed"
+            },
+            "before": [
+              {
+                "result": {
+                  "duration": 2000000,
+                  "status": "passed"
+                },
+                "match": {
+                  "location": "com.DmartLabs.stepdefinitions.Hooks.beforeScenarioStart(io.cucumber.java.Scenario)"
+                }
+              }
+            ],
+            "line": 41,
+            "name": "Verify that Refill Requester is in Floor Walk Summary page",
+            "match": {
+              "location": "com.DmartLabs.stepdefinitions.CreateTasksByRefillRequesterSteps.verifyThatRefillRequesterIsInFloorWalkSummaryPage()"
+            },
+            "after": [
+              {
+                "result": {
+                  "status": "passed"
+                },
+                "match": {
+                  "location": "com.DmartLabs.stepdefinitions.Hooks.addScreenshot(io.cucumber.java.Scenario)"
+                }
+              }
+            ],
+            "keyword": "And "
+          },
+          {
+            "result": {
+              "duration": 1081000000,
+              "status": "passed"
+            },
+            "before": [
+              {
+                "result": {
+                  "status": "passed"
+                },
+                "match": {
+                  "location": "com.DmartLabs.stepdefinitions.Hooks.beforeScenarioStart(io.cucumber.java.Scenario)"
+                }
+              }
+            ],
+            "line": 42,
+            "name": "Verify that FloorWalk is Created",
+            "match": {
+              "location": "com.DmartLabs.stepdefinitions.CreateTasksByRefillRequesterSteps.verifyThatFloorWalkIsCreated()"
+            },
+            "after": [
+              {
+                "result": {
+                  "status": "passed"
+                },
+                "match": {
+                  "location": "com.DmartLabs.stepdefinitions.Hooks.addScreenshot(io.cucumber.java.Scenario)"
+                }
+              }
+            ],
+            "keyword": "And "
+          },
+          {
+            "result": {
+              "duration": 159000000,
+              "status": "passed"
+            },
+            "before": [
+              {
+                "result": {
+                  "status": "passed"
+                },
+                "match": {
+                  "location": "com.DmartLabs.stepdefinitions.Hooks.beforeScenarioStart(io.cucumber.java.Scenario)"
+                }
+              }
+            ],
+            "line": 43,
+            "name": "Verify that Floorwalk is in \"In-Progress\"",
+            "match": {
+              "arguments": [
+                {
+                  "val": "\"In-Progress\"",
+                  "offset": 28
+                }
+              ],
+              "location": "com.DmartLabs.stepdefinitions.CreateTasksByRefillRequesterSteps.verifyThatFloorwalkIsIn(java.lang.String)"
+            },
+            "after": [
+              {
+                "result": {
+                  "status": "passed"
+                },
+                "match": {
+                  "location": "com.DmartLabs.stepdefinitions.Hooks.addScreenshot(io.cucumber.java.Scenario)"
+                }
+              }
+            ],
+            "keyword": "And "
+          },
+          {
+            "result": {
+              "duration": 145000000,
+              "status": "passed"
+            },
+            "before": [
+              {
+                "result": {
+                  "status": "passed"
+                },
+                "match": {
+                  "location": "com.DmartLabs.stepdefinitions.Hooks.beforeScenarioStart(io.cucumber.java.Scenario)"
+                }
+              }
+            ],
+            "line": 44,
+            "name": "Verify that Open Task is same as Task created",
+            "match": {
+              "location": "com.DmartLabs.stepdefinitions.CreateTasksByRefillRequesterSteps.verifyThatOpenTaskIsSameAsTaskCreated()"
+            },
+            "after": [
+              {
+                "result": {
+                  "duration": 1000000,
+                  "status": "passed"
+                },
+                "match": {
+                  "location": "com.DmartLabs.stepdefinitions.Hooks.addScreenshot(io.cucumber.java.Scenario)"
+                }
+              }
+            ],
+            "keyword": "And "
+          },
+          {
+            "result": {
+              "duration": 193000000,
+              "status": "passed"
+            },
+            "before": [
+              {
+                "result": {
+                  "status": "passed"
+                },
+                "match": {
+                  "location": "com.DmartLabs.stepdefinitions.Hooks.beforeScenarioStart(io.cucumber.java.Scenario)"
+                }
+              }
+            ],
+            "line": 45,
+            "name": "Go back to Tasks page",
+            "match": {
+              "location": "com.DmartLabs.stepdefinitions.CreateTasksByRefillRequesterSteps.goBackToTasksPage()"
+            },
+            "after": [
+              {
+                "result": {
+                  "status": "passed"
+                },
+                "match": {
+                  "location": "com.DmartLabs.stepdefinitions.Hooks.addScreenshot(io.cucumber.java.Scenario)"
+                }
+              }
+            ],
+            "keyword": "Then "
+          },
+          {
+            "result": {
+              "duration": 1281000000,
+              "status": "passed"
+            },
+            "before": [
+              {
+                "result": {
+                  "duration": 1000000,
+                  "status": "passed"
+                },
+                "match": {
+                  "location": "com.DmartLabs.stepdefinitions.Hooks.beforeScenarioStart(io.cucumber.java.Scenario)"
+                }
+              }
+            ],
+            "line": 46,
+            "name": "Go to Create Task page",
+            "match": {
+              "location": "com.DmartLabs.stepdefinitions.CreateTasksByRefillRequesterSteps.goToCreateTaskPage()"
+            },
+            "after": [
+              {
+                "result": {
+                  "duration": 1000000,
+                  "status": "passed"
+                },
+                "match": {
+                  "location": "com.DmartLabs.stepdefinitions.Hooks.addScreenshot(io.cucumber.java.Scenario)"
+                }
+              }
+            ],
+            "keyword": "And "
+          },
+          {
+            "result": {
+              "duration": 3603000000,
+              "status": "passed"
+            },
+            "before": [
+              {
+                "result": {
+                  "duration": 1000000,
+                  "status": "passed"
+                },
+                "match": {
+                  "location": "com.DmartLabs.stepdefinitions.Hooks.beforeScenarioStart(io.cucumber.java.Scenario)"
+                }
+              }
+            ],
+            "line": 47,
+            "name": "Close the Floorwalk",
+            "match": {
+              "location": "com.DmartLabs.stepdefinitions.CreateTasksByRefillRequesterSteps.closeTheFloorwalk()"
+            },
+            "after": [
+              {
+                "result": {
+                  "status": "passed"
+                },
+                "match": {
+                  "location": "com.DmartLabs.stepdefinitions.Hooks.addScreenshot(io.cucumber.java.Scenario)"
+                }
+              }
+            ],
+            "keyword": "And "
+          }
+        ],
+        "tags": [
+          {
+            "name": "@CreateTasks"
+          }
+        ]
+      }
+    ],
+    "name": "Verify the functionality of Create Task by Requester",
+    "description": "",
+    "id": "verify-the-functionality-of-create-task-by-requester",
+    "keyword": "Feature",
+    "uri": "file:src/test/resources/features/Sanity/CreateTasksByRefillRequester.feature",
+    "tags": []
+  }
+]

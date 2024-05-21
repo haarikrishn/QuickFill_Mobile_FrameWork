@@ -4,7 +4,90 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="a8886b19-2f1e-424e-b7ca-34b7de9a3821" name="Changes" comment="Maintenance - Spelling correction Bottom menu and elements" />
+    <list default="true" id="a8886b19-2f1e-424e-b7ca-34b7de9a3821" name="Changes" comment="Maintenance - Spelling correction Bottom menu and elements">
+      <change afterPath="$PROJECT_DIR$/TwoFeaturestestng.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/caps/capabilities.json" beforeDir="false" afterPath="$PROJECT_DIR$/caps/capabilities.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/browserstack-javaagent.log" beforeDir="false" afterPath="$PROJECT_DIR$/logs/browserstack-javaagent.log" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/DmartLabs/bdd/Runner/PickerAndLoaderOfflineFlowRunner.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/DmartLabs/bdd/Runner/PickerAndLoaderOfflineFlowRunner.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/DmartLabs/bdd/Runner/PickerAndLoaderOnlineFlow_TestRunner.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/DmartLabs/bdd/Runner/PickerAndLoaderOnlineFlow_TestRunner.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/DmartLabs/bdd/Runner/TestRunner.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/DmartLabs/bdd/Runner/TestRunner.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/DmartLabs/bdd/pages/GenericLoginPage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/DmartLabs/bdd/pages/GenericLoginPage.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/DmartLabs/bdd/pages/PickerBoxAndPalletType11Page.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/DmartLabs/bdd/pages/PickerBoxAndPalletType11Page.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/DmartLabs/bdd/pages/PickerBoxAndpalletTypeTwoHU11Page.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/DmartLabs/bdd/pages/PickerBoxAndpalletTypeTwoHU11Page.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/DmartLabs/commonutils/Gestures.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/DmartLabs/commonutils/Gestures.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/DmartLabs/commonutils/QXClient.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/DmartLabs/commonutils/QXClient.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/com/DmartLabs/stepdefinitions/LoaderSteps.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/DmartLabs/stepdefinitions/LoaderSteps.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/com/DmartLabs/stepdefinitions/pickerOfflineFlowBoxAndPalletType11Step.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/DmartLabs/stepdefinitions/pickerOfflineFlowBoxAndPalletType11Step.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/com/DmartLabs/stepdefinitions/pickerOnlineFlowBoxAndPalletType11Step.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/DmartLabs/stepdefinitions/pickerOnlineFlowBoxAndPalletType11Step.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/resources/features/Sanity/11_PWP_PickerAndLoaderFlow_Online.feature" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/resources/features/Sanity/11_PWP_PickerAndLoaderFlow_Online.feature" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/resources/features/Sanity/12_PWP_PickerAndLoaderFlow_Offline.feature" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/resources/features/Sanity/12_PWP_PickerAndLoaderFlow_Offline.feature" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/resources/features/Sanity/13_PWP_PickerMultiUser_Online.feature" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/resources/features/Sanity/13_PWP_PickerMultiUser_Online.feature" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/BDD_MobileBase-0.0.1-SNAPSHOT.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/DmartLabs/bdd/Runner/PickerAndLoaderOfflineFlowRunner.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/DmartLabs/bdd/Runner/PickerAndLoaderOfflineFlowRunner.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/DmartLabs/bdd/Runner/PickerAndLoaderOnlineFlow_TestRunner.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/DmartLabs/bdd/Runner/PickerAndLoaderOnlineFlow_TestRunner.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/DmartLabs/bdd/Runner/TestRunner.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/DmartLabs/bdd/Runner/TestRunner.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/DmartLabs/bdd/pages/GenericLoginPage.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/DmartLabs/bdd/pages/GenericLoginPage.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/DmartLabs/bdd/pages/PickerBoxAndPalletType11Page.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/DmartLabs/bdd/pages/PickerBoxAndPalletType11Page.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/DmartLabs/bdd/pages/PickerBoxAndpalletTypeTwoHU11Page.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/DmartLabs/bdd/pages/PickerBoxAndpalletTypeTwoHU11Page.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/DmartLabs/commonutils/Gestures.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/DmartLabs/commonutils/Gestures.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/DmartLabs/commonutils/QXClient.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/DmartLabs/commonutils/QXClient.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/cucumber-report-html/cucumber-html-reports/css/bootstrap.min.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/cucumber-report-html/cucumber-html-reports/css/cucumber.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/cucumber-report-html/cucumber-html-reports/css/font-awesome.min.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/cucumber-report-html/cucumber-html-reports/fonts/FontAwesome.otf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/cucumber-report-html/cucumber-html-reports/fonts/fontawesome-webfont.eot" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/cucumber-report-html/cucumber-html-reports/fonts/fontawesome-webfont.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/cucumber-report-html/cucumber-html-reports/fonts/fontawesome-webfont.ttf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/cucumber-report-html/cucumber-html-reports/fonts/fontawesome-webfont.woff" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/cucumber-report-html/cucumber-html-reports/fonts/fontawesome-webfont.woff2" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/cucumber-report-html/cucumber-html-reports/fonts/glyphicons-halflings-regular.eot" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/cucumber-report-html/cucumber-html-reports/fonts/glyphicons-halflings-regular.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/cucumber-report-html/cucumber-html-reports/fonts/glyphicons-halflings-regular.ttf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/cucumber-report-html/cucumber-html-reports/fonts/glyphicons-halflings-regular.woff" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/cucumber-report-html/cucumber-html-reports/fonts/glyphicons-halflings-regular.woff2" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/cucumber-report-html/cucumber-html-reports/images/favicon.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/cucumber-report-html/cucumber-html-reports/js/Chart.min.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/cucumber-report-html/cucumber-html-reports/js/bootstrap.min.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/cucumber-report-html/cucumber-html-reports/js/jquery.min.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/cucumber-report-html/cucumber-html-reports/js/jquery.tablesorter.min.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/cucumber-report-html/cucumber-html-reports/js/moment.min.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/cucumber-report-html/cucumber-html-reports/overview-features.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/maven-archiver/pom.properties" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" beforeDir="false" afterPath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" beforeDir="false" afterPath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/testCompile/default-testCompile/createdFiles.lst" beforeDir="false" afterPath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/testCompile/default-testCompile/createdFiles.lst" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/testCompile/default-testCompile/inputFiles.lst" beforeDir="false" afterPath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/testCompile/default-testCompile/inputFiles.lst" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/surefire-reports/Suite/Test.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/surefire-reports/Suite/Test.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/surefire-reports/TEST-TestSuite.xml" beforeDir="false" afterPath="$PROJECT_DIR$/target/surefire-reports/TEST-TestSuite.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/surefire-reports/TestSuite.txt" beforeDir="false" afterPath="$PROJECT_DIR$/target/surefire-reports/TestSuite.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/surefire-reports/emailable-report.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/surefire-reports/emailable-report.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/surefire-reports/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/surefire-reports/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/surefire-reports/old/Suite/Test.properties" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/surefire-reports/old/Suite/classes.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/surefire-reports/old/Suite/groups.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/surefire-reports/old/Suite/index.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/surefire-reports/old/Suite/main.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/surefire-reports/old/Suite/methods-alphabetical.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/surefire-reports/old/Suite/methods-not-run.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/surefire-reports/old/Suite/methods.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/surefire-reports/old/Suite/reporter-output.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/surefire-reports/old/Suite/testng.xml.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/surefire-reports/old/Suite/toc.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/surefire-reports/old/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/surefire-reports/old/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/surefire-reports/testng-results.xml" beforeDir="false" afterPath="$PROJECT_DIR$/target/surefire-reports/testng-results.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/test-classes/com/DmartLabs/stepdefinitions/LoaderSteps.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/test-classes/com/DmartLabs/stepdefinitions/LoaderSteps.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/test-classes/com/DmartLabs/stepdefinitions/pickerOnlineFlowBoxAndPalletType11Step.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/test-classes/com/DmartLabs/stepdefinitions/pickerOnlineFlowBoxAndPalletType11Step.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/test-classes/features/Sanity/11_PWP_PickerAndLoaderFlow_Online.feature" beforeDir="false" afterPath="$PROJECT_DIR$/target/test-classes/features/Sanity/11_PWP_PickerAndLoaderFlow_Online.feature" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/test-classes/features/Sanity/12_PWP_PickerAndLoaderFlow_Offline.feature" beforeDir="false" afterPath="$PROJECT_DIR$/target/test-classes/features/Sanity/12_PWP_PickerAndLoaderFlow_Offline.feature" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/test-classes/features/Sanity/13_PWP_PickerMultiUser_Online.feature" beforeDir="false" afterPath="$PROJECT_DIR$/target/test-classes/features/Sanity/13_PWP_PickerMultiUser_Online.feature" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/test-output/cucumber-reports/html-report.html" beforeDir="false" afterPath="$PROJECT_DIR$/test-output/cucumber-reports/html-report.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/test-output/cucumber-reports/json-report.json" beforeDir="false" afterPath="$PROJECT_DIR$/test-output/cucumber-reports/json-report.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/testng.xml" beforeDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -54,7 +137,7 @@
   <component name="PropertiesComponent">
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/src/test/resources/features/Sanity" />
     <property name="project.structure.last.edited" value="Project" />
     <property name="project.structure.proportion" value="0.0" />
     <property name="project.structure.side.proportion" value="0.0" />
@@ -62,11 +145,11 @@
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\FD329\OneDrive\Desktop\QF_Mobile3_1_24\src\test\resources\features\Sanity" />
+      <recent name="C:\Final Framework\QF_Mobile3_1_24\src\test\resources\features\Sanity" />
+      <recent name="C:\Git FrameWork Storage\Pwp_QA_2_27_2024\src\test\resources\TestNg" />
       <recent name="C:\Users\FD329\OneDrive\Desktop\PWP_MobileAutomationFramework\caps" />
       <recent name="C:\Users\FD329\OneDrive\Desktop\PWP_MobileAutomationFramework\src\test\java\com\DmartLabs\stepdefinitions" />
-      <recent name="C:\Users\FD329\OneDrive\Desktop\PWP_MobileAutomationFramework\src\test\resources\features\Sanity" />
-      <recent name="C:\Users\FD329\OneDrive\Desktop\PWP_MobileAutomationFramework\src\main\java\com\DmartLabs\bdd\pages" />
-      <recent name="C:\Users\FD329\OneDrive\Desktop\PWP_MobileAutomationFramework\src\main\java\DmartLabs\bdd\pages" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\Users\FD329\OneDrive\Desktop\PWP_MobileAutomationFramework\src\test\resources\features\sample" />
@@ -76,11 +159,11 @@
       <recent name="C:\Users\Admin\LycaRegression\automation-testing\src\test\resources\features\Regression" />
     </key>
     <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="com.DmartLabs.stepdefinitions" />
+      <recent name="com.DmartLabs.bdd.pages" />
       <recent name="com.DmartLabs.bdd.Runner" />
       <recent name="com.qt.bdd.Runner" />
       <recent name="com.qt.stepdefinitions" />
-      <recent name="" />
-      <recent name="com.qt.bdd.pages" />
     </key>
   </component>
   <component name="RunAnythingCache">
@@ -88,16 +171,16 @@
       <command value="mvn install" />
     </option>
   </component>
-  <component name="RunManager" selected="Cucumber Java.Scenario: pick the Picker1SevenItemsAndLoadBoxAndDispatchType">
-    <configuration name="Scenario: One Delivery Two HUs" type="CucumberJavaRunConfigurationType" factoryName="Cucumber java" temporary="true" nameIsGenerated="true">
+  <component name="RunManager" selected="TestNG.TestRunner">
+    <configuration name="Scenario: Update task by auditor (1)" type="CucumberJavaRunConfigurationType" factoryName="Cucumber java" temporary="true" nameIsGenerated="true">
       <option name="CUCUMBER_CORE_VERSION" value="5" />
-      <option name="FILE_PATH" value="$PROJECT_DIR$/src/test/resources/features/Sanity/11_PWP_PickerAndLoaderFlow_Online.feature" />
+      <option name="FILE_PATH" value="$PROJECT_DIR$/src/test/resources/features/Sanity/UpdateTaskByAuditorOffline.feature" />
       <option name="GLUE" value="com.DmartLabs.stepdefinitions" />
       <option name="MAIN_CLASS_NAME" value="io.cucumber.core.cli.Main" />
-      <module name="PWP_MobileAutomationFramework" />
-      <option name="NAME_FILTER" value="^One Delivery Two HUs$" />
-      <option name="PROGRAM_PARAMETERS" value=" --plugin org.jetbrains.plugins.cucumber.java.run.CucumberJvm5SMFormatter --name &quot;^One Delivery Two HUs$&quot;" />
-      <option name="SUGGESTED_NAME" value="Scenario: One Delivery Two HUs" />
+      <module name="QF_Mobile3_1_24" />
+      <option name="NAME_FILTER" value="^Update task by auditor$" />
+      <option name="PROGRAM_PARAMETERS" value=" --plugin org.jetbrains.plugins.cucumber.java.run.CucumberJvm5SMFormatter --name &quot;^Update task by auditor$&quot;" />
+      <option name="SUGGESTED_NAME" value="Scenario: Update task by auditor" />
       <option name="WORKING_DIRECTORY" value="$MODULE_WORKING_DIR$" />
       <extension name="coverage">
         <pattern>
@@ -109,15 +192,15 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="Scenario: pick the Picker1SevenItemsAndLoadBoxAndDispatchType (1)" type="CucumberJavaRunConfigurationType" factoryName="Cucumber java" temporary="true" nameIsGenerated="true">
+    <configuration name="Scenario: Update task by auditor" type="CucumberJavaRunConfigurationType" factoryName="Cucumber java" temporary="true" nameIsGenerated="true">
       <option name="CUCUMBER_CORE_VERSION" value="5" />
-      <option name="FILE_PATH" value="$PROJECT_DIR$/src/test/resources/features/Sanity/11_PWP_PickerAndLoaderFlow_Online.feature" />
+      <option name="FILE_PATH" value="$PROJECT_DIR$/src/test/resources/features/Sanity/UpdateTaskByAuditor.feature" />
       <option name="GLUE" value="com.DmartLabs.stepdefinitions" />
       <option name="MAIN_CLASS_NAME" value="io.cucumber.core.cli.Main" />
-      <module name="PWP_MobileAutomationFramework" />
-      <option name="NAME_FILTER" value="^pick the Picker1SevenItemsAndLoadBoxAndDispatchType$" />
-      <option name="PROGRAM_PARAMETERS" value=" --plugin org.jetbrains.plugins.cucumber.java.run.CucumberJvm5SMFormatter --name &quot;^pick the Picker1SevenItemsAndLoadBoxAndDispatchType$&quot;" />
-      <option name="SUGGESTED_NAME" value="Scenario: pick the Picker1SevenItemsAndLoadBoxAndDispatchType" />
+      <module name="QF_Mobile3_1_24" />
+      <option name="NAME_FILTER" value="^Update task by auditor$" />
+      <option name="PROGRAM_PARAMETERS" value=" --plugin org.jetbrains.plugins.cucumber.java.run.CucumberJvm5SMFormatter --name &quot;^Update task by auditor$&quot;" />
+      <option name="SUGGESTED_NAME" value="Scenario: Update task by auditor" />
       <option name="WORKING_DIRECTORY" value="$MODULE_WORKING_DIR$" />
       <extension name="coverage">
         <pattern>
@@ -129,15 +212,15 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="Scenario: pick the Picker1SevenItemsAndLoadBoxAndDispatchType" type="CucumberJavaRunConfigurationType" factoryName="Cucumber java" temporary="true" nameIsGenerated="true">
+    <configuration name="Scenario: update task by refiller OfflineMode" type="CucumberJavaRunConfigurationType" factoryName="Cucumber java" temporary="true" nameIsGenerated="true">
       <option name="CUCUMBER_CORE_VERSION" value="5" />
-      <option name="FILE_PATH" value="$PROJECT_DIR$/src/test/resources/features/Sanity/12_PWP_PickerAndLoaderFlow_Offline.feature" />
+      <option name="FILE_PATH" value="$PROJECT_DIR$/src/test/resources/features/Sanity/23_QF_UpdateTaskByRefillerOffline.feature" />
       <option name="GLUE" value="com.DmartLabs.stepdefinitions" />
       <option name="MAIN_CLASS_NAME" value="io.cucumber.core.cli.Main" />
-      <module name="PWP_MobileAutomationFramework" />
-      <option name="NAME_FILTER" value="^pick the Picker1SevenItemsAndLoadBoxAndDispatchType$" />
-      <option name="PROGRAM_PARAMETERS" value=" --plugin org.jetbrains.plugins.cucumber.java.run.CucumberJvm5SMFormatter --name &quot;^pick the Picker1SevenItemsAndLoadBoxAndDispatchType$&quot;" />
-      <option name="SUGGESTED_NAME" value="Scenario: pick the Picker1SevenItemsAndLoadBoxAndDispatchType" />
+      <module name="QF_Mobile3_1_24" />
+      <option name="NAME_FILTER" value="^update task by refiller OfflineMode$" />
+      <option name="PROGRAM_PARAMETERS" value=" --plugin org.jetbrains.plugins.cucumber.java.run.CucumberJvm5SMFormatter --name &quot;^update task by refiller OfflineMode$&quot;" />
+      <option name="SUGGESTED_NAME" value="Scenario: update task by refiller OfflineMode" />
       <option name="WORKING_DIRECTORY" value="$MODULE_WORKING_DIR$" />
       <extension name="coverage">
         <pattern>
@@ -149,15 +232,15 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="Scenario: pick the items with invalid quantity" type="CucumberJavaRunConfigurationType" factoryName="Cucumber java" temporary="true" nameIsGenerated="true">
+    <configuration name="Scenario: update task by refiller (1)" type="CucumberJavaRunConfigurationType" factoryName="Cucumber java" temporary="true" nameIsGenerated="true">
       <option name="CUCUMBER_CORE_VERSION" value="5" />
-      <option name="FILE_PATH" value="$PROJECT_DIR$/src/test/resources/features/Sanity/11_PWP_PickerAndLoaderFlow_Online.feature" />
+      <option name="FILE_PATH" value="$PROJECT_DIR$/src/test/resources/features/Sanity/22_QF_UpdateTaskByRefillerOnline.feature" />
       <option name="GLUE" value="com.DmartLabs.stepdefinitions" />
       <option name="MAIN_CLASS_NAME" value="io.cucumber.core.cli.Main" />
-      <module name="PWP_MobileAutomationFramework" />
-      <option name="NAME_FILTER" value="^pick the items with invalid quantity$" />
-      <option name="PROGRAM_PARAMETERS" value=" --plugin org.jetbrains.plugins.cucumber.java.run.CucumberJvm5SMFormatter --name &quot;^pick the items with invalid quantity$&quot;" />
-      <option name="SUGGESTED_NAME" value="Scenario: pick the items with invalid quantity" />
+      <module name="QF_Mobile3_1_24" />
+      <option name="NAME_FILTER" value="^update task by refiller$" />
+      <option name="PROGRAM_PARAMETERS" value=" --plugin org.jetbrains.plugins.cucumber.java.run.CucumberJvm5SMFormatter --name &quot;^update task by refiller$&quot;" />
+      <option name="SUGGESTED_NAME" value="Scenario: update task by refiller" />
       <option name="WORKING_DIRECTORY" value="$MODULE_WORKING_DIR$" />
       <extension name="coverage">
         <pattern>
@@ -170,7 +253,7 @@
       </method>
     </configuration>
     <configuration name="TestRunner" type="TestNG" temporary="true" nameIsGenerated="true">
-      <module name="PWP_MobileAutomationFramework" />
+      <module name="QF_Mobile3_1_24" />
       <extension name="coverage">
         <pattern>
           <option name="PATTERN" value="com.DmartLabs.bdd.Runner.*" />
@@ -187,19 +270,19 @@
       </method>
     </configuration>
     <list>
+      <item itemvalue="Cucumber Java.Scenario: update task by refiller OfflineMode" />
+      <item itemvalue="Cucumber Java.Scenario: update task by refiller (1)" />
+      <item itemvalue="Cucumber Java.Scenario: Update task by auditor" />
       <item itemvalue="TestNG.TestRunner" />
-      <item itemvalue="Cucumber Java.Scenario: pick the Picker1SevenItemsAndLoadBoxAndDispatchType" />
-      <item itemvalue="Cucumber Java.Scenario: pick the Picker1SevenItemsAndLoadBoxAndDispatchType (1)" />
-      <item itemvalue="Cucumber Java.Scenario: One Delivery Two HUs" />
-      <item itemvalue="Cucumber Java.Scenario: pick the items with invalid quantity" />
+      <item itemvalue="Cucumber Java.Scenario: Update task by auditor (1)" />
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="Cucumber Java.Scenario: pick the Picker1SevenItemsAndLoadBoxAndDispatchType" />
-        <item itemvalue="Cucumber Java.Scenario: pick the items with invalid quantity" />
-        <item itemvalue="Cucumber Java.Scenario: One Delivery Two HUs" />
-        <item itemvalue="Cucumber Java.Scenario: pick the Picker1SevenItemsAndLoadBoxAndDispatchType (1)" />
         <item itemvalue="TestNG.TestRunner" />
+        <item itemvalue="Cucumber Java.Scenario: Update task by auditor (1)" />
+        <item itemvalue="Cucumber Java.Scenario: Update task by auditor" />
+        <item itemvalue="Cucumber Java.Scenario: update task by refiller OfflineMode" />
+        <item itemvalue="Cucumber Java.Scenario: update task by refiller (1)" />
       </list>
     </recent_temporary>
   </component>
@@ -475,6 +558,151 @@
           <url>file://$PROJECT_DIR$/src/test/java/com/DmartLabs/stepdefinitions/SmokeTest.java</url>
           <line>93</line>
           <option name="timeStamp" value="84" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/com/DmartLabs/bdd/pages/PickerBoxAndPalletType11Page.java</url>
+          <line>94</line>
+          <option name="timeStamp" value="86" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/com/DmartLabs/bdd/pages/PickerBoxAndPalletType11Page.java</url>
+          <line>97</line>
+          <option name="timeStamp" value="87" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/com/DmartLabs/bdd/pages/PickerBoxAndPalletType11Page.java</url>
+          <line>100</line>
+          <option name="timeStamp" value="88" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/com/DmartLabs/bdd/pages/PickerBoxAndPalletType11Page.java</url>
+          <line>102</line>
+          <option name="timeStamp" value="89" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/com/DmartLabs/bdd/pages/PickerBoxAndPalletType11Page.java</url>
+          <line>113</line>
+          <option name="timeStamp" value="90" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/com/DmartLabs/bdd/pages/PickerBoxAndPalletType11Page.java</url>
+          <line>114</line>
+          <option name="timeStamp" value="91" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/com/DmartLabs/bdd/pages/PickerBoxAndPalletType11Page.java</url>
+          <line>122</line>
+          <option name="timeStamp" value="92" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/com/DmartLabs/bdd/pages/PickerBoxAndPalletType11Page.java</url>
+          <line>127</line>
+          <option name="timeStamp" value="93" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/com/DmartLabs/bdd/pages/PickerBoxAndPalletType11Page.java</url>
+          <line>130</line>
+          <option name="timeStamp" value="94" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/com/DmartLabs/bdd/pages/PickerBoxAndPalletType11Page.java</url>
+          <line>133</line>
+          <option name="timeStamp" value="95" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/com/DmartLabs/bdd/pages/PickerBoxAndPalletType11Page.java</url>
+          <line>137</line>
+          <option name="timeStamp" value="96" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/com/DmartLabs/bdd/pages/PickerBoxAndPalletType11Page.java</url>
+          <line>142</line>
+          <option name="timeStamp" value="97" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/com/DmartLabs/bdd/pages/PickerBoxAndPalletType11Page.java</url>
+          <line>149</line>
+          <option name="timeStamp" value="98" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/com/DmartLabs/bdd/pages/PickerBoxAndPalletType11Page.java</url>
+          <line>154</line>
+          <option name="timeStamp" value="99" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/com/DmartLabs/bdd/pages/PickerBoxAndPalletType11Page.java</url>
+          <line>158</line>
+          <option name="timeStamp" value="100" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/com/DmartLabs/bdd/pages/QF_RefillerOfflinePage.java</url>
+          <line>133</line>
+          <option name="timeStamp" value="121" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/com/DmartLabs/bdd/pages/QF_AllOfflinePage.java</url>
+          <line>587</line>
+          <option name="timeStamp" value="133" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/com/DmartLabs/bdd/pages/QF_AllOfflinePage.java</url>
+          <line>584</line>
+          <option name="timeStamp" value="150" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/com/DmartLabs/bdd/pages/QF_AllOfflinePage.java</url>
+          <line>445</line>
+          <option name="timeStamp" value="152" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/com/DmartLabs/bdd/pages/QF_AllOfflinePage.java</url>
+          <line>567</line>
+          <option name="timeStamp" value="154" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/com/DmartLabs/bdd/pages/QF_AllOfflinePage.java</url>
+          <line>533</line>
+          <option name="timeStamp" value="155" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/com/DmartLabs/bdd/pages/QF_AllOfflinePage.java</url>
+          <line>542</line>
+          <option name="timeStamp" value="156" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/com/DmartLabs/bdd/pages/QF_AllOfflinePage.java</url>
+          <line>544</line>
+          <option name="timeStamp" value="157" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/com/DmartLabs/bdd/pages/QF_AllOfflinePage.java</url>
+          <line>571</line>
+          <option name="timeStamp" value="158" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/com/DmartLabs/bdd/pages/QF_AllOfflinePage.java</url>
+          <line>498</line>
+          <option name="timeStamp" value="159" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/com/DmartLabs/bdd/pages/QF_AllOfflinePage.java</url>
+          <line>452</line>
+          <option name="timeStamp" value="160" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/com/DmartLabs/bdd/pages/QF_AllOfflinePage.java</url>
+          <line>449</line>
+          <option name="timeStamp" value="161" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/com/DmartLabs/bdd/pages/QF_AllOfflinePage.java</url>
+          <line>458</line>
+          <option name="timeStamp" value="162" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/com/DmartLabs/bdd/pages/CreateTaskPage.java</url>
+          <line>177</line>
+          <option name="timeStamp" value="180" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

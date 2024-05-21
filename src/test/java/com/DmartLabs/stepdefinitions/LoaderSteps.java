@@ -273,11 +273,11 @@ public class LoaderSteps {
     public void goToONLINEMode() {
         QXClient.get().report().info("Go to ONLINE mode");
         Gestures.turnOnWiFi();
-        if (dispatchType.equals("BOX DISPATCH")){
-            QXClient.get().report().info("Refresh the page");
-            gestures = QXClient.get().gestures();
-            gestures.refreshPage();
-        }
+//        if (dispatchType.equals("BOX DISPATCH")){
+//            QXClient.get().report().info("Refresh the page");
+//            gestures = QXClient.get().gestures();
+//            gestures.refreshPage();
+//        }
     }
 
     @And("Refresh the page")

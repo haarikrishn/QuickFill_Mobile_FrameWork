@@ -24,7 +24,7 @@ public class PickerBoxAndPalletType11Page {
         PageFactory.initElements(new AppiumFieldDecorator(QXClient.get().driver()), this);
     }
 
-
+    Gestures gestures;
     //=========================================================================================
     @FindBy(id = "com.dmartlabs.pwp:id/txt_vpip_ean_label")
     private MobileElement ean;
@@ -103,13 +103,18 @@ private  MobileElement MeadiumEle;
         if (isScroll) {
             scrollCount++;
           // QXClient.get().gestures().scrollDeliveryItemsUpwardsPicker(1);
-            QXClient.get().gestures(). scrollVerticallyDevice(xAxis,yAxis,1);
+            System.out.println("scroll Upward ");
+            gestures.scrollVerticallyDevice(xAxis,yAxis,1);
             Thread.sleep(500);
             List<String> list = new ArrayList<>(deliveryAllItemsPickerAl);
+            System.out.println("compare before");
+            System.out.println(WithoutBlockItems.get(0).getText() + "=======>WithoutBlockItems.get(0).getText()");
+            System.out.println(list.get(deliveryAllItemsPickerAl.size() - 1) + "============>list.get(deliveryAllItemsPickerAl.size() - 1)");
 
             try {
                 if (WithoutBlockItems.get(0).getText().equals(list.get(deliveryAllItemsPickerAl.size() - 1))) {
 
+                    System.out.println("compare after");
                     System.out.println(WithoutBlockItems.get(0).getText() + "=======>WithoutBlockItems.get(0).getText()");
                     System.out.println(list.get(deliveryAllItemsPickerAl.size() - 1) + "============>list.get(deliveryAllItemsPickerAl.size() - 1)");
 
@@ -146,13 +151,101 @@ private  MobileElement MeadiumEle;
         }
         Thread.sleep(500);
       //  QXClient.get().gestures().scrollDeliveryItemsDownwardPicker(1);
-        QXClient.get().gestures(). scrollVerticallyDevice1(xAxis, yAxis,1);
         System.out.println("scroll downward ");
+        QXClient.get().gestures(). scrollVerticallyDevice1(xAxis, yAxis,1);
+
         Thread.sleep(500);
         //  int i=0;
         return deliveryAllItemsPickerAl;
     }
+//=================================================================================================================
 
+    static int startY = 0;
+    static int endY = 0;
+    static int xAxis = 0;
+
+    public int[] getLocation(){
+        startY = WithoutBlockItems.get(WithoutBlockItems.size()-1).getLocation().getY();//end y
+        endY = WithoutBlockItems.get(0).getLocation().getY();
+
+        return new int[]{startY, endY};
+    }
+
+  //   LinkedHashSet<String> deliveryAllItemsPickerAlNew = new LinkedHashSet<>();
+public  Set<String>  getDeliveryAllItemsPickerNew(int[] location) throws InterruptedException {
+    //  TimeUnit.SECONDS.sleep(20);
+    Thread.sleep(500);
+    int k = 0;
+//    int startY = WithoutBlockItems.get(WithoutBlockItems.size()-1).getLocation().getY();//end y
+//    int endY = WithoutBlockItems.get(0).getLocation().getY();
+    int xAxis = MeadiumEle.getLocation().getX();
+//    System.out.println(WithoutBlockItems.get(WithoutBlockItems.size()-1).getLocation().getY()+"===========>WithoutBlockItems.get(WithoutBlockItems.size()-1).getLocation().getY()");
+//    System.out.println( WithoutBlockItems.get(0).getLocation().getY()+"=============> WithoutBlockItems.get(0).getLocation().getY()");
+    //start y ele.get0
+    for (MobileElement item : WithoutBlockItems) {
+        deliveryAllItemsPickerAl.add(item.getText().trim());
+        //    System.out.println(item.getText()+k++);
+    }
+    //    System.out.println(deliveryAllItemsPickerAl.size() + "=======>deliveryAllItemsPickerAl");
+    if (isScroll) {
+        scrollCount++;
+        // QXClient.get().gestures().scrollDeliveryItemsUpwardsPicker(1);
+        System.out.println("scroll Upward ");
+        QXClient.get().gestures(). scrollVerticallyDevice(xAxis,location[0], location[1],1);
+        Thread.sleep(500);
+        List<String> list = new ArrayList<>(deliveryAllItemsPickerAl);
+        System.out.println("compare before");
+//        System.out.println(WithoutBlockItems.get(0).getText() + "=======>WithoutBlockItems.get(0).getText()");
+//        System.out.println(list.get(deliveryAllItemsPickerAl.size() - 1) + "============>list.get(deliveryAllItemsPickerAl.size() - 1)");
+
+        try {
+            if (WithoutBlockItems.get(0).getText().equals(list.get(deliveryAllItemsPickerAl.size() - 1))) {
+
+                System.out.println("compare after");
+                System.out.println(WithoutBlockItems.get(0).getText() + "=======>WithoutBlockItems.get(0).getText()");
+                System.out.println(list.get(deliveryAllItemsPickerAl.size() - 1) + "============>list.get(deliveryAllItemsPickerAl.size() - 1)");
+
+                deliveryAllItemsPickerAl.remove(deliveryAllItemsPickerAl.size() - 1);
+                //   System.out.println("after removing");
+                try {
+                    SingleBlock.isDisplayed();
+                    isScroll = false;
+                } catch (NoSuchElementException NSE) {
+                    System.out.println(NSE + "===========>NSE catch block");
+                    getDeliveryAllItemsPickerNew(location);
+                }
+                Thread.sleep(500);
+                getDeliveryAllItemsPickerNew(location);
+
+            } else {
+                isScroll = false;
+            }
+        } catch (IndexOutOfBoundsException IOBE) {
+            System.out.println(IOBE + "====================>IOBE");
+            try {
+                SingleBlock.isDisplayed();
+                isScroll = false;
+            } catch (NoSuchElementException nse1) {
+                System.out.println(nse1 + "===========>nse1");
+                getDeliveryAllItemsPickerNew(location);
+            }
+
+        }
+
+    } else {
+
+        isScroll = false;
+    }
+    Thread.sleep(500);
+    //  QXClient.get().gestures().scrollDeliveryItemsDownwardPicker(1);
+    System.out.println("scroll downward ");
+    QXClient.get().gestures(). scrollVerticallyDevice12(xAxis, location[1], location[0],1);
+
+    System.out.println(deliveryAllItemsPickerAl);
+    Thread.sleep(500);
+    //  int i=0;
+    return deliveryAllItemsPickerAl;
+}
     //=====================================================================================================
     //single HU
 
@@ -948,7 +1041,7 @@ private  MobileElement MeadiumEle;
         Thread.sleep(5000);
 
 //        QXClient.get().gestures().toggleWiFi();
-        Gestures.turnOnWiFi();
+        QXClient.get().gestures().turnOnWiFi();
         System.out.println("=======================>"+"wifi is turn on");
         QXClient.get().report().info("=======================>"+"wifi is turn on");
         Thread.sleep(5000);

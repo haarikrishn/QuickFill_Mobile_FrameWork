@@ -69,6 +69,11 @@ public class Gestures {
         System.out.println("Clicked on back buttton");
     }
 
+    public static void clkEnterButton() {
+        ((AndroidDriver) driver).pressKey(new KeyEvent(AndroidKey.ENTER));
+        System.out.println("Clicked on enter buttton");
+    }
+
     // Method for horizontal scroll in the upper part of the screen
     public static void horizontalScrollUpperScreen() {
         Dimension size = driver.manage().window().getSize();
@@ -130,7 +135,7 @@ public class Gestures {
         }
 
         try {
-            Thread.sleep(8000);
+            Thread.sleep(4000);
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
@@ -326,6 +331,21 @@ public class Gestures {
         }
     }
 
+    public void waitForElementToBeClickable(WebElement element) {
+        // Set implicit wait
+        driver.manage().timeouts().implicitlyWait(2, TimeUnit.SECONDS);
+
+        try {
+            // Explicitly wait for the visibility of the element
+            WebDriverWait wait = new WebDriverWait(driver, 15);
+            wait.until(ExpectedConditions.elementToBeClickable(element));
+
+        } finally {
+            // Reset implicit wait to its default value (optional)
+            driver.manage().timeouts().implicitlyWait(0, TimeUnit.SECONDS);
+        }
+    }
+
 
     //    public boolean isElementPresent(WebElement locator) {
 //        try {
@@ -384,7 +404,64 @@ public class Gestures {
             driver.manage().timeouts().implicitlyWait(0, TimeUnit.SECONDS);
         }
     }
+//====================================================================================================
+public boolean isElementPresentPicker(WebElement locator) {
+    try {
+        // Set implicit wait
+        driver.manage().timeouts().implicitlyWait(2, TimeUnit.SECONDS);
 
+        // Wait for the element to appear using your custom waitForElementToAppear method
+        waitForElementToAppearPicker(locator);
+
+        // Check if the element is displayed
+        if (locator.isDisplayed()) {
+            String elementText = locator.getText().trim();
+            if (!elementText.isEmpty()) {
+                System.out.println("Element present on screen: " + elementText);
+            } else {
+                System.out.println("Element present on screen, but no text available for element: " + locator);
+            }
+            return true;
+        } else {
+            System.out.println("Element not displayed on screen: " + locator);
+            return false;
+        }
+    } catch (NoSuchElementException e) {
+        String elementText = locator.getText().trim();
+        if (!elementText.isEmpty()) {
+            System.out.println("Element not present on screen: " + elementText);
+        } else {
+            System.out.println("Element not present on screen, and no text available for element: " + locator);
+        }
+        return false;
+    } catch (Exception e) {
+        System.out.println("Exception while checking element presence: " + e.getMessage());
+        return false;
+    } finally {
+        // Reset implicit wait to its default value (optional)
+        driver.manage().timeouts().implicitlyWait(0, TimeUnit.SECONDS);
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    //==============================================================================
     public boolean isElementNotPresent(WebElement element) {
         // Set implicit wait
         driver.manage().timeouts().implicitlyWait(2, TimeUnit.SECONDS);
@@ -405,6 +482,12 @@ public class Gestures {
 
     public WebElement waitForElementToAppear(WebElement id) {
         WebDriverWait wait = new WebDriverWait(driver, 25);
+        wait.until(ExpectedConditions.visibilityOf(id));
+        return id;
+    }
+
+    public WebElement waitForElementToAppearPicker(WebElement id) {
+        WebDriverWait wait = new WebDriverWait(driver, 15);
         wait.until(ExpectedConditions.visibilityOf(id));
         return id;
     }
@@ -451,6 +534,11 @@ public class Gestures {
 
     public void waitForElementToVisible(WebElement locator) {
         WebDriverWait wait = new WebDriverWait(driver, 35);
+        wait.until(ExpectedConditions.visibilityOf(locator));
+
+    }
+    public void waitForElementToVisiblePicker(WebElement locator) {
+        WebDriverWait wait = new WebDriverWait(driver, 15);
         wait.until(ExpectedConditions.visibilityOf(locator));
 
     }
@@ -548,7 +636,7 @@ public class Gestures {
         int startx = (int) (size.width * 0.5);
         try {
             System.out.println("Trying to swipe up from x:" + startx + " y:" + starty + ", to x:" + startx + " y:" + endy);
-            new TouchAction(driver).press(point(startx, starty)).waitAction(waitOptions(ofSeconds(2))).moveTo(point(startx, endy)).release().perform();
+            new TouchAction(driver).press(point(startx, starty)).waitAction(waitOptions(ofSeconds(1))).moveTo(point(startx, endy)).release().perform();
 
         } catch (Exception e) {
             System.out.println("Swipe action was not successful.");
@@ -558,7 +646,7 @@ public class Gestures {
     public void swipeCoordinates(int startX, int startY, int endX, int endY) {
         try {
             System.out.println("Trying to swipe up from x:" + startX + " y:" + startY + ", to x:" + endX + " y:" + endY);
-            new TouchAction(driver).press(point(startX, startY)).waitAction(waitOptions(ofSeconds(2))).moveTo(point(endX, endY)).release().perform();
+            new TouchAction(driver).press(point(startX, startY)).waitAction(waitOptions(ofSeconds(1))).moveTo(point(endX, endY)).release().perform();
 
         } catch (Exception e) {
             System.out.println("Swipe action was not successful.");
@@ -619,11 +707,20 @@ public class Gestures {
         int startx = (int) (size.width / 2.2);
         try {
             System.out.println("Trying to swipe up from x:" + startx + " y:" + starty + ", to x:" + startx + " y:" + endy);
-            new TouchAction(driver).press(point(startx, starty)).waitAction(waitOptions(ofSeconds(3))).moveTo(point(startx, endy)).release().perform();
+            new TouchAction(driver).press(point(startx, starty)).waitAction(waitOptions(ofSeconds(1))).moveTo(point(startx, endy)).release().perform();
         } catch (Exception e) {
             System.out.println("Swipe did not complete successfully.");
         }
     }
+    //============================================================
+
+
+
+
+
+
+
+    //======================================================================================
 
     public String getText(WebElement element) {
         String elementText = element.getText();
@@ -669,7 +766,8 @@ public class Gestures {
                 if (isElementPresent(element)) {
                     break;
                 } else {
-                    swipeUp();
+                  //  swipeUp();
+                    swipeDown();
                 }
 
             }
@@ -677,6 +775,40 @@ public class Gestures {
             System.out.println("Scroll to mobile element failed");
         }
     }
+//================================================================================
+public void scrollDownToMobileElement(MobileElement element, String scrollCount) {
+    try {
+        int count = Integer.parseInt(scrollCount);
+        for (int i = 0; i < count; i++) {
+//                if (isElementDisplayed(element)) {
+            if (isElementPresent(element)) {
+                break;
+            } else {
+             //   swipeUp();
+                swipeDown();
+            }
+
+        }
+    } catch (Exception e) {
+        System.out.println("Scroll to mobile element failed");
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    //==========================================================
+
 
     public void tocuh() throws Exception {
         /*
@@ -687,6 +819,8 @@ public class Gestures {
          */
         new TouchAction(driver).tap(point(299, 150)).perform();
     }
+
+
 
     public void generateXpathUsingClassAndTextAndClickElement(String value) throws Exception {
 
@@ -888,18 +1022,62 @@ public class Gestures {
 
     //============================================================================
 
+//    int yAxis = MeadiumEle.getLocation().getY();  460
+//    int xAxis = MeadiumEle.getLocation().getX();   523
+ //   QXClient.get().gestures(). scrollVerticallyDevice(xAxis,yAxis,1); 523  460  1
+
+    public void scrollVerticallyDevice1(int getX, int startElement, int defaultScrollCount) {
+        Dimension size = driver.manage().window().getSize();
+        int startY = startElement;
+        int endY = size.getHeight();
+        System.out.println(endY+"==========>starty");
+
+//        int endy = startElement;
+//        System.out.println(endy+"==============>endy");
+
+        int constx = getX;
+        //   System.out.println("Co-ordinates = startY:" + starty + " endY:" + endy + " constX:" + constx);
+
+        try {
+            int count = defaultScrollCount;
+            for (int i = 0; i < count; i++) {
+                // Modify this condition as needed based on your requirements
+                swipeCoordinates(constx, startY, constx, endY);
+            }
+        } catch (Exception e) {
+            System.out.println("Scroll to mobile element failed");
+        }
+    }
+
+    public void scrollVerticallyDevice12(int getX, int startY, int endY, int defaultScrollCount) {
+
+
+        int constx = getX;
+        startY = startY+5;
+        //   System.out.println("Co-ordinates = startY:" + starty + " endY:" + endy + " constX:" + constx);
+
+        try {
+            int count = defaultScrollCount;
+            for (int i = 0; i < count; i++) {
+                // Modify this condition as needed based on your requirements
+                swipeCoordinates(constx, startY, constx, endY);
+            }
+        } catch (Exception e) {
+            System.out.println("Scroll to mobile element failed");
+        }
+    }
 
     public void scrollVerticallyDevice(int getX, int startElement, int defaultScrollCount) {
         Dimension size = driver.manage().window().getSize();
         int startY = size.getHeight()-5;
-      //  int endY = startElement;
+        //  int endY = startElement;
         System.out.println(startY+"==========>starty");
 
         int endy = startElement;
         System.out.println(endy+"==============>endy");
 
         int constx = getX;
-     //   System.out.println("Co-ordinates = startY:" + starty + " endY:" + endy + " constX:" + constx);
+        //   System.out.println("Co-ordinates = startY:" + starty + " endY:" + endy + " constX:" + constx);
 
         try {
             int count = defaultScrollCount;
@@ -912,14 +1090,8 @@ public class Gestures {
         }
     }
 
-    public void scrollVerticallyDevice1(int getX, int startElement, int defaultScrollCount) {
-        Dimension size = driver.manage().window().getSize();
-        int startY = startElement;
-        int endY = size.getHeight();
-        System.out.println(endY+"==========>starty");
-
-//        int endy = startElement;
-//        System.out.println(endy+"==============>endy");
+    public void scrollVerticallyDevice(int getX, int startY, int endY, int defaultScrollCount) {
+        //Dimension size = driver.manage().window().getSize();
 
         int constx = getX;
         //   System.out.println("Co-ordinates = startY:" + starty + " endY:" + endy + " constX:" + constx);
@@ -1174,7 +1346,59 @@ public class Gestures {
             System.out.println("Scroll to mobile element failed");
         }
     }
+    //======================================================================
+    public void scrollItemsUpward(int defaultScrollCount) {
+        Dimension dimension = driver.manage().window().getSize();
+     //  x:360 y:1198, to x:360 y:446
+        int scrollStart = (int) dimension.getHeight();
+        // System.out.println(scrollStart+"===================scrollStart");
+        // int scrollEnd = (int) (dimension.getHeight() * 0.3838);
+        //  scrool       396/1062    0.3728
+        int scrollEnd = (int) (dimension.getHeight() * 0.3728);
+        //  int scrollEnd = (int) (dimension.getHeight() * 0.4340);
+
+
+
+        // System.out.println(scrollEnd+"========================scrollEnd");
+        int widthHalf = (int) (dimension.getWidth() * 0.5);
+        //Trying to swipe up from x:360 y:555, to x:360 y:1198
+
+        try {
+            int count = defaultScrollCount;
+            for (int i = 0; i < count; i++) {
+                // Modify this condition as needed based on your requirements
+                swipeCoordinates(widthHalf, scrollStart, widthHalf, scrollEnd);
+                //Trying to swipe up from x:360 y:1198, to x:360 y:135
+            }
+        } catch (Exception e) {
+            System.out.println("Scroll to mobile element failed");
+        }
+    }
     //================================
+    public void scrollItemsDownward(int defaultScrollCount) {
+        Dimension dimension = driver.manage().window().getSize();
+        int scrollEnd = (int) dimension.getHeight();
+        // System.out.println(scrollEnd+"=================scrollEnd");
+        //   int scrollStart = (int) (dimension.getHeight() * 0.3838);
+        int scrollStart = (int) (dimension.getHeight() * 0.3600);//0.4641
+        // System.out.println(scrollStart+"=======================scrollStart");
+
+        int widthHalf = (int) (dimension.getWidth() * 0.5);
+
+        try {
+            int count = defaultScrollCount;
+            for (int i = 0; i < count; i++) {
+                // Modify this condition as needed based on your requirements
+                swipeCoordinates(widthHalf, scrollStart, widthHalf, scrollEnd);
+            }
+        } catch (Exception e) {
+            System.out.println("Scroll to mobile element failed");
+        }
+    }
+
+
+
+    //============================================================================
     public void scrollDeliveryItemsDownwardPicker(int defaultScrollCount) {
         Dimension dimension = driver.manage().window().getSize();
         int scrollEnd = (int) dimension.getHeight();
@@ -1195,6 +1419,6 @@ public class Gestures {
             System.out.println("Scroll to mobile element failed");
         }
     }
-
+//===========================================================================================
 
 }

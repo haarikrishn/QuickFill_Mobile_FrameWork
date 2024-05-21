@@ -31,8 +31,8 @@ Feature: offline BoxAndDispatchType:Pick the items in Delivery and load the Deli
     Examples:
       | username | password   |
 #   | 9000680178 | Sweety123@ |
- | 101203   | Dmart@12345 |
-#      | 121346   | Sweety123@ |
+# | 101203   | Dmart@12345 |
+     | 121346   | Sweety123@ |
 
 
 #===================================================================================================================
@@ -67,9 +67,9 @@ Feature: offline BoxAndDispatchType:Pick the items in Delivery and load the Deli
 
     Examples:
       | username   | password   |
-#      | 121346   | Sweety123@ |
+      | 121346   | Sweety123@ |
 #    | 9000680178 | Sweety123@ |
-  | 101203   | Dmart@12345 |
+#  | 101203   | Dmart@12345 |
 #  ===================================================================================================================
   @PickerInvalidQunatityOfflineBoxAndDispatchType
   Scenario Outline: pick the items with invalid quantity
@@ -121,9 +121,9 @@ Feature: offline BoxAndDispatchType:Pick the items in Delivery and load the Deli
 
     Examples:
       | username   | password   |
-#      | 121346   | Sweety123@ |
+   | 121346   | Sweety123@ |
 #     | 9000680178 | Sweety123@ |
-      | 101203   | Dmart@12345 |
+#      | 101203   | Dmart@12345 |
 
 
 

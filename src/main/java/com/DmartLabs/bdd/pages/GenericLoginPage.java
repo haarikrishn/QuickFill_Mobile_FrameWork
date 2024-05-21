@@ -55,7 +55,7 @@ public class GenericLoginPage {
     private  MobileElement PickerTitle;
 
     public void ClickOnPickerAndValidate() throws InterruptedException {
-        Thread.sleep(2000);
+        Thread.sleep(5000);
         QXClient.get().gestures().clickOnElement(SelectPicker);
         QXClient.get().report().info("click on picker");
         QXClient.get().gestures().isElementPresent(PickerTitle);

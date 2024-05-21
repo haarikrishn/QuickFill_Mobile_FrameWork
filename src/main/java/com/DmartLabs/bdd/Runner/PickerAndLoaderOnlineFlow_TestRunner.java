@@ -10,7 +10,8 @@ import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
 @CucumberOptions(features = "./src/test/resources/features/Sanity/11_PWP_PickerAndLoaderFlow_Online.feature",
-        tags = "@PickerInvalidQunatityOnlineBoxAndDispatchType",
+    //    features = "./src/test/resources/features/Sanity/12_PWP_PickerAndLoaderFlow_Offline.feature",
+       // tags = "@PickerInvalidQunatityOnlineBoxAndDispatchType",
         //tags = "@load",
         //tags = "@sanityUk",
         //tags = "@PicingSevenItemsAndLoadPositiveflow",

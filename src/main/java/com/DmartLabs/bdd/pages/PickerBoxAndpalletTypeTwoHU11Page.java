@@ -377,8 +377,8 @@ public class PickerBoxAndpalletTypeTwoHU11Page {
         {
             Thread.sleep(2000);
             try {
-                QXClient.get().gestures().waitForElementToVisible(wifiSignalOff);
-                QXClient.get().gestures().isElementPresent(wifiSignalOff);
+                QXClient.get().gestures().waitForElementToVisiblePicker(wifiSignalOff);
+                QXClient.get().gestures().isElementPresentPicker(wifiSignalOff);
                 System.out.println("======================>" + "wifi is off");
                 QXClient.get().report().info("======================>" + "wifi is off");
                 QXClient.get().report().info(wifiSignalOff.getText());
@@ -388,8 +388,8 @@ public class PickerBoxAndpalletTypeTwoHU11Page {
             {
                 System.out.println("inside catch");
                 QXClient.get().gestures().toggleWiFi();
-                QXClient.get().gestures().waitForElementToVisible(wifiSignalOff);
-                QXClient.get().gestures().isElementPresent(wifiSignalOff);
+                QXClient.get().gestures().waitForElementToVisiblePicker(wifiSignalOff);
+                QXClient.get().gestures().isElementPresentPicker(wifiSignalOff);
                 System.out.println("======================>" + "wifi is off");
                 QXClient.get().report().info("======================>" + "wifi is off");
                 QXClient.get().report().info(wifiSignalOff.getText());

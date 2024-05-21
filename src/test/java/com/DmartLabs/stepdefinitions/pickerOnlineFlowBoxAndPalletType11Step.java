@@ -23,11 +23,13 @@ public class pickerOnlineFlowBoxAndPalletType11Step {
         Thread.sleep(2000);
         pickerBoxAndPalletType11Page.PickListDetailsBoxAndPalletType();
         Thread.sleep(2000);
-        pickerBoxAndPalletType11Page.getDeliveryAllItemsPicker();
+    //    pickerBoxAndPalletType11Page.getDeliveryAllItemsPicker();
+        int[] location = pickerBoxAndPalletType11Page.getLocation();
+        pickerBoxAndPalletType11Page. getDeliveryAllItemsPickerNew(location);
         Thread.sleep(2000);
       pickerBoxAndPalletType11Page.ClickItemOneByoneBoxAndPalletType();
         Thread.sleep(2000);
-     pickerBoxAndPalletType11Page.VerifyDispatchTypeAndClosePalletOrHU();
+    pickerBoxAndPalletType11Page.VerifyDispatchTypeAndClosePalletOrHU();
 
     }
 
@@ -38,10 +40,13 @@ public class pickerOnlineFlowBoxAndPalletType11Step {
         Thread.sleep(2000);
         pickerBoxAndpalletTypeTwoHU11Page.PickListDetailsBoxAndPalletType();
         Thread.sleep(2000);
-        pickerBoxAndpalletTypeTwoHU11Page.getDeliveryAllItemsPicker1();
+     //   pickerBoxAndpalletTypeTwoHU11Page.getDeliveryAllItemsPicker1();
         //getDeliveryAllItemsPicker
+        int[] location = pickerBoxAndPalletType11Page.getLocation();
+        pickerBoxAndPalletType11Page. getDeliveryAllItemsPickerNew(location);
+        Thread.sleep(2000);
         pickerBoxAndpalletTypeTwoHU11Page.ClickItemOneByoneBoxAndPalletTypeViewHu(dataTable);
-        pickerBoxAndPalletType11Page.VerifyDispatchTypeAndClosePalletOrHU();
+   //     pickerBoxAndPalletType11Page.VerifyDispatchTypeAndClosePalletOrHU();
 
 
     }
@@ -56,8 +61,12 @@ public class pickerOnlineFlowBoxAndPalletType11Step {
         Thread.sleep(2000);
         pickerBoxAndPalletInvalidQuantityType11Page.PickListDetailsBoxAndPalletType();
         Thread.sleep(2000);
-        pickerBoxAndPalletInvalidQuantityType11Page.getDeliveryAllItemsPicker1();
+     //   pickerBoxAndPalletInvalidQuantityType11Page.getDeliveryAllItemsPicker1();
+
+        int[] location = pickerBoxAndPalletType11Page.getLocation();
+        pickerBoxAndPalletType11Page. getDeliveryAllItemsPickerNew(location);
         Thread.sleep(2000);
+     //   Thread.sleep(2000);
         pickerBoxAndPalletInvalidQuantityType11Page.GetDataFromDataTableDT(dataTable);
 
     }
@@ -77,6 +86,9 @@ public class pickerOnlineFlowBoxAndPalletType11Step {
         //    pickerBoxAndPalletInvalidQuantityType11Page.ClickItemOneByoneBoxAndPalletTypeInvalidQtyDTFoRHUfullORPalletFull();
 //                Thread.sleep(2000);
         pickerBoxAndPalletType11Page.getDeliveryAllItemsPickerHUitem1();
+
+
+
 //     Thread.sleep(2000);
 //        pickerBoxAndPalletType11Page.ClickItemOneByoneBoxAndPalletType();
 //        Thread.sleep(2000);

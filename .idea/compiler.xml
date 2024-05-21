@@ -8,6 +8,8 @@
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
         <module name="BDD_MobileBase" />
+        <module name="Pwp_QA_2_27_2024" />
+        <module name="QF_Mobile3_1_24" />
         <module name="PWP_MobileAutomationFramework" />
       </profile>
     </annotationProcessing>

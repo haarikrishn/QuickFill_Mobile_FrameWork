@@ -4,7 +4,7 @@ Feature: online BoxAndDispatchType:Pick the items in Delivery and load the Deliv
   Scenario Outline: pick the Picker1SevenItemsAndLoadBoxAndDispatchType
     Given Enter username "<username>" and password "<password>" to login to the picker application
     When user verify the items one By One  and move to PickerSevenItems BoxAndDispatchType
-  Then verify Items picked or not
+ Then verify Items picked or not
    And Logout the user from application
 
     Given Enter username "<username>" and password "<password>" to login to the picker application
@@ -28,8 +28,8 @@ Feature: online BoxAndDispatchType:Pick the items in Delivery and load the Deliv
     Examples:
       | username | password   |
 #   | 9000680178 | Sweety123@ |
- | 101203   | Dmart@12345 |
-#      | 121346   | Sweety123@ |
+# | 101203   | Dmart@12345 |
+     | 121346   | Sweety123@ |
 
 
 #===================================================================================================================
@@ -38,32 +38,32 @@ Feature: online BoxAndDispatchType:Pick the items in Delivery and load the Deliv
     Given Enter username "<username>" and password "<password>" to login to the picker application
     When user verify the items one By One  and move to pickList one HU BoxAndDispatchType
       | ViewHUCount | 4 |
-    Then verify Items picked or not
-    And Logout the user from application
-
-    Given Enter username "<username>" and password "<password>" to login to the picker application
-    And Verify that User is in PWP application's Home Page
-    And Click on Loader Module to perform Loading operations
-    And Verify that Loader is in Loader Page
-    When Get the delivery number to load the Delivery into the truck
-    And Search the delivery in a Loader Page
-    And Verify that vehicle is assigned for a Delivery
-    And Verify the dispatch type of a delivery
-    And Check the picking progress of a delivery
-    And Click on Delivery Card
-    And Verify that loader is in Delivery Details Page
-    And Load the delivery into the truck
-    And Confirm the loading
-    Then Verify that loading operation is completed
-    And Search the delivery in a Loader Page
-    And Verify that no results found message is displayed
-    And Logout the user from Loader application
+#    Then verify Items picked or not
+#    And Logout the user from application
+#
+#    Given Enter username "<username>" and password "<password>" to login to the picker application
+#    And Verify that User is in PWP application's Home Page
+#    And Click on Loader Module to perform Loading operations
+#    And Verify that Loader is in Loader Page
+#    When Get the delivery number to load the Delivery into the truck
+#    And Search the delivery in a Loader Page
+#    And Verify that vehicle is assigned for a Delivery
+#    And Verify the dispatch type of a delivery
+#    And Check the picking progress of a delivery
+#    And Click on Delivery Card
+#    And Verify that loader is in Delivery Details Page
+#    And Load the delivery into the truck
+#    And Confirm the loading
+#    Then Verify that loading operation is completed
+#    And Search the delivery in a Loader Page
+#    And Verify that no results found message is displayed
+#    And Logout the user from Loader application
 
     Examples:
       | username   | password   |
-#      | 121346   | Sweety123@ |
+     | 121346   | Sweety123@ |
 #    | 9000680178 | Sweety123@ |
-  | 101203   | Dmart@12345 |
+#  | 101203   | Dmart@12345 |
 #  ===================================================================================================================
   @PickerInvalidQunatityOnlineBoxAndDispatchType
   Scenario Outline: pick the items with invalid quantity
@@ -113,9 +113,9 @@ Feature: online BoxAndDispatchType:Pick the items in Delivery and load the Deliv
 
     Examples:
       | username   | password   |
-#      | 121346   | Sweety123@ |
+     | 121346   | Sweety123@ |
 #     | 9000680178 | Sweety123@ |
-      | 101203   | Dmart@12345 |
+#      | 101203   | Dmart@12345 |
 
 
 

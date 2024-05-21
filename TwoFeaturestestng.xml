@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="All Test Suite">
+    <test verbose="2" preserve-order="true"
+          name="C:/Git FrameWork Storage/Pwp_QA_2_27_2024/src/test/resources/features/Sanity/11_PWP_PickerAndLoaderFlow_Online.feature">
+        <classes/>
+    </test>
+    <test verbose="2" preserve-order="true"
+          name="C:/Git FrameWork Storage/Pwp_QA_2_27_2024/src/test/resources/features/Sanity/12_PWP_PickerAndLoaderFlow_Offline.feature">
+        <classes/>
+    </test>
+</suite>

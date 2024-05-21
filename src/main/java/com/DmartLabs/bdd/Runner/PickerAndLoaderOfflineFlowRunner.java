@@ -9,10 +9,12 @@ import org.testng.annotations.BeforeClass;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
-@CucumberOptions(features = "./src/test/resources/features/Sanity/12_PWP_PickerAndLoaderFlow_Offline.feature",
-        //tags = "@login",
-        tags = "@PickingSevenItemsOfflineBoxAndDispatchType",
-        //tags = "@sanityUk",
+@CucumberOptions(features = "./src/test/resources/features/Sanity",
+    //    features = {"./src/test/resources/features/Sanity/11_PWP_PickerAndLoaderFlow_Online.feature", "./src/test/resources/features/Sanity/12_PWP_PickerAndLoaderFlow_Offline.feature"},
+//        features = {"src/test/resources/features/feature1.feature", "src/test/resources/features/feature2.feature"},
+//        11_PWP_PickerAndLoaderFlow_Online.feature
+        //12_PWP_PickerAndLoaderFlow_Offline.feature
+        tags = "@ThreeTaskCheck",
         dryRun = false,
         glue = "com/DmartLabs/stepdefinitions",
         plugin = {"pretty",
